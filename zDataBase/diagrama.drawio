@@ -1,37 +1,37 @@
 <mxfile host="65bd71144e">
     <diagram id="234NKnhTCfFOBeIfzYKT" name="Page-1">
-        <mxGraphModel dx="1386" dy="1647" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1998" dy="1555" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="&lt;b&gt;Procedimientos&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;nombre varchar(140)&lt;br&gt;caracteristicas text default null&lt;br&gt;cirugia_id int fk" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="2" value="&lt;b&gt;Procedimientos&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;nombre varchar(140)&lt;br&gt;caracteristicas text default null&lt;br&gt;cirugia_id int fk" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="410" y="-60" width="120" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="&lt;b&gt;Cirugias&lt;/b&gt;&lt;br&gt;&lt;br&gt;id int pk auto_i&lt;br&gt;nombre varchar(140)&lt;br&gt;caracteristicas text default null&amp;nbsp;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="5" value="&lt;b&gt;Cirugias&lt;/b&gt;&lt;br&gt;&lt;br&gt;id int pk auto_i&lt;br&gt;nombre varchar(140)&lt;br&gt;caracteristicas text default null&amp;nbsp;" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="410" y="-250" width="130" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="&lt;b&gt;Acta_procedimientos&lt;/b&gt;&lt;br&gt;&lt;br&gt;id int pk auto_i&lt;br&gt;nombre varchar(240)&lt;br&gt;fecha_nacimiento date&lt;br&gt;edad int&lt;br&gt;procedimiento_id int fk&lt;br&gt;cirugia_pediatrica varchar(240) default null&lt;br&gt;servicio enum('quirofano1','quirofano2','toco1','toco2')&lt;br&gt;fecha date default current_timestamp&lt;br&gt;hora time default current_timestamp&lt;br&gt;enfermera_quirurjica varchar(140)&lt;br&gt;enfermera_circulante int fk&lt;br&gt;cirujano varchar(140)&lt;br&gt;anestesiologo varchar(140)&lt;br&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="6" value="&lt;b&gt;Acta_procedimientos&lt;/b&gt;&lt;br&gt;&lt;br&gt;id int pk auto_i&lt;br&gt;nombre varchar(240)&lt;br&gt;fecha_nacimiento date&lt;br&gt;edad int&lt;br&gt;procedimiento_id int fk&lt;br&gt;cirugia_pediatrica varchar(240) default null&lt;br&gt;servicio enum('quirofano1','quirofano2','toco1','toco2')&lt;br&gt;fecha date default current_timestamp&lt;br&gt;hora time default current_timestamp&lt;br&gt;enfermera_quirurjica varchar(140)&lt;br&gt;enfermera_circulante int fk&lt;br&gt;cirujano varchar(140)&lt;br&gt;anestesiologo varchar(140)&lt;br&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="60" y="-30" width="260" height="260" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="&lt;b&gt;Ropa_qui&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;tipo_bulto varchar(140)" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="8" value="&lt;b&gt;Ropa_qui&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;tipo_bulto varchar(140)" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="110" y="430" width="150" height="150" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="&lt;b&gt;Instrumentos&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;instrumental varchar(140)&lt;br&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="9" value="&lt;b&gt;Instrumentos&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;instrumental varchar(140)&lt;br&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="-290" y="230" width="140" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="&lt;b&gt;Usuarios&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;nombre&amp;nbsp; varchar(160)&lt;br&gt;apellidos varchar(170)&lt;br&gt;rol varchar (100)&lt;br&gt;contacto varchar (160)&lt;br&gt;usuario varchar(160) unique not null&lt;br&gt;contra varchar(160) unique not null&lt;br&gt;&amp;nbsp;&lt;br&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="10" value="&lt;b&gt;Usuarios&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;nombre&amp;nbsp; varchar(160)&lt;br&gt;apellidos varchar(170)&lt;br&gt;rol varchar (100)&lt;br&gt;contacto varchar (160)&lt;br&gt;usuario varchar(160) unique not null&lt;br&gt;contra varchar(160) unique not null&lt;br&gt;&amp;nbsp;&lt;br&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="410" y="200" width="200" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="11" value="&lt;b&gt;CeYe ¿?&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-                    <mxGeometry x="-180" y="480" width="120" height="120" as="geometry"/>
+                <mxCell id="11" value="&lt;b&gt;CeYe ¿?&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+                    <mxGeometry x="-330" y="500" width="120" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="13" value="&lt;b&gt;Acta_instrumentos&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;codigo varchar(100)&lt;br&gt;r //material recibido por la CeYe varchar(200)&lt;br&gt;instrumento_id int fk&lt;br&gt;acta_procedimiento_id int fk&lt;br&gt;extra varchar(140)&amp;nbsp;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="13" value="&lt;b&gt;Acta_instrumentos&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;codigo varchar(100)&lt;br&gt;r //material recibido por la CeYe varchar(200)&lt;br&gt;instrumento_id int fk&lt;br&gt;acta_procedimiento_id int fk&lt;br&gt;extra varchar(140)&amp;nbsp;" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="-110" y="260" width="170" height="170" as="geometry"/>
                 </mxCell>
-                <mxCell id="14" value="&lt;b&gt;Acta_ropa_qui&lt;/b&gt;&lt;br&gt;&lt;br&gt;id int pk auto_i&lt;br&gt;cantidad int&lt;br&gt;ropa_qui_id int fk&lt;br&gt;acta_procedimiento_id int fk&lt;br&gt;extra varchar(140)" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="14" value="&lt;b&gt;Acta_ropa_qui&lt;/b&gt;&lt;br&gt;&lt;br&gt;id int pk auto_i&lt;br&gt;cantidad int&lt;br&gt;ropa_qui_id int fk&lt;br&gt;acta_procedimiento_id int fk&lt;br&gt;extra varchar(140)" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="130" y="275" width="140" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="15" value="" style="endArrow=classic;html=1;entryX=0.993;entryY=0.886;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="2">
+                <mxCell id="15" value="" style="endArrow=classic;html=1;entryX=0.993;entryY=0.886;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="2" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="540" y="-190" as="sourcePoint"/>
                         <mxPoint x="590" y="50" as="targetPoint"/>
@@ -41,7 +41,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="17" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.412;entryDx=0;entryDy=0;entryPerimeter=0;exitX=-0.021;exitY=0.414;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="2" target="6">
+                <mxCell id="17" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.412;entryDx=0;entryDy=0;entryPerimeter=0;exitX=-0.021;exitY=0.414;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="2" target="6" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="280" y="100" as="sourcePoint"/>
                         <mxPoint x="330" y="50" as="targetPoint"/>
@@ -51,7 +51,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="18" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.813;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="6">
+                <mxCell id="18" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.813;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="6" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="410" y="260" as="sourcePoint"/>
                         <mxPoint x="400" y="210" as="targetPoint"/>
@@ -61,7 +61,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="19" value="" style="endArrow=classic;html=1;exitX=0.006;exitY=0.201;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.765;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="6" target="13">
+                <mxCell id="19" value="" style="endArrow=classic;html=1;exitX=0.006;exitY=0.201;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.765;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="6" target="13" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="-80" y="140" as="sourcePoint"/>
                         <mxPoint x="-20" y="220" as="targetPoint"/>
@@ -71,7 +71,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="20" value="" style="endArrow=classic;html=1;exitX=0.003;exitY=0.191;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.002;entryY=0.659;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="6" target="14">
+                <mxCell id="20" value="" style="endArrow=classic;html=1;exitX=0.003;exitY=0.191;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.002;entryY=0.659;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="6" target="14" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="-60" y="140" as="sourcePoint"/>
                         <mxPoint x="-10" y="90" as="targetPoint"/>
@@ -83,7 +83,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="21" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.001;entryY=0.671;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="9" target="13">
+                <mxCell id="21" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.001;entryY=0.671;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="9" target="13" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="-10" y="450" as="sourcePoint"/>
                         <mxPoint x="40" y="400" as="targetPoint"/>
@@ -93,7 +93,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="22" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.008;entryY=0.55;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="8" target="14">
+                <mxCell id="22" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.008;entryY=0.55;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="8" target="14" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="20" y="520" as="sourcePoint"/>
                         <mxPoint x="70" y="470" as="targetPoint"/>
@@ -103,8 +103,11 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="23" value="ropa_qui: ropa quirúrgica" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="23" value="ropa_qui: ropa quirúrgica" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="310" y="450" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="cambio pertinente" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="310" y="520" width="160" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
