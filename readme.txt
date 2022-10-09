@@ -4,4 +4,9 @@ Primera actualización georgeis great
 
 
 
-nueva funcion jejejejjejeje
+nueva funcion 
+
+esta es la funcion del 9 
+
+
+git add .
