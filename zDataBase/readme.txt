@@ -1,3 +1,0 @@
-
-
-Primera actualización georged
