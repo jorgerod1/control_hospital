@@ -1,15 +1,6 @@
 
 
-Primera actualización georgeis great 
-
-
-
-nueva funcion 
-
-esta es la funcion del 9 
-
-
-este nuevo test es muy bueno....
+diagrama e-r, codgio sql y triggers terminado
 
 
 
