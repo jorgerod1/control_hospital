@@ -4,7 +4,7 @@ drop database if exists control_hospital;
 create database control_hospital;
 use control_hospital;
 
-
+prueba 
 
 
 
