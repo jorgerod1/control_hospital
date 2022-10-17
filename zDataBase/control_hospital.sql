@@ -1,4 +1,4 @@
-/* 
+
 
 drop database if exists control_hospital;
 create database control_hospital;
@@ -6,7 +6,7 @@ use control_hospital;
 
 
 
-*/
+
 
 
 
@@ -28,7 +28,6 @@ create table procedimientos(
 
 );
 
---
 
 create table usuarios(
     
@@ -45,29 +44,42 @@ contra varchar(160) unique not null
 
 create table acta_procedimientos(
 
-    id int primary key auto_increment,
-    nombre_paciente varchar(240),
-    fecha_nacimiento date,
-    edad int,
+    id int primary key auto_increment default null,
+    nombre_paciente varchar(240) default null,
+    fecha_nacimiento date default null,
+    edad int default null,
     cirugia_pediatrica varchar(240) default null,
-    servicio enum('quirofano1','quirofano2','toco1','toco2'),
+    servicio enum('quirofano1','quirofano2','toco1','toco2') default null,
     fecha date default current_timestamp,
     hora time default current_timestamp,
-    enfermera_quirurjica varchar(140),
-    cirujano varchar(140),
-    anestesiologo varchar(140),
+    enfermera_quirurjica varchar(140) default null,
+    enfermera_circulante varchar(140) default null,
+    cirujano varchar(140) default null,
+    anestesiologo varchar(140) default null,
+    turno varchar(140) default null,
+    activo boolean default 1,
 
-    enfermera_circulante int,
+    usuario_id int,
     procedimiento_id int,
 
-    foreign key (enfermera_circulante) references usuarios(id),
+    foreign key (usuario_id) references usuarios(id),
     foreign key (procedimiento_id) references procedimientos(id)
+);
+
+create table tipo_instrumentos(
+
+    id int primary key auto_increment,
+    tipo varchar(140)
+
 );
 
 create table instrumentos(
 
     id int primary key auto_increment,
-    instrumentos varchar(140)
+    instrumentos varchar(140),
+    tipo_instrumento_id int,
+
+    foreign key (tipo_instrumento_id) references tipo_instrumentos(id)
 
 );
 
@@ -96,9 +108,8 @@ create table acta_instrumentos(
 
     id int primary key auto_increment,
     codigo varchar(100),
-    r  varchar(200), /*material recibido por la CeYe*/
+    /*r  varchar(200), material recibido por CeYe*/
     extra varchar(140),
-
     instrumento_id int,
     acta_procedimiento_id int,
 
@@ -106,6 +117,54 @@ create table acta_instrumentos(
     foreign key (acta_procedimiento_id) references acta_procedimientos(id)
     
 );
+
+
+create table acta_ceye(
+
+    id int primary key auto_increment,
+    autoclave varchar(100),
+    no_carga int,
+    no_paquete int,
+    fecha date default current_timestamp,
+    hora time default current_timestamp,
+    turno varchar(140),
+    responsable varchar(160),
+    usuario_id int,
+
+    foreign key (usuario_id) references usuarios(id)
+);
+
+create table acta_instrumentos_ceye(
+
+    id int primary key auto_increment,
+    codigo varchar(100),
+    extra varchar(140) default null,
+    cantidad int,
+    instrumento_id int,
+    acta_ceye_id int,
+
+    foreign key (instrumento_id) references instrumentos(id),
+    foreign key (acta_ceye_id) references acta_ceye(id)
+    
+    );
+
+
+    /*Inventario se llena a través de un trigges con el registro de la tabla acta_intrumentos_ceye  */
+
+
+    create table inventario(
+
+        id int primary key auto_increment,
+        codigo varchar(100),
+        activo boolean default 1,
+        extra varchar(140) default null,
+        instrumento_id int,
+        acta_instrumentos_ceye_id int ,
+
+        foreign key (instrumento_id) references instrumentos(id),
+        foreign key (acta_instrumentos_ceye_id) references acta_instrumentos_ceye(id)
+    
+    );
 
 
 
