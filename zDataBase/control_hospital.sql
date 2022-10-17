@@ -141,7 +141,7 @@ create table acta_instrumentos_ceye(
     extra varchar(140) default null,
     cantidad int,
     instrumento_id int,
-    acta_ceye_id int,
+    acta_ceye_id int
 
     foreign key (instrumento_id) references instrumentos(id),
     foreign key (acta_ceye_id) references acta_ceye(id)

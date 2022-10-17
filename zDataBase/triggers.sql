@@ -9,7 +9,7 @@ create trigger registrar_inventario after insert on acta_instrumentos_ceye
 for each row begin 
 
 
-DECLARE i BIGINT DEFAULT 1;
+DECLARE i BIGINT DEFAULT 0;
 
     mi_ciclo: loop 
 
