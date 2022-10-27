@@ -27,6 +27,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         display: grid;
         justify-self: end;
     }
+    #cardLogin{
+        border-color:#ff2c69;
+    }
 	
 	</style>
 </head>
@@ -51,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <h2 align="center">HOSPITAL MATERNO CELAYA</h2> <br>
 <h3 align="center">Inicio de sesión</h3>
 <div align="center">
-    <div class="card" style="width: 18rem;" >
+    <div class="card" style="width: 18rem;" id="cardLogin">
     <div class="card-body" >
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Usuario</label>

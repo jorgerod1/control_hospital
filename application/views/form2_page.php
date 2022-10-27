@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
-    <title>Iniciar sesión</title>
+    <title>Quirofano</title>
 
     <style type="text/css">
 
@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      
 </div>
 <h2 align="center">HOSPITAL MATERNO CELAYA</h2> <br>
-<h3 align="center">CiruControl de instrumental y ropa quirúrgica gias</h3><br><br>
+<h3 align="center">Control de instrumental y ropa quirúrgica</h3><br><br>
 
 <div id="table">
     <table class="table table-bordered">
