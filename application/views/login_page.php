@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </nav><br>
 <div id="titulos">
-    <img src="http://localhost/isw18/imagenes/LG.png" alt="" width="192" height="94" id="LG">
+    <img src="<?= base_url();?>imagenes/LG.png" alt="" width="192" height="94" id="LG">
     <img src="http://localhost/isw18/imagenes/moño.png" alt="" width="38" height="58" id="M" >
     <h2  id="T">SECRETARIA DE SALUD DE GUANAJUATO</h2>
     <img src="http://localhost/isw18/imagenes/Logo.png" alt="" width="112" height="123" id="L">
@@ -58,8 +58,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <input type="text" class="form-control" id="exampleFormControlInput1" >
         </div>
         <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
+             <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
             <input type="text" class="form-control" id="exampleFormControlInput1" >
+
+            
         </div>  
         <button type="button" class="btn btn-light" style="background-color: #06FF1F;">Entrar</button><br> <br>
         <button type="button" class="btn btn-light" style="background-color: #FFB906;">Registrarses</button>
