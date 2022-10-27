@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
-    <title>Iniciar sesión</title>
+    <title>Cirugias</title>
 
     <style type="text/css">
 
@@ -47,16 +47,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <nav class="navbar" style="background-color: #FF5C71;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="http://localhost/isw18/imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+      <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
     </a>
   </div>
 </nav><br>
 <div id="titulos">
-    <img src="http://localhost/isw18/imagenes/LG.png" alt="" width="192" height="94" id="LG">
-    <img src="http://localhost/isw18/imagenes/moño.png" alt="" width="38" height="58" id="M" >
+    <img src="<?=base_url();?>imagenes/LG.png" alt="" width="192" height="94" id="LG">
+    <img src="<?=base_url();?>imagenes/moño.png" alt="" width="38" height="58" id="M" >
     <h2  id="T">SECRETARIA DE SALUD DE GUANAJUATO</h2>
-    <img src="http://localhost/isw18/imagenes/Logo.png" alt="" width="112" height="123" id="L">
+    <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="112" height="123" id="L">
      
 </div>
 <h2 align="center">HOSPITAL MATERNO CELAYA</h2> <br>
@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h4 class="card-title" align="center">Toco - Cirugia</h4>
         
         <div class="card-body">
-            <img src="http://localhost/isw18/imagenes/toco-cirugia.png" class="card-img-top" alt="..."><br><br>
+            <img src="<?=base_url();?>toco-cirugia.png" class="card-img-top" alt="..."><br><br>
             
             <button  type="button" class="btn btn-light" style="background-color: #00B4CC;">Agregar</button><br> <br>
         </div>
@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h4 class="card-title" align="center">Quirofano</h4>
         
         <div class="card-body">
-            <img src="http://localhost/isw18/imagenes/cirugia.png" class="card-img-top" alt="..."><br><br>
+            <img src="<?=base_url();?>imagenes/cirugia.png" class="card-img-top" alt="..."><br><br>
             
             <button  type="button" class="btn btn-light" style="background-color: #00B4CC;">Agregar</button><br> <br>
         </div>
@@ -89,7 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h4 class="card-title" align="center">Equipo</h4>
         
         <div class="card-body">
-            <img src="http://localhost/isw18/imagenes/equipo.png" class="card-img-top" alt="..."><br><br>
+            <img src="<?=base_url();?>imagenes/equipo.png" class="card-img-top" alt="..."><br><br>
             
             <button  type="button" class="btn btn-light" style="background-color: #00B4CC;">Agregar</button><br> <br>
         </div>

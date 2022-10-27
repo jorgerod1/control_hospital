@@ -4,11 +4,6 @@ drop database if exists control_hospital;
 create database control_hospital;
 use control_hospital;
 
-prueba 
-
-
-
-
 
 create table cirugias(
 
@@ -40,7 +35,7 @@ contacto varchar (160),
 usuario varchar(160) unique not null,
 contra varchar(160) unique not null
 
-);
+); 
 
 create table acta_procedimientos(
 
@@ -141,8 +136,7 @@ create table acta_instrumentos_ceye(
     extra varchar(140) default null,
     cantidad int,
     instrumento_id int,
-    acta_ceye_id int
-
+    acta_ceye_id int,
     foreign key (instrumento_id) references instrumentos(id),
     foreign key (acta_ceye_id) references acta_ceye(id)
     
@@ -160,7 +154,6 @@ create table acta_instrumentos_ceye(
         extra varchar(140) default null,
         instrumento_id int,
         acta_instrumentos_ceye_id int ,
-
         foreign key (instrumento_id) references instrumentos(id),
         foreign key (acta_instrumentos_ceye_id) references acta_instrumentos_ceye(id)
     
