@@ -33,7 +33,7 @@ apellidos varchar(170),
 rol varchar (100),
 contacto varchar (160),
 usuario varchar(160) unique not null,
-contra varchar(160) unique not null
+contra varchar(160) not null
 
 ); 
 
