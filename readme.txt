@@ -21,3 +21,12 @@ había en la misma o simplemente volver a ejecutar todo el codigo y el trigger d
 alter table usuarios drop usuario; 
  alter table usuarios add usuario varchar(260) binary unique not null;
 
+
+
+
+
+ login terminado 
+
+
+ 
+
