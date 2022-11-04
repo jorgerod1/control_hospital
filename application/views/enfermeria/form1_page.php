@@ -114,7 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input type="text" class="form-control" id="">
     </div>
     <div class="col-md-6" align="center"><br>
-        <button type="submit" class="btn btn-primary">Siguiente</button>
+        <a href="<?=site_url('Enfermeria/Formulario2');?>" type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Siguiente</a>
     </div>
 
 

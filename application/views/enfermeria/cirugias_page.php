@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
-    <title>Administrador</title>
+    <title>Cirugias</title>
 
     <style type="text/css">
 
@@ -29,9 +29,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     #cartas{
         display: grid;
-        grid-template-columns: 2fr 2fr ;
+        grid-template-columns: 1fr 1fr 1fr;
         justify-content:center;
         border-color:black;
+        margin-left:70px;
+        margin-right:70px;
+        padding:30px;
     }
     #c1, #c2, #c3{
         background-color:#FBBAA4;
@@ -57,26 +60,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      
 </div>
 <h2 align="center">HOSPITAL MATERNO CELAYA</h2> <br>
-<h3 align="center">CEyE</h3><br>
+<h3 align="center">Cirugias</h3><br>
 
 <div id="cartas" >
-    <div class="card" style="width: 20rem;"  align="center" id="c1"><br>
-        <h1 class="card-title" align="center">Cargas realizadas</h1>
+    <div class="card" style="width: 20rem;" align="center" id="c1"><br>
+        <h4 class="card-title" align="center">Toco - Cirugia</h4>
         
         <div class="card-body">
-            <a href="<?=base_url();?>adminCi_page.php" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a><br> <br>
+            <img src="<?=base_url();?>imagenes/toco-cirugia.png" class="card-img-top" alt="..."><br><br>
+            <a href="<?=site_url('Enfermeria/TocoCirugia');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a>
         </div>
     </div>
 
 
     <div class="card" style="width: 20rem;" align="center" style="background-color: #FBBAA4;" id="c2"><br>
-        <h1 class="card-title" align="center">Inventarios</h1>
-        
+        <h4 class="card-title" align="center">Quirofano</h4>
         <div class="card-body">
-            <a href="<?=base_url();?>adminUs_page.php" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a><br> <br>
+            <img src="<?=base_url();?>imagenes/cirugia.png" class="card-img-top" alt="..."><br><br>
+            <a href="<?=site_url('Enfermeria/Quirofano');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a>           
         </div>
     </div>
 
+
+    <div class="card" style="width: 20rem;" align="center" style="background-color: #FBBAA4;" id="c3"> <br>
+        <h4 class="card-title" align="center">Equipo</h4>
+        
+        <div class="card-body">
+            <img src="<?=base_url();?>imagenes/equipo.png" class="card-img-top" alt="..."><br><br>
+            <a href="<?=site_url('Enfermeria/Equipo');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a>
+        </div>
+    </div>
     
 </div>
 

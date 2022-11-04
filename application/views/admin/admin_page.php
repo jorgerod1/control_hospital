@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
-    <title>Toco-Cirugia</title>
+    <title>Administrador</title>
 
     <style type="text/css">
 
@@ -27,11 +27,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         display: grid;
         justify-self: end;
     }
-    #formulario{
+    #cartas{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-content:center;
+        border-color:black;
         margin-left:70px;
         margin-right:70px;
-        background-color:#FFACC6;
         padding:30px;
+    }
+    #c1, #c2, #c3{
+        background-color:#FBBAA4;
     }
 	
 	</style>
@@ -54,40 +60,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      
 </div>
 <h2 align="center">HOSPITAL MATERNO CELAYA</h2> <br>
-<h3 align="center">Control de instrumental y ropa quirúrgica</h3><br><br>
+<h3 align="center">Administrador</h3><br>
 
-<div id="formulario">
-    <form class="row g-3">
-    <div class="col-md-6">
-        <label for="" class="form-label">Servicio</label>
-        <input type="text" class="form-control" id="">
-    </div>
-    <div class="col-md-2">
-        <label for="" class="form-label">Turno</label>
-        <input type="text" class="form-control" id="">
+<div id="cartas" >
+    <div class="card" style="width: 20rem;" align="center" id="c1"><br>
+        <h4 class="card-title" align="center">Cirugia</h4>
+        
+        <div class="card-body">
+            <img src="<?=base_url();?>imagenes/cirugia.png" class="card-img-top" alt="..."><br><br>
+            
+            <a href="<?=site_url('Administrador/Cirugia');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a><br> <br>
+        </div>
     </div>
 
-    <div class="col-md-2">
-        <label for="" class="form-label">Fecha</label>
-        <input type="text" class="form-control" id="">
+
+    <div class="card" style="width: 20rem;" align="center" style="background-color: #FBBAA4;" id="c2"><br>
+        <h4 class="card-title" align="center">Usuarios</h4>
+        
+        <div class="card-body">
+            <img src="<?=base_url();?>imagenes/usuarios.png" class="card-img-top" alt="..."><br><br>
+            
+            <a href="<?=site_url('Administrador/Usuarios');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a><br> <br>
+        </div>
     </div>
-    <div class="col-md-2">
-        <label for="" class="form-label">Hora</label>
-        <input type="text" class="form-control" id="">
-    </div>
-    <div class="col-md-6">
-        <label for="inputCity" class="form-label">Enfermera(o) responsable</label>
-        <input type="text" class="form-control" id="inputCity">
+
+
+    <div class="card" style="width: 20rem;" align="center" style="background-color: #FBBAA4;" id="c3"> <br>
+        <h4 class="card-title" align="center">Inventarios</h4>
+        
+        <div class="card-body">
+            <img src="<?=base_url();?>imagenes/CEyE.png" class="card-img-top" alt="..."><br><br>
+            <a href="<?=site_url('Administrador/CEyE');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a>
+            <br> <br>
+        </div>
     </div>
     
-    
-    <div class="col-md-6" align="center"><br>
-        <button type="submit" class="btn btn-primary">Siguiente</button>
-    </div>
-
-
-    </form>
 </div>
+
 
 
 <br><br>

@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
-    <title>Toco-Cirugia</title>
+    <title>Quirofano</title>
 
     <style type="text/css">
 
@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <label class="form-check-label" for="inlineCheckbox1"></label>
                     </div>
                 </td>
-                <td class="table-danger">B. Parto</td>
+                <td class="table-danger">B. Cirugia General</td>
                 <td class="table-danger">
                      <input class="form-control" type="text"aria-label="default input example">
                 </td>
@@ -87,6 +87,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <tr class="table-active">
                 <td class="table-danger" id="ch2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1"></label>
+                    </div>
+                </td>
+                <td class="table-danger">B. Cirugia Menor</td>
+                <td class="table-danger">
+                    <input class="form-control" type="text"aria-label="default input example">
+                </td>
+            </tr>
+
+            <tr class="table-active">
+                <td class="table-danger" id="ch3">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1"></label>
+                    </div>
+                </td>
+                <td class="table-danger">B. Parto</td>
+                <td class="table-danger">
+                    <input class="form-control" type="text"aria-label="default input example">
+                </td>
+            </tr>
+
+            <tr class="table-active">
+                <td class="table-danger" id="ch3">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                         <label class="form-check-label" for="inlineCheckbox1"></label>
@@ -105,7 +131,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <label class="form-check-label" for="inlineCheckbox1"></label>
                     </div>
                 </td>
-                <td class="table-danger">B. Bata</td>
+                <td class="table-danger">B. 3 batas</td>
+                <td class="table-danger">
+                    <input class="form-control" type="text"aria-label="default input example">
+                </td>
+            </tr>
+
+            <tr class="table-active">
+                <td class="table-danger" id="ch3">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1"></label>
+                    </div>
+                </td>
+                <td class="table-danger">B. 1 bata</td>
                 <td class="table-danger">
                     <input class="form-control" type="text"aria-label="default input example">
                 </td>
@@ -156,7 +195,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </div>
 <div id="botones">
-   <button class="btn" type="submit" style="background-color: #FF667C;">Guardar</button>
+<a href="<?=site_url('Enfermeria/Cirugias');?>" type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Guardar</a>
 </div>
 
 <br><br>
