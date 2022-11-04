@@ -28,5 +28,8 @@ alter table usuarios drop usuario;
  login terminado 
 
 
- 
+ 03-11-2022
+
+ Ya conecte todas la ventanas que ya tenia hechas y ahorita solo voy a ajustar
+  la horientacion de algunas cosillas de las ventanas :)
 
