@@ -7,26 +7,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
-    <title>Cirugias</title>
+    <title>Cirugías</title>
 
     <style type="text/css">
 
 	::selection { background-color: #E13300; color: white; }
 	::-moz-selection { background-color: #E13300; color: white; }
-    #titulos{
-        display: grid;
-        grid-template-columns: 1fr 2fr 6fr 1fr;
-        justify-content:stretch;
-    }
     #LG{
-        display: flex;
-        justify-content:center;
-
-    }
-    #M{
-        display: grid;
-        justify-self: end;
-    }
+		grid-area: header;
+		display: grid;
+		justify-self: center;
+	}
+	#T{
+		grid-area: main;
+		display: grid;
+		justify-self: center;
+	}
+	#M{
+		grid-area: sidebar;
+		display: grid;
+		justify-self: end;
+	}
+	#H{
+		grid-area: footer;
+	}
+	#L{
+		grid-area: logo;
+		display: grid;
+		justify-self: center;
+	}
+	#titulos{
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr 4fr 2fr;
+		grid-template-rows: auto;
+		grid-template-areas: 
+			"header main main main logo"
+			"header . sidebar footer logo";
+	}
     #cartas{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -37,14 +54,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         padding:30px;
     }
     #c1, #c2, #c3{
-        background-color:#FBBAA4;
+        background-color:#FFACC6;
     }
 	
 	</style>
 </head>
 <body>
 
-<nav class="navbar" style="background-color: #FF5C71;">
+<nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
@@ -53,18 +70,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </nav><br>
 <div id="titulos">
-    <img src="<?=base_url();?>imagenes/LG.png" alt="" width="192" height="94" id="LG">
+    <img src="<?=base_url();?>imagenes/LG.png" alt="" width="202" height="104" id="LG">
     <img src="<?=base_url();?>imagenes/moño.png" alt="" width="38" height="58" id="M" >
-    <h2  id="T">SECRETARIA DE SALUD DE GUANAJUATO</h2>
-    <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="112" height="123" id="L">
-     
+    <h3  id="T">SECRETARIA DE SALUD DE GUANAJUATO</h3>
+    <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="122" height="133" id="L">
+    <h3 id="H">HOSPITAL MATERNO CELAYA</h3> <br>
 </div>
-<h2 align="center">HOSPITAL MATERNO CELAYA</h2> <br>
-<h3 align="center">Cirugias</h3><br>
+<h3 align="center">Cirugías</h3><br>
 
 <div id="cartas" >
     <div class="card" style="width: 20rem;" align="center" id="c1"><br>
-        <h4 class="card-title" align="center">Toco - Cirugia</h4>
+        <h4 class="card-title" align="center">Toco - Cirugía</h4>
         
         <div class="card-body">
             <img src="<?=base_url();?>imagenes/toco-cirugia.png" class="card-img-top" alt="..."><br><br>
@@ -73,8 +89,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
 
-    <div class="card" style="width: 20rem;" align="center" style="background-color: #FBBAA4;" id="c2"><br>
-        <h4 class="card-title" align="center">Quirofano</h4>
+    <div class="card" style="width: 20rem;" align="center" style="background-color: #FFACC6;" id="c2"><br>
+        <h4 class="card-title" align="center">Quirófano</h4>
         <div class="card-body">
             <img src="<?=base_url();?>imagenes/cirugia.png" class="card-img-top" alt="..."><br><br>
             <a href="<?=site_url('Enfermeria/Quirofano');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a>           
@@ -82,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
 
-    <div class="card" style="width: 20rem;" align="center" style="background-color: #FBBAA4;" id="c3"> <br>
+    <div class="card" style="width: 20rem;" align="center" style="background-color: #FFACC6;" id="c3"> <br>
         <h4 class="card-title" align="center">Equipo</h4>
         
         <div class="card-body">

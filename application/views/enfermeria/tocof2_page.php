@@ -7,26 +7,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
-    <title>Toco-Cirugia</title>
+    <title>Toco-Cirugía</title>
 
     <style type="text/css">
 
 	::selection { background-color: #E13300; color: white; }
 	::-moz-selection { background-color: #E13300; color: white; }
-    #titulos{
-        display: grid;
-        grid-template-columns: 1fr 2fr 6fr 1fr;
-        justify-content:stretch;
-    }
     #LG{
-        display: flex;
-        justify-content:center;
-
-    }
-    #M{
-        display: grid;
-        justify-self: end;
-    }
+		grid-area: header;
+		display: grid;
+		justify-self: center;
+	}
+	#T{
+		grid-area: main;
+		display: grid;
+		justify-self: center;
+	}
+	#M{
+		grid-area: sidebar;
+		display: grid;
+		justify-self: end;
+	}
+	#H{
+		grid-area: footer;
+	}
+	#L{
+		grid-area: logo;
+		display: grid;
+		justify-self: center;
+	}
+	#titulos{
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr 4fr 2fr;
+		grid-template-rows: auto;
+		grid-template-areas: 
+			"header main main main logo"
+			"header . sidebar footer logo";
+	}
     #table{
         margin-left:70px;
         margin-right:70px;
@@ -44,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
-<nav class="navbar" style="background-color: #FF5C71;">
+<nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
@@ -53,13 +70,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </nav><br>
 <div id="titulos">
-    <img src="<?=base_url();?>imagenes/LG.png" alt="" width="192" height="94" id="LG">
+    <img src="<?=base_url();?>imagenes/LG.png" alt="" width="202" height="104" id="LG">
     <img src="<?=base_url();?>imagenes/moño.png" alt="" width="38" height="58" id="M" >
-    <h2  id="T">SECRETARIA DE SALUD DE GUANAJUATO</h2>
-    <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="112" height="123" id="L">
-     
+    <h3  id="T">SECRETARIA DE SALUD DE GUANAJUATO</h3>
+    <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="122" height="133" id="L">
+    <h3 id="H">HOSPITAL MATERNO CELAYA</h3> <br>
 </div>
-<h2 align="center">HOSPITAL MATERNO CELAYA</h2> <br>
 <h3 align="center">Control de instrumental y ropa quirúrgica</h3><br><br>
 
 <div id="table">
@@ -92,7 +108,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <label class="form-check-label" for="inlineCheckbox1"></label>
                     </div>
                 </td>
-                <td class="table-danger">B. Pediatrico</td>
+                <td class="table-danger">B. Pediátrico</td>
                 <td class="table-danger">
                     <input class="form-control" type="text"aria-label="default input example">
                 </td>
