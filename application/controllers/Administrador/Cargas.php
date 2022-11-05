@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Cargas extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('enfermeria/form1_page');
+		$this->load->view('admin/cargas_page');
 	}
 
 }

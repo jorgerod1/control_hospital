@@ -13,22 +13,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	::selection { background-color: #E13300; color: white; }
 	::-moz-selection { background-color: #E13300; color: white; }
-    #titulos{
-        display: grid;
-        grid-template-columns: 1fr 2fr 6fr 1fr;
-        justify-content:stretch;
-    }
     #LG{
-        display: flex;
-        justify-content:center;
-
-    }
-    #M{
-        display: grid;
-        justify-self: end;
-    }
+		grid-area: header;
+		display: grid;
+		justify-self: center;
+	}
+	#T{
+		grid-area: main;
+		display: grid;
+		justify-self: center;
+	}
+	#M{
+		grid-area: sidebar;
+		display: grid;
+		justify-self: end;
+	}
+	#H{
+		grid-area: footer;
+	}
+	#L{
+		grid-area: logo;
+		display: grid;
+		justify-self: center;
+	}
+	#titulos{
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr 4fr 2fr;
+		grid-template-rows: auto;
+		grid-template-areas: 
+			"header main main main logo"
+			"header . sidebar footer logo";
+	}
     #c1, #c2, #c3{
-        background-color:#FFA0C4;
+        background-color:#FFACC6;
         margin-left:70px;
         margin-right:70px;
     }
@@ -41,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
-<nav class="navbar" style="background-color: #FF5C71;">
+<nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
@@ -50,14 +67,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </nav><br>
 <div id="titulos">
-    <img src="<?=base_url();?>imagenes/LG.png" alt="" width="192" height="94" id="LG">
+<img src="<?=base_url();?>imagenes/LG.png" alt="" width="202" height="104" id="LG">
     <img src="<?=base_url();?>imagenes/moño.png" alt="" width="38" height="58" id="M" >
-    <h2  id="T">SECRETARIA DE SALUD DE GUANAJUATO</h2>
-    <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="112" height="123" id="L">
-     
+    <h3  id="T">SECRETARIA DE SALUD DE GUANAJUATO</h3>
+    <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="122" height="133" id="L">
+    <h3 id="H">HOSPITAL MATERNO CELAYA</h3> <br>
 </div>
-<h2 align="center">HOSPITAL MATERNO CELAYA</h2> <br>
-<h3 align="center">Cirugias</h3><br>
+<h3 align="center">Cirugías</h3><br>
 
 <button type="button" class="btn btn-primary" id="add" >
        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -75,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">Nombre cirugia</h5>
+                <h5 class="card-title">Nombre cirugía</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <button type="button" class="btn btn-light" style="background-color: #11D305;">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
