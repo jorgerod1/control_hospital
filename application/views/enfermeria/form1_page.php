@@ -73,32 +73,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <h3 align="center">Control de instrumental y ropa quirúrgica</h3><br><br>
 
 <div id="formulario">
-    <form class="row g-3">
+    <form class="row g-3" action="<?=site_url('enfermeria/formulario1/guardar_acta');?>" method="post">
     <div class="col-md-6">
-        <label for="" class="form-label">Nombre del paciente</label>
-        <input type="text" class="form-control" id="">
+        <label for="nombre_paciente" class="form-label">Nombre del paciente</label>
+        <input type="text" class="form-control" id="nombre_paciente">
     </div>
     <div class="col-md-6">
-        <label for="" class="form-label">Enf. Quirúrgica</label>
-        <input type="text" class="form-control" id="">
+        <label for="enfermera_quirurjica" class="form-label">Enf. Quirúrgica</label>
+        <input type="text" class="form-control" id="enfermera_quirurjica">
     </div>
 
     <div class="col-md-4">
-        <label for="" class="form-label">Fecha de nacimiento</label>
-        <input type="text" class="form-control" id="">
+        <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
+        <input type="date" class="form-control" id="fecha_nacimiento">
     </div>
     <div class="col-md-2">
-        <label for="" class="form-label">Edad</label>
-        <input type="text" class="form-control" id="">
+        <label for="edad" class="form-label">Edad</label>
+        <input type="text" class="form-control" id="edad">
     </div>
     <div class="col-md-6">
-        <label for="inputCity" class="form-label">Enf. Circulante</label>
-        <input type="text" class="form-control" id="inputCity">
+        <label for="enfermera_circulante" class="form-label">Enf. Circulante</label>
+        <input type="text" class="form-control" id="enfermera_circulante">
     </div>
     
     <div class="col-md-6">
-        <label for="" class="form-label">Procedimiento</label><br>
-        <select class="form-select form-select-lg mb-12" aria-label=".form-select-lg example">
+        <label for="procedimiento_id" class="form-label">Procedimiento</label><br>
+        <select class="form-select form-select-lg mb-12" aria-label=".form-select-lg example" id="procedimiento_id">
             <option selected>Open this select menu</option>
             <option value="1">One</option>
             <option value="2">Two</option>
@@ -106,34 +106,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </select>
     </div>
     <div class="col-md-6">
-        <label for="" class="form-label">Medico Cirujano</label>
-        <input type="text" class="form-control" id="">
+        <label for="cirujano" class="form-label">Medico Cirujano</label>
+        <input type="text" class="form-control" id="cirujano">
     </div>
 
     <div class="col-md-6">
-        <label for="" class="form-label">Servicio</label>
-        <input type="text" class="form-control" id="">
+        <label for="servicio" class="form-label">Servicio</label>
+        <input type="text" class="form-control" id="servicio">
     </div>
     <div class="col-md-6">
-        <label for="" class="form-label">Anestesiólogo</label>
-        <input type="text" class="form-control" id="">
+        <label for="anestesiologo" class="form-label">Anestesiólogo</label>
+        <input type="text" class="form-control" id="anestesiologo">
     </div>
 
     <div class="col-md-2">
-        <label for="" class="form-label">Sala</label>
-        <input type="text" class="form-control" id="">
+        <label for="sala" class="form-label">Sala</label>
+        <input type="text" class="form-control" id="sala">
     </div><div class="col-md-2">
-        <label for="" class="form-label">Fecha</label>
-        <input type="text" class="form-control" id="">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input type="date" class="form-control" id="fecha">
     </div><div class="col-md-2">
-        <label for="" class="form-label">Hora</label>
-        <input type="text" class="form-control" id="">
+        <label for="hora" class="form-label">Hora</label>
+        <input type="time" class="form-control" id="hora">
     </div>
     <div class="col-md-6" align="center"><br>
         <a href="<?=site_url('Enfermeria/Formulario2');?>" type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Siguiente</a>
     </div>
-
-
     </form>
 </div>
 

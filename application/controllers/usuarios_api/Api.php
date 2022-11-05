@@ -62,15 +62,11 @@ class Api extends RestController{
                 $validado = $this->checkUsuario($data);
 
                 if($validado){
-
-
-
                     $dataDashboard = array(
                         "usuario" => $validado->usuario,
                         "is_logeado" => true
                     );
 
-                    
                     $response = array(
                         "status" => 201,
                         "status_text" => "success!",
@@ -82,11 +78,6 @@ class Api extends RestController{
                     $this->session->set_userdata($dataDashboard);
         
                 $this->response($response,201);
-                
-
-                
-
-                
 
                 }else{
 
@@ -98,7 +89,6 @@ class Api extends RestController{
                         "errors" => $this->form_validation->error_array()
                         );
                         $this->response($response,200);
-                    
                 }
 
         }else{
@@ -113,17 +103,7 @@ class Api extends RestController{
                 $this->response($response,200);
             }
 
-
-
-            
-
-
         }else{
-
-        
-
-            
-
             $response = array(
                 "status" => 200,
                 "status_text" => "error!",
@@ -136,8 +116,4 @@ class Api extends RestController{
         }
 
     }
-
-
-
-
 }

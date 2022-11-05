@@ -5,7 +5,7 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('login_page');
+		$this->load->view('enfermeria/form1_page');
 	}
 
 }

@@ -53,7 +53,7 @@ create table acta_procedimientos(
     anestesiologo varchar(140) default null,
     turno varchar(140) default null,
     activo boolean default 1,
-
+    sala int default null,
     usuario_id int,
     procedimiento_id int,
 
