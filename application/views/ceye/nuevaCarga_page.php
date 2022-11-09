@@ -7,13 +7,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
-    <title>Administrador</title>
+    <title>CEyE</title>
 
     <style type="text/css">
 
 	::selection { background-color: #E13300; color: white; }
 	::-moz-selection { background-color: #E13300; color: white; }
-  #LG{
+    #LG{
 		grid-area: header;
 		display: grid;
 		justify-self: center;
@@ -44,22 +44,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			"header main main main logo"
 			"header . sidebar footer logo";
 	}
-    #fondo{
-        display: grid;
-        grid-template-columns: 1fr 1fr ;
-        justify-content:center;
-        border-color:black;
-        margin-left:70px;
-        margin-right:70px;
-        background-color:#D9D9D9;
-        padding:50px;
-    }
-    #c1, #c2, #c3{
+    #formulario{
+        margin-left:200px;
+        margin-right:200px;
         background-color:#FFACC6;
-    }
-    #botones{
-        display: flex;
-        justify-content:space-between;
+        padding:30px;
     }
 	
 	</style>
@@ -81,48 +70,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="122" height="133" id="L">
     <h3 id="H">HOSPITAL MATERNO CELAYA</h3> <br>
 </div>
+<h3 align="center">Validación y trazabilidad del proceso de esterilización 
+Control físico, Químico y Biológico</h3>
+<h3 align="center">CEyE</h3><br><br>
 
+<div id="formulario">
+    <form class="row g-3" action="<?=site_url('enfermeria/formulario1/guardar_acta');?>" method="post">
+    <div class="col-md-4">
+        <label for="nombre_paciente" class="form-label">No. Autoclave</label>
+        <input type="text" class="form-control" id="nombre_paciente">
+    </div>
+    <div class="col-md-4">
+        <label for="enfermera_quirurjica" class="form-label">No. Carga</label>
+        <input type="text" class="form-control" id="enfermera_quirurjica">
+    </div>
 
-<div id="botones">
-    <a href="<?=site_url('Administrador/CEyE');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <line x1="5" y1="12" x2="11" y2="18"></line>
-            <line x1="5" y1="12" x2="11" y2="6"></line>
-        </svg>
-    </a>
-    <nav aria-label="Page navigation example" style="margin-right:90px;">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">Fecha</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav> 
-</div><br>
+    <div class="col-md-4">
+        <label for="fecha_nacimiento" class="form-label">No. De Paquete</label>
+        <input type="text" class="form-control" id="fecha_nacimiento">
+    </div>
+    <div class="col-md-4">
+        <label for="edad" class="form-label">Fecha</label>
+        <input type="text" class="form-control" id="edad">
+    </div>
+    <div class="col-md-4">
+        <label for="enfermera_circulante" class="form-label">Hora</label>
+        <input type="text" class="form-control" id="enfermera_circulante">
+    </div>
+    <div class="col-md-4">
+        <label for="cirujano" class="form-label">Turno</label>
+        <input type="text" class="form-control" id="cirujano">
+    </div>
 
-
-
-<div id="fondo">
-<div class="card" style="width: 18rem;" id="c1">
-  <div class="card-body">
-    <h5 class="card-title">No. carga</h5>
-    <h5 class="card-title">No. paquete</h5>
-    <h5 class="card-title">Fecha</h5>
-    <h5 class="card-title">Hora</h5>
-  </div>
+    <div class="col-md-12">
+        <label for="servicio" class="form-label">Respondable de carga</label>
+        <input type="text" class="form-control" id="servicio">
+    </div>
+    <div class="col-md-6" align="center"><br>
+        <a href="<?=site_url('Ceye/Form');?>" type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Siguiente</a>
+    </div>
+    </form>
 </div>
-</div>
-
-
 
 
 <br><br>

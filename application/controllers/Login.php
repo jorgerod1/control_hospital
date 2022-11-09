@@ -22,6 +22,8 @@ class Login extends CI_Controller {
 				$this->load->view('enfermeria/cirugias_page');
 
 			}else if($this->session->userdata('rol') == "Ceye"){
+				
+				$this->load->view('ceye/ceye_page');
 
 			}else if($this->session->userdata('rol') == "Administrador"){
 

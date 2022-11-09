@@ -49,9 +49,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         margin-left:70px;
         margin-right:70px;
     }
-    #add{
+    #botones{
         display: flex;
-        justify-content:flex-end;
+        justify-content:space-between;
     }
 	
 	</style>
@@ -75,14 +75,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <h3 align="center">Cirugías</h3><br>
 
-<button type="button" class="btn btn-primary" id="add" >
-       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<div id="botones">
+    <a href="<?=site_url('Administrador/Admin');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <line x1="12" y1="5" x2="12" y2="19"></line>
             <line x1="5" y1="12" x2="19" y2="12"></line>
+            <line x1="5" y1="12" x2="11" y2="18"></line>
+            <line x1="5" y1="12" x2="11" y2="6"></line>
         </svg>
-        Agregar
-</button> <br><br>
+    </a><div></div>
+    <button type="button" class="btn btn-primary" id="add" style="margin-left:650px;">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Agregar
+    </button> <br><br>
+</div><br>
+
 
     <div class="card mb-3" style="max-width: 1140px;" id="c1">
         <div class="row g-0">

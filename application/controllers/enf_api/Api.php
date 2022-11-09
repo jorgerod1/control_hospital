@@ -12,7 +12,7 @@ class Api extends RestController {
 
     function __construct(){
         parent:: __construct();
-        $this->load->model('DAO');
+        $this->load->model('DAOenfermeria');
     }
 
     function actaProcedimientos_post(){

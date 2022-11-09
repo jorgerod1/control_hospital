@@ -7,13 +7,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
-    <title>Administrador</title>
+    <title>CEyE</title>
 
     <style type="text/css">
 
 	::selection { background-color: #E13300; color: white; }
 	::-moz-selection { background-color: #E13300; color: white; }
-  #LG{
+    #LG{
 		grid-area: header;
 		display: grid;
 		justify-self: center;
@@ -44,22 +44,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			"header main main main logo"
 			"header . sidebar footer logo";
 	}
-    #fondo{
+    #cartas{
         display: grid;
-        grid-template-columns: 1fr 1fr ;
+        grid-template-columns: 4fr 1fr;
         justify-content:center;
         border-color:black;
-        margin-left:70px;
-        margin-right:70px;
-        background-color:#D9D9D9;
-        padding:50px;
+        margin-left:40px;
+        margin-right:40px;
+        
     }
-    #c1, #c2, #c3{
+    #info{
+        margin-left:20px;
+        margin-right:20px;
+    }
+    #agregar{
         background-color:#FFACC6;
+        margin-left:70px;
+    }
+    #contenido{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-content:center;
+        border-color:black;
     }
     #botones{
-        display: flex;
-        justify-content:space-between;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    #b1, #b2, #b3, #b4{
+        margin-top:15px;
+        
     }
 	
 	</style>
@@ -81,47 +96,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="122" height="133" id="L">
     <h3 id="H">HOSPITAL MATERNO CELAYA</h3> <br>
 </div>
+<h3 align="center">CEyE</h3><br>
 
+<div id="cartas" >
+    <div style="background-color: #FFACC6;" ><br>
+        <div class="card mb-3" id="info">
+            <div class="card-body" id="contenido">
+                <div>
+                    <p>Procedimiento:</p>
+                    <p>Fecha:</p>
+                    <p>Cirugía:</p>
+                </div>
+                <div>
+                    <p>Servicio:</p>
+                    <p>Hora:</p>
+                </div>
+                <div id="botones">
+                    <a href="<?=site_url('Ceye/instrumentos');?>" class="btn btn-primary" id="b1">Instrumentos</a>
+                    <a href="#" class="btn btn-success" id="b2">Detalles</a>
+                    <a href="#" class="btn btn-warning" id="b3">Go somewhere</a>
+                    <a href="#" class="btn btn-danger" id="b4">Finalizar</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div id="botones">
-    <a href="<?=site_url('Administrador/CEyE');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <line x1="5" y1="12" x2="11" y2="18"></line>
-            <line x1="5" y1="12" x2="11" y2="6"></line>
-        </svg>
-    </a>
-    <nav aria-label="Page navigation example" style="margin-right:90px;">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">Fecha</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav> 
-</div><br>
-
-
-
-<div id="fondo">
-<div class="card" style="width: 18rem;" id="c1">
-  <div class="card-body">
-    <h5 class="card-title">No. carga</h5>
-    <h5 class="card-title">No. paquete</h5>
-    <h5 class="card-title">Fecha</h5>
-    <h5 class="card-title">Hora</h5>
-  </div>
+    <div class="card" style="width: 20rem;" align="center" id="agregar"> <br>
+        <h4 class="card-title" align="center">Agregar nueva carga</h4>
+        
+        <div class="card-body">
+            <img src="<?=base_url();?>imagenes/equipo.png" class="card-img-top" alt="..."><br><br>
+            <a href="<?=site_url('Ceye/carga');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a>
+        </div>
+    </div>
 </div>
-</div>
-
 
 
 

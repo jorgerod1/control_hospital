@@ -5,7 +5,6 @@ class Formulario1 extends CI_Controller {
 
 	public function index()
 	{
-		
 		$this->load->view('enfermeria/form1_page');
 	}
 	public function guardar_acta(){

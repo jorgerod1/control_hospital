@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
-    <title>Administrador</title>
+    <title>CEyE</title>
 
     <style type="text/css">
 
@@ -48,6 +48,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         margin-left:70px;
         margin-right:70px;
     }
+    #botones{
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        justify-content:center;
+    }
 	
 	</style>
 </head>
@@ -68,55 +73,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="122" height="133" id="L">
     <h3 id="H">HOSPITAL MATERNO CELAYA</h3> <br>
 </div>
-<h3 align="center">Inventario</h3>
-<h3 align="center">CEyE</h3>
-<br><br>
-
-<a href="<?=site_url('Administrador/CEyE');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <line x1="5" y1="12" x2="11" y2="18"></line>
-            <line x1="5" y1="12" x2="11" y2="6"></line>
-        </svg>
-    </a><br><br>
-
+<h3 align="center">CEyE - Instrumentos</h3><br><br>
+<a href="<?=site_url('Ceye/ceye');?>" type="submit" class="btn btn-primary" style="margin-left:15px;">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <line x1="5" y1="12" x2="11" y2="18"></line>
+        <line x1="5" y1="12" x2="11" y2="6"></line>
+    </svg>
+</a><br><br>
 <div id="table">
     <table class="table table-bordered">
         <thead>
             <tr>
+                <td class="table-danger">Tipos</td>
                 <td class="table-danger">Instrumentos</td>
                 <td class="table-danger">Códigos de trazabilidad</td>
-                <td class="table-danger">Fecha</td>
-                <td class="table-danger">Hora</td>
-                <td class="table-danger">Activo</td>
             </tr>
         </thead>
         <tbody>
             <tr class="table-active">
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
+                <td class="table-danger"> 
+                    <label for="">tipo</label>
+                </td>
                 <td class="table-danger">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                </div><br>
+                    <label for="">instr</label>
+                </td>
+                <td class="table-danger">
+                    <label for="">Código</label>
                 </td>
             </tr>
             <tr class="table-active">
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
+                <td class="table-danger">
+                    <label for="">tipo</label>
+                    </select>
+                </td>
+                <td class="table-danger"> 
+                    <label for="">instr</label>
+                </td>
+                <td class="table-danger">
+                    <label for="">Código</label>
+                </td>
             </tr>
             <tr class="table-active">
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
+                <td class="table-danger"> 
+                    <label for="">tipo</label>
+                </td>
+                <td class="table-danger"> 
+                    <label for="">instr</label>
+                </td>
+                <td class="table-danger"> 
+                    <label for="">Código</label>
+                </td>
             </tr>
             
         </tbody>

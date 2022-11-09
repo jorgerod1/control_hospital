@@ -66,6 +66,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     #c1, #c2, #c3{
         background-color:#FFACC6;
     }
+    #botones{
+        display: flex;
+        justify-content:space-between;
+    }
 	
 	</style>
 </head>
@@ -87,6 +91,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h3 id="H">HOSPITAL MATERNO CELAYA</h3> <br>
 </div>
 <h3 align="center">CEyE</h3><br>
+
+<div id="botones">
+    <a href="<?=site_url('Administrador/Admin');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <line x1="5" y1="12" x2="11" y2="18"></line>
+            <line x1="5" y1="12" x2="11" y2="6"></line>
+        </svg>
+    </a>
+    </button> 
+</div><br>
 
 <div id="cartas" >
     <div class="card" style="width: 20rem;"  align="center" id="c1"><br>
