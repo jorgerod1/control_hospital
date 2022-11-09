@@ -132,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#contrasena3').removeClass('is-invalid');
                 $('#contrasena3').addClass('is-valid');
 			
-				//window.location.replace('<?=base_url();?>index.php/Dashboard');
+				window.location.replace('<?=base_url();?>index.php/Login');
 
 				}
 				
