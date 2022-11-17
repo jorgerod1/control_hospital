@@ -63,10 +63,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
-      Hospital Materno Celaya
-    </a>
+        <a class="navbar-brand" href="#">
+        <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+        Hospital Materno Celaya
+        </a>
+        <a class="self-align-end" href="<?=base_url()?>index.php/Login/logout"> Cerrar sesion</a>
   </div>
 </nav><br>
 <div id="titulos">

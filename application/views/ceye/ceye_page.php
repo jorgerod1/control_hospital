@@ -87,6 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
     </a>
+    <a class="self-align-end" href="<?=base_url()?>index.php/Login/logout"> Cerrar sesion</a>
   </div>
 </nav><br>
 <div id="titulos">
@@ -112,9 +113,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <p>Hora:</p>
                 </div>
                 <div id="botones">
-                    <a href="<?=site_url('Ceye/instrumentos');?>" class="btn btn-primary" id="b1">Instrumentos</a>
+                    <a href="<?=site_url('Ceye/instrumentos');?>" class="mr-2 btn btn-primary" id="b1">Instrumentos</a>
                     <a href="#" class="btn btn-success" id="b2">Detalles</a>
-                    <a href="#" class="btn btn-warning" id="b3">Go somewhere</a>
+                    <a href="#" class="mr-2 btn btn-warning" id="b3">Bultos</a>
                     <a href="#" class="btn btn-danger" id="b4">Finalizar</a>
                 </div>
             </div>
