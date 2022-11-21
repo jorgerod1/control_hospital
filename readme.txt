@@ -32,3 +32,32 @@ alter table usuarios drop usuario;
 
  Ya conecte todas la ventanas que ya tenia hechas 
 
+
+ favor de ingresar estas líneas a la base de datos en orden como están escritas:
+
+
+ insert into usuarios values(null, 'encargado ceye','ceye','Ceye','22222222','123','ceye');
+
+ insert into cirugias values(null, 'Toco-Cirugía','partos, no cesareas');
+ insert into cirugias values(null, 'Quirófano','mayoría de cirugías');
+    insert into cirugias values(null, 'Equipo','Entra en en esta categoría igual');
+
+  insert into procedimientos values(null, 'Cesarea', 'no tiene rasgo especial',2);
+  insert into procedimientos values(null, 'Mastectomia','no tiene rasgo especial',2);
+
+  update usuarios set usuario = 'enfe' where id = 5; /* linea opcional, recordar que en tu base de datos el id puede ser distinto para aplicarlo*/
+
+  controlador enfermeria/cirugias no es necesario y representa un peligro en seguridad de acceso
+  ya que se accede desde el login a la vista que plantea este controlador 
+
+  Leer distintos comentarios en controladores
+
+  Utilizar el atributo "name" en los formularos para poder extraer los datos a través del consumo de apis,
+  igualar el dato en atributo "id" al atributo "name" //No eliminar atributo id
+
+  crear hoja de css general para todo el proyecto, llamarla a través del helper GlobalCss
+  y configurar color de bootstrap clase is-invalid 
+
+  el campo sala de acta_procedimientos es un campo que iba a ser eliminado del sistema por ser obsoleto
+
+

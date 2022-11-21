@@ -28,4 +28,11 @@ class Formulario1 extends CI_Controller {
 		$this->DAOenfermeria->registrar_procedimiento('acta_procedimientos',$data);
 	}
 
+
+
+	//Este controlador es redundante y no tiene función optima, la funcion de agregar actas a la base de datos
+	//se harán a  través de apis, no manejaremos ninguna funcion de post, put or delete a través del servidor directamente
+	// solamente se manejaran cargas de datos (get) a través del servidor, podemos ver un excelente ejemplo
+	//en el controlador quirofano. Este controlador debe ser eliminado
+
 }

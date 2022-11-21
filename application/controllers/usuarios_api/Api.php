@@ -65,6 +65,7 @@ class Api extends RestController{
                     $dataDashboard = array(
                         "usuario" => $validado->usuario,
                         "rol" => $validado->rol,
+                        "id" => $validado->id,
                         "is_logeado" => true
                     );
 

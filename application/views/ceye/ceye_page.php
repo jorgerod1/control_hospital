@@ -137,4 +137,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <br><br>
 	
 </body>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script type="text/javascript"> 
+
+
+$(function(){
+
+    var mensaje = "<?= $mensaje ?>";
+
+			if(mensaje){
+
+				alert(mensaje);
+
+			}
+
+});
+
+</script>
 </html>

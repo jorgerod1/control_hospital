@@ -12,22 +12,32 @@ class Login extends CI_Controller {
 
     }
 
-	public function index()
+	public function index($data=null)
 	{
+
+		$datos['mensaje'] = "";
+
+		if($data==1){
+
+			$datos['mensaje'] = "No puedes acceder a esta sección o tienes un usuario incorrecto";
+
+		}
 
 		if($this->session->userdata('is_logeado')){
 
 			if ($this->session->userdata('rol') == "Enfermera") {
+
+
 				
-				$this->load->view('enfermeria/cirugias_page');
+				$this->load->view('enfermeria/cirugias_page',$datos);
 
 			}else if($this->session->userdata('rol') == "Ceye"){
 				
-				$this->load->view('ceye/ceye_page');
+				$this->load->view('ceye/ceye_page',$datos);
 
 			}else if($this->session->userdata('rol') == "Administrador"){
 
-				$this->load->view('admin/admin_page');
+				$this->load->view('admin/admin_page',$datos);
 
 			}
 
@@ -37,7 +47,7 @@ class Login extends CI_Controller {
 		}else{
 
 			
-			$this->load->view('Login_page');
+			$this->load->view('Login_page',$datos);
 		}
 
 		
@@ -47,7 +57,7 @@ class Login extends CI_Controller {
 		public function logout(){
 
 		//$this->load->view('welcome_message');
-		$indexes = array('usuario','rol','is_logeado');
+		$indexes = array('usuario','rol','is_logeado','id');
 		$this->session->unset_userdata($indexes);
 		$this->session->sess_destroy();
 		redirect('Login');

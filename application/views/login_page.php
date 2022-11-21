@@ -109,6 +109,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     $(function() {
 
+		$(function(){
+
+		var mensaje = "<?= $mensaje ?>";
+
+		if(mensaje){
+
+			alert(mensaje);
+
+		}
+
+});
+
         $('#iniciar_sesion').on('submit', function(event){
 
 			event.preventDefault();

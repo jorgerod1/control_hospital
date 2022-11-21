@@ -17,47 +17,43 @@ class Api extends RestController {
 
     function actaProcedimientos_post(){
 
-        $data = $this->form_validation->set_data($this->post());
+        $this->form_validation->set_data($this->post());
+
         $this->form_validation->set_rules("nombre_paciente","Nombre del paciente","required");
         $this->form_validation->set_rules("fecha_nacimiento","Fecha de nacimiento","required");
-        $this->form_validation->set_rules("edad","Edad","required");
-        $this->form_validation->set_rules("cirugia_pediatrica","Cirugia pediatrica","required");
+        $this->form_validation->set_rules("edad","Edad","required|integer");
         $this->form_validation->set_rules("servicio","Servicio","required");
-        $this->form_validation->set_rules("fecha","Fecha","required");
-        $this->form_validation->set_rules("hora","Hora","required");
         $this->form_validation->set_rules("enfermera_quirurjica","Enfermera quirurgíca","required");
         $this->form_validation->set_rules("enfermera_circulante","Enferemera Circulante","required");
         $this->form_validation->set_rules("cirujano","Cirujano","required");
         $this->form_validation->set_rules("anestesiologo","Anestesiologo","required");
-        $this->form_validation->set_rules("turno","Turno","required");
-        $this->form_validation->set_rules("activo","Activo","required");
         $this->form_validation->set_rules("procedimiento_id","Procedimiento","required");
+        $this->form_validation->set_rules("usuario_id","Usuario ID","required");
 
             $data = array(
                 "nombre_paciente" => $this->post('nombre_paciente'),
                 "fecha_nacimiento" => $this->post('fecha_nacimiento'),
                 "edad" => $this->post('edad'),
-                "cirugia_pediatrica" => $this->post('cirugia_pediatrica'),
                 "servicio" => $this->post('servicio'),
-                "fecha" => $this->post('fecha'),
-                "hora" => $this->post('hora'),
                 "enfermera_quirurjica" => $this->post('enfermera_quirurjica'),
                 "enfermera_circulante" => $this->post('enfermera_circulante'),
                 "cirujano" => $this->post('cirujano'),
                 "anestesiologo" => $this->post('anestesiologo'),
-                "turno" => $this->post('turno'),
-                "activo" => $this->post('activo'),
-                "procedimiento_id" => $this->post('procedimiento_id')
+                "procedimiento_id" => $this->post('procedimiento_id'),
+                "usuario_id" => $this->post('usuario_id')
             );
 
 
-            $respuesta = $this->DAO->insertar_modificar_entidad('acta_procedimientos',$data);
+            
 
-            if ($respuesta['status'] == '1') {
+            if ($this->form_validation->run()) {
+
+                $respuesta = $this->DAOenfermeria->registrar_procedimiento($data);
+
             $response = array(
                 "status" => 1,
                 "message" => "Datos guardados correctamente",
-                "data" => array(),
+                "data" => $respuesta,
                 "errors" => array()
             );
             
@@ -67,10 +63,8 @@ class Api extends RestController {
                 "status" => 0,
                 "message" => "error al guardar",
                 "data" => array(),
-                "errors" => array(
-                    "error" => $response['mensaje']
-                )
-            );
+                "errors" => $this->form_validation->error_array()
+                );
             }
             $this->response($response,200);
 

@@ -8,4 +8,7 @@ class Cirugias extends CI_Controller {
 		$this->load->view('enfermeria/cirugias_page');
 	}
 
+	//este controlador es redundante debido a nuestro controlador login
+	//representa un peligro para la seguridad de acceso, debe ser eliminado.
+
 }
