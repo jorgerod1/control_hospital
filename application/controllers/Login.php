@@ -23,6 +23,12 @@ class Login extends CI_Controller {
 
 		}
 
+		if($data==2){
+
+			$datos['mensaje'] = "Has cerrado sesión correctamente";
+
+		}
+
 		if($this->session->userdata('is_logeado')){
 
 			if ($this->session->userdata('rol') == "Enfermera") {
@@ -60,7 +66,7 @@ class Login extends CI_Controller {
 		$indexes = array('usuario','rol','is_logeado','id');
 		$this->session->unset_userdata($indexes);
 		$this->session->sess_destroy();
-		redirect('Login');
+		redirect('Login/index/2');
 
 	}
 
