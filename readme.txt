@@ -68,12 +68,15 @@ alter table usuarios drop usuario;
   insert into tipo_instrumentos values(null,'Pinzas');
   insert into instrumentos values(null,'pinzas grandes',1);
 
+
+  24/11/22
+
   NOTAS//
   Funcionalidades para los campos de extra y para la parte de cirugia_pediatrica en la parte de acta_procedimientos
   serán arregladas, o serán tomados esos datos extras a través de modals en los mismos formularios y
   guardados en variables de javascript
 
-  //PENDIENTES George
+  //PENDIENTES PROXIMOS George
 
     -agregar boton de eliminacion total a través de acta_procedimientos en acta_instrumentos
     -agregar o ver posibilidad de eliminación individual de cada uno de los posibles registros de acta_instrumentos
