@@ -61,3 +61,35 @@ alter table usuarios drop usuario;
   el campo sala de acta_procedimientos es un campo que iba a ser eliminado del sistema por ser obsoleto
 
 
+  21/11/22
+
+  Lineas de codigo que es preferible agregar para hacer prubeas correctas respecto al codigo de trazabilidad
+
+  insert into tipo_instrumentos values(null,'Pinzas');
+  insert into instrumentos values(null,'pinzas grandes',1);
+
+  NOTAS//
+  Funcionalidades para los campos de extra y para la parte de cirugia_pediatrica en la parte de acta_procedimientos
+  serán arregladas, o serán tomados esos datos extras a través de modals en los mismos formularios y
+  guardados en variables de javascript
+
+  //PENDIENTES George
+
+    -agregar boton de eliminacion total a través de acta_procedimientos en acta_instrumentos
+    -agregar o ver posibilidad de eliminación individual de cada uno de los posibles registros de acta_instrumentos
+
+
+Notas Erika //
+
+Llenar de datos pertinentes para prueba la parte de: "ropa_qui" donde tipo_bulto corresponde al nombre del tipo_bulto
+es decir, todos los bultos que hay en la parte visual del controlador Formulario3,
+
+A través de este cambio en la base de datos cambiar el comportamiento de la parte visual del controlador Formulario3
+Traer en el controlador en una variable data todos los registros de la tabla ropa_qui
+
+Mostrar exactamente de la fisma forma como se muestra actualemente la parte visual del controlador Formulario3
+pero todos los datos y filas deben ser agregadas con un foreach a traves de la variable que ya cargaste previamente
+  
+
+
+

@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class DAOenfermeria extends CI_Model {
+class DAOinstrumentos extends CI_Model {
   
-    function registrar_procedimiento($data){
+   /* function registrar_procedimiento($data){
         $this->db->insert('acta_procedimientos', $data);
         return $this->db->insert_id();
-    }
+    }*/
 
     function seleccionar_entidad($entidad,      
         $filtro =  array(),    //aquí estamos pidiendo 3 parametros para hacer funcionar la funcion, en caso de los...
@@ -21,10 +21,5 @@ class DAOenfermeria extends CI_Model {
       }else{
         return $query->result();
       }
-  }
-
-  function registrar_instrumentos($data){
-    $this->db->insert('acta_instrumentos', $data);
-    return $this->db->insert_id();
   }
 }

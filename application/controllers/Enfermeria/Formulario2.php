@@ -8,6 +8,7 @@ class Formulario2 extends CI_Controller {
 		parent:: __construct();
 
 		$this->load->library('session');
+		$this->load->model('DAOinstrumentos');
 	}
 
 	public function index($data=0)
@@ -24,6 +25,9 @@ class Formulario2 extends CI_Controller {
 			}else{
 
 				$datos['acta_procedimientos_id'] = $data;
+
+				$datos['tipo_instrumentos'] = $this->DAOinstrumentos->seleccionar_entidad('tipo_instrumentos');
+
 				$this->load->view('enfermeria/form2_page',$datos);
 			}
 
