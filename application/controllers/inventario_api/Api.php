@@ -13,6 +13,7 @@ class Api extends RestController {
     function __construct(){
         parent:: __construct();
         $this->load->model('DAOinventario');
+        $this->load->model('DAOenfermeria');
     }
 
 
@@ -51,6 +52,57 @@ class Api extends RestController {
         }
 
         $this->response($response,200);
+
+    }
+
+
+    function cambio_eliminar_put(){
+
+        
+
+        $id_raiz_item = $this->put('id_raiz_item');
+        $id_acta_instrumentos = $this->put('id_acta_instrumentos');
+
+        //primera parte cambiamos el estado a activo a 1
+
+        $activo = $this->DAOinventario->cambiar_activo1($id_raiz_item);
+
+
+        //después eliminamos el acta_instrumentos que por ende ya no existe;
+
+        $this->DAOenfermeria->eliminar_instrumentos($id_acta_instrumentos);
+
+
+        if($activo){
+
+            $response = array(
+                "status" => 1,
+                "message" => "Datos traidos correctamente ",
+                "data" => $activo,
+                "errors" => array()
+            );
+
+        }else{
+
+            $response = array(
+                "status" => 0,
+                "message" => "Datos traidos incorrectamente ",
+                "data" => array(),
+                "errors" => array()
+            );
+
+        }
+
+        $this->response($response,200);
+
+
+
+
+
+
+
+
+
 
     }
 

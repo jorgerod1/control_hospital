@@ -27,4 +27,14 @@ class DAOenfermeria extends CI_Model {
     $this->db->insert('acta_instrumentos', $data);
     return $this->db->insert_id();
   }
+
+  function eliminar_instrumentos($id){
+
+
+
+    $this->db->where('id',$id);
+    $this->db->delete('acta_instrumentos');
+
+    return $id;
+  }
 }

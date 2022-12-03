@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<?=base_url();?>">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
     </a>
@@ -77,6 +77,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h3 id="H">HOSPITAL MATERNO CELAYA</h3> <br>
 </div>
 <h3 align="center">Control de instrumental y ropa quirúrgica</h3><br><br>
+
+<div class="row">
+
+    <a class="ml-5" href="<?=site_url('enfermeria/Formulario2/index/');?><?=$acta_procedimientos_id;?>"><h5 >Regresar </h5></a><br>
+
+</div>
+
+<br>
+
+
 
 <div id="table">
     <table class="table table-bordered">

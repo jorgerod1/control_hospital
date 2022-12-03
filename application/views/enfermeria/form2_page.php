@@ -82,10 +82,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td class="table-danger">Tipos</td>
                 <td class="table-danger">Instrumentos</td>
                 <td class="table-danger">Códigos de trazabilidad</td>
+                <td class="table-danger">(:</td>
             </tr>
         </thead>
         <tbody class="tablaBody">
-            <tr class="table-active">
+            <tr class="fila table-active">
                 <td class="table-danger">
                     <select class="tipo form-control form-select-lg mb-3" aria-label=".form-select-lg example">
                         <option disabled selected>Open this select menuu</option>
@@ -105,7 +106,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td class="columna-codigo table-danger">
 
                 </td>
+                <td class="columna-extra table-danger">
+
+                </td>
             </tr>
+
+            
+
+            
            
             
         </tbody>
@@ -121,7 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
         Agregar</button> <br><br>
-        <a href="<?=site_url('Enfermeria/Formulario3');?>" type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Siguiente</a>
+        <a  href="<?=site_url('Enfermeria/Formulario3');?>" type="submit" class="siguiente btn btn-primary" style="background-color: #00B4CC;">Siguiente</a>
 </div>
 
 <br><br>
@@ -244,10 +252,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             console.log('id_raiz: '+id_raiz_item);
 
                         });
-
-
-
-
                         
 
 
@@ -323,10 +327,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $('.columna-codigo').removeClass('columna-codigo');
 
 
+                        $('.fila').addClass(''+id_raiz_item+'');
+
+
+                        $('.fila').removeClass('fila');
+
+
+                        //-------------------
+
+                        var id_acta_instrumentos = response.data['id_acta_instrumentos'];
+
+
+                        $('.columna-extra').append('<button id_acta_instrumentos="'+id_acta_instrumentos+'" id_raiz_item="'+id_raiz_item+'" class="btn btn-warning revertir">Revertir</button>');
+
+
+
+                        //antes de eliminar la clase
+
+                        $('.columna-extra').removeClass('columna-extra');
+
+
                         //Ahora eliminamos sus clases
 
 
-                        $('.tablaBody').append(' <tr class="table-active"><td class="table-danger"><select  class="tipo form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Open this select menuu</option><?php foreach ($tipo_instrumentos as $tipo ) { ?><option value="<?=$tipo->id; ?>"><?=$tipo->tipo; ?></option><?php } ?> </select></td><td class="table-danger"><select disabled class="instrumentos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Open this select menu</option></select></td><td class="columna-codigo table-danger"></td></tr>');
+                        $('.tablaBody').append(' <tr class="fila table-active"><td class="table-danger"><select  class="tipo form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Open this select menuu</option><?php foreach ($tipo_instrumentos as $tipo ) { ?><option value="<?=$tipo->id; ?>"><?=$tipo->tipo; ?></option><?php } ?> </select></td><td class="table-danger"><select disabled class="instrumentos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Open this select menu</option></select></td><td class="columna-codigo table-danger"></td><td class="columna-extra table-danger"></td></tr>');
 
 
                             $('.tipo').on('change',function(){
@@ -457,6 +481,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     });
                             });
 
+                            
+
                         
 
                     }else{
@@ -488,6 +514,154 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 alert('Rellene todos los campos');
             }
 
+
+        });
+
+
+        //ejemplos
+
+        //$('.revertir').unbind();
+
+        $('tbody').on('click','.revertir',function(){ //para haer funciones que trabajan con items dinamicos en el dom
+                                                        //se recomienda leer un punto fijo que  no sea dinamico y a través de ese punto fijo filtrar
+                                                        //para obtener los elementos que queremos a través del filtro, así siempre leeremos lo nuevos elementos
+
+            var id_acta_instrumentos = $(this).attr('id_acta_instrumentos');
+            var id_raiz_item = $(this).attr('id_raiz_item');
+
+
+            console.log('id_acta_instrumentos: '+id_acta_instrumentos);
+            console.log('id_raiz_item: '+id_raiz_item);
+
+            var datos = {
+                'id_acta_instrumentos' : id_acta_instrumentos,
+                'id_raiz_item' : id_raiz_item
+            }
+
+
+
+
+            $.ajax({
+
+                url : "<?=site_url('inventario_api/Api/cambio_eliminar') ?>",
+                method : "put",
+                data : datos
+
+            }).done(function(response){
+
+                if(response.status == 1){
+
+                    alert('todo bien');
+
+                    $('.'+id_raiz_item).remove();
+
+                }else{
+
+                    alert('todo mal');
+
+                }
+
+            }).fail(function(response){
+
+                alert('todo mal2');
+
+            });
+
+
+        });
+
+
+        $('.siguiente').on('click',function(){
+
+            event.preventDefault();
+
+            var tipo = $('.tipo').val();
+            var instrumentos = $('.instrumentos').val();
+            var codigos = $('.codigos').val();
+
+            if(tipo && instrumentos && codigos){
+
+                var alerta2 = confirm('¿Desea agregar el último dato seleccionado antes de salir?');
+
+                if(alerta2){
+
+                    alert('sí');
+
+                    var datos2 = {
+
+                    'codigo' : codigo_r,
+                    'instrumento_id' : instrumento_id_r,
+                    'acta_procedimiento_id' : acta_procedimiento_id_r,
+                    'id_raiz_item' : id_raiz_item
+
+                }
+
+
+                console.log(datos2);
+
+                    $.ajax({
+
+                    url : "<?=site_url('enf_api/Api/actaInstrumentos');  ?>",
+                    method : "post",
+                    data : datos2
+
+                }).done(function(response){
+
+                    if(response.status == 1){
+
+                        alert('todo bien');
+
+                        window.location.replace('<?=site_url('enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
+
+
+
+
+                    }else{
+
+                        alert('todo mal');
+
+                        if(response.errors['id_raiz_item']){
+
+                            alert(response.errors['id_raiz_item']);
+
+                            reiniciarSelects();
+
+                        }else{
+
+                        }
+
+                    }
+
+                }).fail(function(response){
+
+                    alert('todo mal2');
+
+                    reiniciarSelects();
+
+                });
+                    
+                }else{
+                    alert('No');
+                    window.location.replace('<?=site_url('enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
+                }
+
+
+
+            }else{
+
+                
+                var alerta1 = confirm('¿Está seguro que desea continuar? \n No podrá eliminar los instrumentos agregados');
+
+                if(alerta1){
+
+                    alert('sí');
+
+                    window.location.replace('<?=site_url('enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
+                    
+                }else{
+                    alert('No');
+                }
+            }
 
         });
 
