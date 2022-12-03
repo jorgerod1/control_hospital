@@ -57,5 +57,24 @@ class DAOinventario extends CI_Model {
 
   }
 
+
+  function cambiar_activo1($id_raiz_item){
+
+
+    $filtro = array(
+
+      "activo" => 1
+
+    );
+
+
+    $this->db->where('id',$id_raiz_item);
+    $this->db->update('inventario',$filtro);
+
+
+    return $id_raiz_item;
+
+  }
+
   
 }
