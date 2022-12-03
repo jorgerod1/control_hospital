@@ -91,6 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <line x1="5" y1="12" x2="11" y2="18"></line>
             <line x1="5" y1="12" x2="11" y2="6"></line>
         </svg>
+        Regresar a menú
     </a>
     <nav aria-label="Page navigation example" style="margin-right:90px;">
       <ul class="pagination">
@@ -117,7 +118,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h5 class="card-title">No. carga</h5>
     <h5 class="card-title">No. paquete</h5>
     <h5 class="card-title">Fecha</h5>
-    <h5 class="card-title">Hora</h5>
+    <h5 class="card-title">Hora</h5><br>
+    <a href="<?=site_url('Administrador/CargasTable');?>" class="btn btn-primary" style="background-color: #00B4CC;">Ver detalles</a><br>
   </div>
 </div>
 </div>

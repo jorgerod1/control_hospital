@@ -83,6 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <line x1="5" y1="12" x2="11" y2="18"></line>
             <line x1="5" y1="12" x2="11" y2="6"></line>
         </svg>
+        Regresar a menú
     </a><div></div>
     <button type="button" class="btn btn-primary" id="add" style="margin-left:650px;">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

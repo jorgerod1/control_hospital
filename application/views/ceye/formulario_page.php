@@ -83,6 +83,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 Control físico, Químico y Biológico</h3>
 <h3 align="center">CEyE</h3><br><br>
 
+<a href="<?=site_url('Ceye/ceye');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <line x1="5" y1="12" x2="11" y2="18"></line>
+            <line x1="5" y1="12" x2="11" y2="6"></line>
+        </svg>
+        Regresar a menú
+    </a><br><br>
+
+
 <div id="table">
     <table class="table table-bordered">
         <thead>
@@ -154,14 +165,14 @@ Control físico, Químico y Biológico</h3>
 
 </div>
     <div id="botones">
-        <button type="button" class="btn btn-outline-secondary" >
+        <button type="button" class="btn btn-outline-secondary"  >
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                 </svg>
                 Agregar</button> <br><br>
-            <a href="<?=site_url('Enfermeria/Formulario3');?>" type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Siguiente</a>
+            <a href="<?=site_url('Enfermeria/Formulario3');?>"  type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Siguiente</a>
     </div>
 </div>
 

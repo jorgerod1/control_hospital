@@ -100,6 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <line x1="5" y1="12" x2="11" y2="18"></line>
             <line x1="5" y1="12" x2="11" y2="6"></line>
         </svg>
+        Regresar a menú
     </a>
     </button> 
 </div><br>

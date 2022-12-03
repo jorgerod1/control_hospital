@@ -73,7 +73,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <h3 align="center">Validación y trazabilidad del proceso de esterilización 
 Control físico, Químico y Biológico</h3>
 <h3 align="center">CEyE</h3><br><br>
-
+<a href="<?=site_url('Ceye/ceye');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <line x1="5" y1="12" x2="11" y2="18"></line>
+        <line x1="5" y1="12" x2="11" y2="6"></line>
+    </svg>
+    Regresar a menú
+</a><br><br>
 <div id="formulario">
     <form class="row g-3" action="<?=site_url('enfermeria/formulario1/guardar_acta');?>" method="post">
     <div class="col-md-4">
@@ -107,7 +115,7 @@ Control físico, Químico y Biológico</h3>
         <input type="text" class="form-control" id="servicio">
     </div>
     <div class="col-md-6" align="center"><br>
-        <a href="<?=site_url('Ceye/Form');?>" type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Siguiente</a>
+        <a href="<?=site_url('Ceye/Form');?>" style="margin-left:400px;" type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Siguiente</a>
     </div>
     </form>
 </div>
