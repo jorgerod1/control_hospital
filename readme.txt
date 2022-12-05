@@ -78,8 +78,8 @@ alter table usuarios drop usuario;
 
   //PENDIENTES PROXIMOS George
 
-    -agregar boton de eliminacion total a través de acta_procedimientos en acta_instrumentos
-    -agregar o ver posibilidad de eliminación individual de cada uno de los posibles registros de acta_instrumentos
+    -agregar boton de eliminacion total a través de acta_procedimientos en acta_instrumentos NO NECESARIO
+    -agregar o ver posibilidad de eliminación individual de cada uno de los posibles registros de acta_instrumentos COMPLETADO
 
 
 Notas Erika //
@@ -93,6 +93,43 @@ Traer en el controlador en una variable data todos los registros de la tabla rop
 Mostrar exactamente de la fisma forma como se muestra actualemente la parte visual del controlador Formulario3
 pero todos los datos y filas deben ser agregadas con un foreach a traves de la variable que ya cargaste previamente
   
+
+//---------------------------//
+
+03/12/22
+
+Favor de actualizar los pendientes para saber qué está completado y qué no,
+Leer comentarios en controladoes y tomar acciones pertinentes antes de seguir con el trabajo
+/* las acciones pertienentes no las he tomado yo para que pudieras visualizar porque tiene que ser cambiado
+o eliminado un controlador*/  Actualizar el recorrido por la pagina con los controladores correctos ya que si seguimos por esta senda se convierte en doble trabajo
+
+//Doctora comentarios y Notas
+
+- En el formulario que pertence a la tabla acta_procedimientos agregar campo de procedimientos con entrada normal de varchar, dejar 
+la anterior foreign key de procedimientos_id en la tabla pero marcarla en default como null y eliminarlo de la parte visual
+
+
+//POSIBILIDADES 
+
+-Posibilidad de guardar en la tabla acta_instrumentos el id del item del cual se extrajo el codigo de trazabilidad
+ /*el id de la tabla "inventario"*/ de esa manera saber a qué item pertence cada acta_instrumentos
+
+-En base al cambio anterior, posibilidad de crear botones de regreso avanzados donde se podrán editar los cambios
+y las acciones hechas por las enfermeras en las 3 actas correspondientes a la seccion de enfermeras a través de los ids
+
+04/12/22
+
+Agregar estas líneas a la base de datos:
+
+alter table acta_ceye modify column no_carga varchar(30);
+alter table acta_ceye modify column no_paquete varchar(30);
+
+05/12/22
+
+Generacion de codigo de trazabilidad en automatico TERMINADO
+Funcionamiento de agregar cargas e instrumentales por parte de ceye TERMINADO 
+
+
 
 
 

@@ -29,6 +29,12 @@ class Login extends CI_Controller {
 
 		}
 
+		if($data==3){
+
+			$datos['mensaje'] = "Datos guardados correctamente";
+
+		}
+
 		if($this->session->userdata('is_logeado')){
 
 			if ($this->session->userdata('rol') == "Enfermera") {
@@ -54,6 +60,8 @@ class Login extends CI_Controller {
 
 			
 			$this->load->view('Login_page',$datos);
+
+			
 		}
 
 		

@@ -61,6 +61,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
+    <pre>
+        <?php print_r($ropa_qui); 
+              //var_dump($ropa_qui); otra opcion muy efectiva para mostrar arrays ?>
+    </pre>
+
+    
+
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?=base_url();?>">

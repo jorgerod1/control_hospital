@@ -60,7 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<?=base_url();?>">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
     </a>
@@ -75,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <h3 align="center">CEyE - Instrumentos</h3><br><br>
 
-<a href="<?=site_url('Ceye/ceye');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
+<!--<a href="<?=site_url('Ceye/ceye');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
         <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -83,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <line x1="5" y1="12" x2="11" y2="6"></line>
     </svg>
     Regresar a menú
-</a><br><br>
+</a><br><br>-->
 
 <div id="table">
     <table class="table table-bordered">

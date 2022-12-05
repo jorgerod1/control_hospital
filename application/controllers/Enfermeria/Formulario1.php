@@ -7,6 +7,7 @@ class Formulario1 extends CI_Controller {
 	{
 		$this->load->view('enfermeria/form1_page');
 	}
+	
 	public function guardar_acta(){
 		$data = array (
 			"nombre_paciente" => $this->input->post('nombre_paciente'),

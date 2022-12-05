@@ -7,6 +7,7 @@ class Formulario3 extends CI_Controller {
 		parent:: __construct();
 
 		$this->load->library('session');
+		$this->load->model('DAOropa_qui');
 	}
 
 	public function index($id=null)
@@ -17,6 +18,8 @@ class Formulario3 extends CI_Controller {
 			if($id){
 
 				$data['acta_procedimientos_id'] = $id;
+
+				$data['ropa_qui'] = $this->DAOropa_qui->seleccionar_entidad('ropa_qui');
 
 				
 				$this->load->view('enfermeria/form3_page',$data);
