@@ -114,8 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </tr>
         </thead>
         <tbody >
-            <?php //foreach ($) 
-            ?>
+        <?php foreach ($ropa_qui as $ropa_qui) {  ?>
             <tr class="table-active">
                 <td class="table-danger" id="ch1">
                     <div class="form-check form-check-inline">
@@ -123,11 +122,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <label class="form-check-label" for="inlineCheckbox1"></label>
                     </div>
                 </td>
-                <td class="table-danger">B. Cirugía General</td>
+                <td class="table-danger"><?=$ropa_qui->tipo_bulto;?></td>
                 <td class="table-danger">
                      <input class="form-control" type="text"aria-label="default input example">
                 </td>
             </tr>
+
+        <?php } ?>
 
             
             
@@ -143,4 +144,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <br><br>
 	
 </body>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script> 
+
+   
+
+</script>
+
+
 </html>
