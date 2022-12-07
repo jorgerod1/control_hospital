@@ -7,7 +7,7 @@ class DAOenfermeria extends CI_Model {
         $this->db->insert('acta_procedimientos', $data);
         return $this->db->insert_id();
     }
-
+ 
     function seleccionar_entidad($entidad,      
         $filtro =  array(),    //aquí estamos pidiendo 3 parametros para hacer funcionar la funcion, en caso de los...
         $unico = FALSE){        // últimos dos, los tenemos ya inicializados en caso de que el usuario no mande esos parametros

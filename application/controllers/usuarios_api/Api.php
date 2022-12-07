@@ -53,7 +53,7 @@ class Api extends RestController{
         if($this->form_validation->run()){
 
         $this->form_validation->reset_validation();
-
+ 
         $this->form_validation->set_data($this->post());
         $this->form_validation->set_rules("usuario2","Usuario","trim|required|is_unique[usuarios.usuario]");
 

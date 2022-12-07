@@ -79,12 +79,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <line x1="5" y1="12" x2="11" y2="18"></line>
             <line x1="5" y1="12" x2="11" y2="6"></line>
         </svg>
-        Regresar a menú
+        Regresar
     </a><br><br>
 
 <div id="table">
     <table class="table table-bordered">
-        <thead>
+        <thead> 
             <tr>
                 <td class="table-danger">Instrumentos</td>
                 <td class="table-danger">Códigos de trazabilidad</td>
@@ -94,6 +94,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </tr>
         </thead>
         <tbody>
+        <?php foreach ($inventario as $inventario) {  ?>
+            <tr class="table-active">
+                <td class="table-danger"><?=$inventario->instrumento_id;?></td>
+                <td class="table-danger"><<?=$inventario->codigo;?>/td>
+                <td class="table-danger"><?=$inventario->instrumento_id;?></td> 
+                <td class="table-danger"><?=$inventario->instrumento_id;?></td>
+                <td class="table-danger">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                </div><br>
+                </td>
+            </tr>
+
+        <?php } ?>
             <tr class="table-active">
                 <td class="table-danger"></td>
                 <td class="table-danger"></td>

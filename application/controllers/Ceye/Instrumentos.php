@@ -8,4 +8,4 @@ class Instrumentos extends CI_Controller {
 		$this->load->view('ceye/instrumentos_page');
 	}
 
-}
+} 

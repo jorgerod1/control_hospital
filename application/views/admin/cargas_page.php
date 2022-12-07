@@ -111,17 +111,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div><br>
 
 
-
+ 
 <div id="fondo">
-<div class="card" style="width: 18rem;" id="c1">
-  <div class="card-body">
-    <h5 class="card-title">No. carga</h5>
-    <h5 class="card-title">No. paquete</h5>
-    <h5 class="card-title">Fecha</h5>
-    <h5 class="card-title">Hora</h5><br>
-    <a href="<?=site_url('Administrador/CargasTable');?>" class="btn btn-primary" style="background-color: #00B4CC;">Ver detalles</a><br>
-  </div>
-</div>
+  <?php  foreach ($acta_ceye as $acta_ceye) { ?>
+    <div class="card" style="width: 18rem;" id="c1">
+      <div class="card-body">
+        <h5 class="card-title"><?=$acta_ceye->no_carga;?></h5>
+        <h5 class="card-title"><?=$acta_ceye->no_paquete;?></h5>
+        <h5 class="card-title"><?=$acta_ceye->fecha;?></h5>
+        <h5 class="card-title"><?=$acta_ceye->hora;?></h5><br>
+        <a href="<?=site_url('Administrador/CargasTable');?>" class="btn btn-primary" style="background-color: #00B4CC;">Ver detalles</a><br>
+      </div>
+    </div>
+  <?php } ?>
+
 </div>
 
 

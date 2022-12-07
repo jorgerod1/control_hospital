@@ -7,7 +7,7 @@ class Carga extends CI_Controller {
 		parent:: __construct();
 
 		$this->load->library('session');
-		
+		$this->load->model('DAOenfermeria');
 	}
 
 	public function index()
@@ -23,6 +23,24 @@ class Carga extends CI_Controller {
 			$this->load->view('login_page',$datos);
 
 		}
+		if($id){
+
+			
+
+			$data['acta_procedimientos'] = $this->DAOenfermeria->seleccionar_entidad('acta_procedimientos');
+
+			 
+			$this->load->view('ceye/ceye_page',$data);
+
+		}else{
+
+			$datos['mensaje'] = "No puedes acceder a esta sección";
+
+			$this->load->view('ceye/ceye_page',$datos);
+			
+		}
+
+		;
 		
 	}
 

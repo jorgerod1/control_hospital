@@ -100,22 +100,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <h3 align="center">CEyE</h3><br>
 
 <div id="cartas" >
+   <!-- <?php foreach ($acta_procedimientos as $acta_procedimientos) {  ?>
     <div style="background-color: #FFACC6;" ><br>
         <div class="card mb-3" id="info">
             <div class="card-body" id="contenido">
+            
                 <div>
-                    <p>Procedimiento:</p>
-                    <p>Fecha:</p>
-                    <p>Cirugía:</p>
+                    <p>Procedimiento: <?=$acta_procedimientos->procedimiento_id;?></p>
+                    <p>Fecha: <?=$acta_procedimientos->fecha;?></p>
+                    <p>Cirugía: <?=$acta_procedimientos->fecha;?></p>
                 </div>
                 <div>
-                    <p>Servicio:</p>
-                    <p>Hora:</p>
-                </div>
+                    <p>Servicio: <?=$acta_procedimientos->servicio;?></p>
+                    <p>Hora: <?=$acta_procedimientos->hora;?></p>
+                </div> 
+            
+                
                 <div id="botones">
                     <a href="<?=site_url('Ceye/instrumentos');?>" target="_blank" class="mr-2 btn btn-primary" id="b1">Instrumentos</a>
                     <a href="#" class="btn btn-success" id="b2">Detalles</a>
                     <a href="#" class="mr-2 btn btn-warning" id="b3">Bultos</a>
+                    <a href="#" class="btn btn-danger" id="b4">Finalizar</a>
+                </div>
+            </div>
+        </div>
+        <?php } ?>-->
+        <div style="background-color: #FFACC6;" ><br>
+        <div class="card mb-3" id="info">
+            <div class="card-body" id="contenido">
+            
+                <div>
+                    <p>Procedimiento: </p>
+                    <p>Fecha:</p>
+                    <p>Cirugía: </p>
+                </div>
+                <div>
+                    <p>Servicio: </p>
+                    <p>Hora: </p>
+                </div> 
+            
+                
+                <div id="botones">
+                    <a href="<?=site_url('Ceye/instrumentos');?>" target="_blank" class="mr-2 btn btn-primary" id="b1">Instrumentos</a>
+                    <a href="<?=site_url('Ceye/detalles');?>" target="_blank" class="btn btn-success" id="b2">Detalles</a>
+                    <a href="<?=site_url('Ceye/bultos');?>" target="_blank" class="mr-2 btn btn-warning" id="b3">Bultos</a>
                     <a href="#" class="btn btn-danger" id="b4">Finalizar</a>
                 </div>
             </div>

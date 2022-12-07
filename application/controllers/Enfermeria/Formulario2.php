@@ -40,5 +40,5 @@ class Formulario2 extends CI_Controller {
 		}
 		
 	}
-
+ 
 }
