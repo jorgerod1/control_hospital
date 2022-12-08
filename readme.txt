@@ -108,6 +108,8 @@ la anterior foreign key de procedimientos_id en la tabla pero marcarla en defaul
 -En base al cambio anterior, posibilidad de crear botones de regreso avanzados donde se podrán editar los cambios
 y las acciones hechas por las enfermeras en las 3 actas correspondientes a la seccion de enfermeras a través de los ids
 
+-Crear todo en una sola misma vista respecto a la vista principal de Ceye, mostrar detalles desplegable. Instrumentos y bultos en modals
+
 04/12/22
 
 Agregar estas líneas a la base de datos:
@@ -146,11 +148,25 @@ YA hice la vista para equipos, como me habias dicho, use el mismo formulario par
 quiero guardar los datos de las tablas marca que yo no tengo acceso a eso o algo asi, lo mismo
 cuando quiero guardar toco-cirugias.
 
+//Perfecto, de hecho al final no vamos a ocupar la vista extra de instrumentos_toco, vamos a enviar a la misma de
+intrumentos y bultos, ¿Por qué aparece que no hay acceso?
+
+Seguramente algo que no se puede acceder o que hay un error, pero es diferente al error de "no tiene el usuario correcto". Dejando eso claro:
+Este error representa que es requerido recibir un id que conecte la vistas ya que en la base de datos
+la entidad fuerte en este caso vendría siendo acta_procedimientos y de ahí se necesita el id de el acta_procedimientos
+a la que pertenece cada acta_instrumentos y acta_ropa_qui, por eso al acceder sin id marca que algo está marcarla
+Mirar ejemplo parecido en: vistas: enfermeria: form1_page linea 225
+
 -  -  -   -  -   -  -   -  -   -   -   -   -   -   -   -   -    -   -   -    -    -   -    -     - 
 
 Trate de pintar los datos en la pagina principal de ceye, pero no pude :(
   ya deje el foreach acomodado como debe de ser, creo que el error viene de:  Enfermeria>Carga.ph
   no supe bien donde ponerlo la verdad.
+
+  //Listo, ya fue resuelto, si quieres conocer más acerca deje comentarios en la vista y en el controlador Login
+  sobre cómo lo hice. Solo queda arreglar la parque se movió,
+  CONSEJO: La card que contiene la parte de cargas es parte del mismo contenedor donde están las cards del foreach
+  debes crearle su propio contendenor y sacarlo de ahí
 
 -  -  -   -  -   -  -   -  -   -   -   -   -   -   -   -   -    -   -   -    -    -   -    -     - 
 
@@ -160,18 +176,37 @@ me puedes ayudar dejando eso listo porfa?
 es la api para mostrar las tres ventanas de administrador y el de acta_procedimientos, me confundi mucho al momento
 de ubicarlas o hacerlas
 
+//En esta parte estoy un poco confundido con lo de la api, creo que es el controlador, igual no me queda tan claro
+pero cualquier cosa vuelvemelo a explicar o igual se resolvió con alguna cosita que ya hice sino mandame mensaje sin problema 
 -  -  -   -  -   -  -   -  -   -   -   -   -   -   -   -   -    -   -   -    -    -   -    -     - 
 
 en Ceye
 el boton detalles y el boton bultos, que datos va a mostrar?
 
+//boton de ceye, despliega en la misma vista una card que funciona como objeto escondido, todo esto
+ya estará cargado en la pagina al iniciar, solo se debe mostrar. Puedes buscar en bootstrap como hacerlo 
+creo que se llama toggle
+
+Bultos e instrumentos se despliegan en una ventana propia con su propia vista (posibilidad de hacerlo todo en la misma vista
+pero con modals) y los datos que mostraran, recibiran el id de su antecesor acta_procedimientos y mostraran
+los datos filtrados en base a ello
+
 -  -  -   -  -   -  -   -  -   -   -   -   -   -   -   -   -    -   -   -    -    -   -    -     - 
 
 administrador
-segun yo modifique Cargas_page y inventario_page y sus respectivoss controllers para mostrardatos pero no me salio
+segun yo modifique Cargas_page y inventario_page y sus respectivoss controllers para mostrar datos pero no me salio
 
 para inventario, en la base de datos no viene fecha y hora pero en la tabla que pusimos si, ahi como le hacemos?
 
+//Tenemos que traer todo a través de una super consulta o con un gusanito, en inventario tenemos el dato acta_instrumentos_ceye_id
+a traves de eso podemos ir a esa tabla y ahi obtendremos el dato acta_ceye_id y ya conociendo el id, podemos extraer fecha y hora  de la tabla acta_ceye
+
+igual esa consulta me la puedes dejar sin problema, ya nomas para mostrar
+
+//repare lo de cargas_page, ya tenias casi todo para hacerlo, sólo estaban fallando algunas barreas del controlador
+y tenias mal el nombre de donde estabas llamando la vista, tenias administrador y era admin, 
+los demas errores los checamos despues, puedes compararlo con los ejemplos que resolví o los puedes dejar 
+aquí en el readme y los checho en la tarde-noche sin problema 
 -  -  -   -  -   -  -   -  -   -   -   -   -   -   -   -   -    -   -   -    -    -   -    -     - 
   PD: INTENTE TODA LA TARDE HACERLO PERO NO MAS NO PUDE :( 
     NO QUISE MOLESTARTE POR LO DE TUS ESTANCIAS, SORRY :(

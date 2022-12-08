@@ -100,19 +100,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <h3 align="center">CEyE</h3><br>
 
 <div id="cartas" >
-   <!-- <?php foreach ($acta_procedimientos as $acta_procedimientos) {  ?>
+    <?php foreach ($acta_procedimientos as $acta_procedimiento) {  //las variables del foreach debe ser diferentes?> 
     <div style="background-color: #FFACC6;" ><br>
         <div class="card mb-3" id="info">
             <div class="card-body" id="contenido">
             
                 <div>
-                    <p>Procedimiento: <?=$acta_procedimientos->procedimiento_id;?></p>
-                    <p>Fecha: <?=$acta_procedimientos->fecha;?></p>
-                    <p>Cirugía: <?=$acta_procedimientos->fecha;?></p>
+                    <p>Procedimiento: <?=$acta_procedimiento->procedimiento_id;?></p>
+                    <p>Fecha: <?=$acta_procedimiento->fecha;?></p>
+                    <p>Cirugía: <?=$acta_procedimiento->fecha;?></p>
                 </div>
                 <div>
-                    <p>Servicio: <?=$acta_procedimientos->servicio;?></p>
-                    <p>Hora: <?=$acta_procedimientos->hora;?></p>
+                    <p>Servicio: <?=$acta_procedimiento->servicio;?></p>
+                    <p>Hora: <?=$acta_procedimiento->hora;?></p>
                 </div> 
             
                 
@@ -124,7 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-        <?php } ?>-->
+        <?php } ?>
         <div style="background-color: #FFACC6;" ><br>
         <div class="card mb-3" id="info">
             <div class="card-body" id="contenido">

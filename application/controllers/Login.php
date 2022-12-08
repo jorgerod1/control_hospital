@@ -9,6 +9,7 @@ class Login extends CI_Controller {
         
 		$this->load->library('session');
 		$this->load->model('DAOusuarios');
+		$this->load->model('DAOenfermeria');
 
     }
 
@@ -44,8 +45,24 @@ class Login extends CI_Controller {
 				$this->load->view('enfermeria/cirugias_page',$datos);
 
 			}else if($this->session->userdata('rol') == "Ceye"){
+
+				//Todo inicia en la sección de ceye, necesitamos cargar un modelo de 
+				//enfermeria para trabajar con actas de enfermeria (buena practica mas que nada)
+
+				//vamos a nombrar el siguiente espacion de nuestro array datos, que despues al cargarlo
+				 //en la vista lo podemos encontrar como $acta_procedimientos
+
+				 $filtro = array(
+					"activo" => 1
+				 );
+
+				$datos['acta_procedimientos'] = $this->DAOenfermeria->seleccionar_entidad('acta_procedimientos',$filtro);
+				
+
 				
 				$this->load->view('ceye/ceye_page',$datos);
+
+				
 
 			}else if($this->session->userdata('rol') == "Administrador"){
 

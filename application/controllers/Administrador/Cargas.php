@@ -10,29 +10,22 @@ class Cargas extends CI_Controller {
 		$this->load->model('DAOceye');
 	}
 
-	public function index($id=null)
+	public function index()
 	{
 
 		if ($this->session->userdata('rol') == "Administrador") {
 
-			if($id){
+		
 
-				$data['acta_instrumentos_ceye_id'] = $id;
+				
 
 				$data['acta_ceye'] = $this->DAOceye->seleccionar_entidad('acta_ceye');
 
 				 
-				$this->load->view('administrador/cargas_page',$data);
+				$this->load->view('admin/cargas_page',$data);
 
-			}else{
 
-				$datos['mensaje'] = "No puedes acceder a esta sección";
-
-				$this->load->view('administrador/cargas_page',$datos);
-				
-			}
-
-			;
+			
 
 		}else{
 
