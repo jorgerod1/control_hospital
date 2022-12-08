@@ -81,27 +81,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     Regresar a menú
 </a><br><br>
 <div id="formulario">
-    <form class="row g-3">
+    <form class="row g-3" id="registro_actas">
     <div class="col-md-6">
-        <label for="" class="form-label">Servicio</label>
-        <input type="text" class="form-control" id="">
+        <label for="servicio" class="form-label">Servicio</label>
+            <select class="form-control form-select-lg mb-12" aria-label=".form-select-lg example" id="servicio" name="servicio">
+
+                <option disabled selected>Selecciona una opción</option>
+                <option value="quirofano1">Quirofano 1</option>
+                <option value="quirofano2">Quirofano 2</option>
+                <option value="toco1">Toco-cirugía 1</option>
+                <option value="toco2">Toco-cirugía 2</option>
+
+            </select>
+            <small id="s_servicio" class="invalid-feedback">  </small>
     </div>
     <div class="col-md-2">
-        <label for="" class="form-label">Turno</label>
-        <input type="text" class="form-control" id="">
+        <label for="turno" class="form-label">Turno</label>
+        <input type="text" class="form-control" id="turno" name="turno">
+        <small id="s_turno" class="invalid-feedback">  </small>
     </div>
 
     <div class="col-md-2">
-        <label for="" class="form-label">Fecha</label>
-        <input type="text" class="form-control" id="">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input disabled type="date" class="form-control" id="fecha">
+        <small id="s_fecha" class="invalid-feedback">  </small>  </small>
     </div>
     <div class="col-md-2">
-        <label for="" class="form-label">Hora</label>
-        <input type="text" class="form-control" id="">
+        <label for="hora" class="form-label">Hora</label>
+        <input disabled type="time" class="form-control" id="hora">
+        <small id="s_hora" class="invalid-feedback s_hora">  </small>
     </div>
     <div class="col-md-6">
-        <label for="inputCity" class="form-label">Enfermera(o) responsable</label>
-        <input type="text" class="form-control" id="inputCity">
+        <label for="enfermera_circulante" class="form-label">Enfermera(o) responsable</label>
+        <input type="text" class="form-control" id="enfermera_circulante" name="enfermera_circulante">
+        <small id="s_enfermera_circulante" class="invalid-feedback">  </small>
     </div>
     
     
@@ -117,4 +130,80 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <br><br>
 	
 </body>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script type="text/javascript">  
+
+        $(function(){
+
+            
+
+
+            $('#registro_actas').on('submit',function(event){
+
+
+                event.preventDefault();
+
+                var datos = $(this).serialize();
+
+                datos = datos+'&usuario_id='+'<?=$this->session->userdata('id');?>';
+
+                console.log(datos);
+
+                $.ajax({
+
+                    url : "<?=base_url('/index.php/enf_api/Api/actaProcedimientos')?>",
+                    method : "post",
+                    data : datos
+
+                }).done(function(response){
+
+                    if(response.status == 1){
+                      console.log('todo bien');
+
+                      alert('Acta agregada correctamente');
+
+                        
+
+                      $('#formulario input,select').removeClass('is-invalid');
+                      $('#formulario input,select').addClass('is-valid');
+
+
+                      window.location.replace('<?=site_url('Enfermeria/TocoForm1/index/');?>'+response.data);
+                        
+                      
+
+                    }else if(response.status == 0){
+                      console.log('todo mal');
+                      alert('Validación de datos incorrecta');
+
+                      $('#formulario input,select').removeClass('is-invalid');
+                      $('#formulario input,select').addClass('is-valid');
+
+                        $.each(response.errors, function(index,value){   
+
+                            $('#'+index).removeClass('is-valid'); 
+                            $('#'+index).addClass('is-invalid'); 
+
+                            $('#s_'+index).text(value);
+
+                        });
+
+                    }
+
+                }).fail(function(response){
+
+                    console.log('todo mal2');
+                    alert('todo mal2');
+
+                });
+
+            });
+
+        });
+
+
+</script>
+
 </html>

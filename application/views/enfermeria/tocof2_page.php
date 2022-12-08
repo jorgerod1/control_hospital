@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<?=base_url();?>">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
     </a>
@@ -96,6 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </tr>
         </thead>
         <tbody>
+        <?php foreach ($ropa_qui as $ropa_qui) {  ?>
             <tr class="table-active">
                 <td class="table-danger" id="ch1">
                     <div class="form-check form-check-inline">
@@ -103,77 +104,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <label class="form-check-label" for="inlineCheckbox1"></label>
                     </div>
                 </td>
-                <td class="table-danger">B. Parto</td>
+                <td class="table-danger"><?=$ropa_qui->tipo_bulto;?></td>
                 <td class="table-danger">
                      <input class="form-control" type="text"aria-label="default input example">
                 </td>
             </tr>
 
-            <tr class="table-active">
-                <td class="table-danger" id="ch2">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1"></label>
-                    </div>
-                </td>
-                <td class="table-danger">B. Pediátrico</td>
-                <td class="table-danger">
-                    <input class="form-control" type="text"aria-label="default input example">
-                </td>
-            </tr>
-
-            <tr class="table-active">
-                <td class="table-danger" id="ch3">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1"></label>
-                    </div>
-                </td>
-                <td class="table-danger">B. Bata</td>
-                <td class="table-danger">
-                    <input class="form-control" type="text"aria-label="default input example">
-                </td>
-            </tr>
-
-            <tr class="table-active">
-                <td class="table-danger" id="ch3">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1"></label>
-                    </div>
-                </td>
-                <td class="table-danger">B. de 4 campos</td>
-                <td class="table-danger">
-                    <input class="form-control" type="text"aria-label="default input example">
-                </td>
-            </tr>
-
-            <tr class="table-active">
-                <td class="table-danger" id="ch3">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1"></label>
-                    </div>
-                </td>
-                <td class="table-danger">B. de 2 campos</td>
-                <td class="table-danger">
-                    <input class="form-control" type="text"aria-label="default input example">
-                </td>
-            </tr>
-
-            <tr class="table-active">
-                <td class="table-danger" id="ch3">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1"></label>
-                    </div>
-                </td>
-                <td class="table-danger">B. Hendido</td>
-                <td class="table-danger">
-                    <input class="form-control" type="text"aria-label="default input example">
-                </td>
-            </tr>
-            
+        <?php } ?>
         </tbody>
         
     </table>

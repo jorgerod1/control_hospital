@@ -60,7 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<?=base_url();?>">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
     </a>
@@ -87,45 +87,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <table class="table table-bordered">
         <thead>
             <tr>
+                <td class="table-danger">Tipos</td>
                 <td class="table-danger">Instrumentos</td>
                 <td class="table-danger">Códigos de trazabilidad</td>
+                <td class="table-danger">(:</td>
             </tr>
         </thead>
-        <tbody>
-            <tr class="table-active">
+        <tbody class="tablaBody">
+            <tr class="fila table-active">
                 <td class="table-danger">
-                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="tipo form-control form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <option disabled selected>Selecciona el tipo de instrumento</option>
+                            <?php foreach ($tipo_instrumentos as $tipo ) { ?>
+
+                                <option value="<?=$tipo->id; ?>"><?=$tipo->tipo; ?></option>
+                                
+                            <?php } ?>
                     </select>
                 </td>
-                <td class="table-danger"></td>
-            </tr>
-            <tr class="table-active">
                 <td class="table-danger">
-                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select disabled class="instrumentos form-control form-select-lg mb-3"  aria-label=".form-select-lg example">
+                        <option disabled selected>Selecciona el instrumento</option>
+                     
                     </select>
                 </td>
-                <td class="table-danger"></td>
-            </tr>
-            <tr class="table-active">
-                <td class="table-danger">
-                     <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                <td class="columna-codigo table-danger">
+
                 </td>
-                <td class="table-danger"></td>
+                <td class="columna-extra table-danger">
+
+                </td>
             </tr>
-            
+           
         </tbody>
         
     </table>
@@ -144,4 +137,553 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <br><br>
 	
 </body>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script type="text/javascript">  
+
+    //variables encargadas de llevar el registro de la tabla acta_registros
+
+    var id_raiz_item = 0;
+
+    var codigo_r = "";
+    var extra_r = "";
+    var instrumento_id_r = 0;
+    var acta_procedimiento_id_r = "<?=$acta_procedimientos_id;?>";
+
+
+    $(function(){
+
+        $('.tipo').on('change',function(){
+
+            $('.codigos').remove();
+
+            $('.instrumentos').removeAttr('disabled');
+
+            var tipo_id = $(this).val();
+            
+            
+
+
+            $.ajax({
+
+                url : "<?=base_url()?>index.php/instrumentos_api/Api/traer_instrumento_especifico/"+tipo_id,
+                method : "get"
+
+
+            }).done(function(response){
+
+                if(response.status == 1){
+
+                    alert('instrumentos todo bien');
+
+                    $('.instrumentos').empty();
+                    $('.instrumentos').append('<option disabled selected>Selecciona el instrumento</option>');
+
+                    $.each(response.data,function(index,value){
+
+                        $('.instrumentos').append('<option value="'+value.id+'">'+value.instrumentos+'</option>');
+
+                    });
+
+                    
+
+
+                }else if(response.status == 0){
+
+                    alert('todo mal');
+
+                }
+
+            }).fail(function(response){
+
+                alert('todo mal2');
+
+            });
+
+        });
+
+        $('.instrumentos').on('change',function(){
+
+            var instrumentos_id = $('.instrumentos').val();
+
+            console.log(instrumentos_id)
+
+            $.ajax({
+
+                url : "<?=site_url('inventario_api/Api/traer_items/')?>"+instrumentos_id,
+                method : "get",
+                async : true
+
+            }).done(function(response){
+
+                if(response.status == 1){
+
+                    alert('todo bien');
+                
+
+                    if(response.data.length != 0){
+
+                        instrumento_id_r = instrumentos_id; //asignamos el nuevo valor a nuestra variable de formulario
+
+
+                        alert('Hay data');
+
+                        $('.codigos').remove();
+
+                        $('.columna-codigo').append('<select class="codigos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el codigo de trazabilidad</option><option class="font-weight-bold" disabled>  <b> Código ---------- Fecha --------- Hora  </b> </option> </select>');
+
+                        
+
+                        $.each(response.data,function(index,value){
+
+                            $('.codigos').append('<option codigo="'+value.codigo+'"  value="'+value.inventarioOriginal+'">'+value.codigo+' --- '+value.fecha+' --- '+value.hora+'</option>');
+
+                        });
+
+
+                        $('.codigos').on('change', function(){
+
+                            codigo_r = $('.codigos > option:selected').attr('codigo');
+
+                             id_raiz_item = $('.codigos').val();
+
+                            console.log('codigo: '+codigo_r);
+                            console.log('id_raiz: '+id_raiz_item);
+
+                        });
+                        
+
+
+                    }else{
+
+                        alert('No hay códigos disponibles');
+
+                        reiniciarSelects();
+
+                    }
+
+                }else{
+
+                    alert('todo mal')
+
+                }
+
+            }).fail(function(response){
+
+                alert('todo mal2');
+
+            });
+
+        });
+
+        $('.agregar').on('click',function(){
+
+            var tipo = $('.tipo').val();
+            var instrumentos = $('.instrumentos').val();
+            var codigos = $('.codigos').val();
+
+            
+
+            if(tipo && instrumentos && codigos){
+
+                alert('el boton puede usarse');
+
+                var datos = {
+
+                    'codigo' : codigo_r,
+                    'instrumento_id' : instrumento_id_r,
+                    'acta_procedimiento_id' : acta_procedimiento_id_r,
+                    'id_raiz_item' : id_raiz_item
+
+                }
+
+                console.log(datos);
+
+                /* Vamos a guardar a través de un conjunto de variables que por logica tienen valor ahora
+                que llegamos a este punto*/ 
+
+                $.ajax({
+
+                    url : "<?=site_url('enf_api/Api/actaInstrumentos');  ?>",
+                    method : "post",
+                    data : datos
+
+                }).done(function(response){
+
+                    if(response.status == 1){
+
+                        alert('todo bien');
+
+                        $('.tipo').prop('disabled',true);
+                        $('.codigos').prop('disabled',true);
+                        $('.instrumentos').prop('disabled',true);
+
+                        //volvemos la fila deshabilitada
+
+                        $('.tipo').removeClass('tipo');
+                        $('.codigos').removeClass('codigos');
+                        $('.instrumentos').removeClass('instrumentos');
+                        $('.columna-codigo').removeClass('columna-codigo');
+
+
+                        $('.fila').addClass(''+id_raiz_item+'');
+
+
+                        $('.fila').removeClass('fila');
+
+
+                        //-------------------
+
+                        var id_acta_instrumentos = response.data['id_acta_instrumentos'];
+
+
+                        $('.columna-extra').append('<button id_acta_instrumentos="'+id_acta_instrumentos+'" id_raiz_item="'+id_raiz_item+'" class="btn btn-warning revertir">Revertir</button>');
+
+
+
+                        //antes de eliminar la clase
+
+                        $('.columna-extra').removeClass('columna-extra');
+
+
+                        //Ahora eliminamos sus clases
+
+
+                        $('.tablaBody').append(' <tr class="fila table-active"><td class="table-danger"><select  class="tipo form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el tipo de instrumento</option><?php foreach ($tipo_instrumentos as $tipo ) { ?><option value="<?=$tipo->id; ?>"><?=$tipo->tipo; ?></option><?php } ?> </select></td><td class="table-danger"><select disabled class="instrumentos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el tipo de instrumento</option></select></td><td class="columna-codigo table-danger"></td><td class="columna-extra table-danger"></td></tr>');
+
+
+                            $('.tipo').on('change',function(){
+
+                                $('.codigos').remove();
+
+                                $('.instrumentos').removeAttr('disabled');
+
+                                var tipo_id = $(this).val();
+
+
+
+
+                                $.ajax({
+
+                                    url : "<?=base_url()?>index.php/instrumentos_api/Api/traer_instrumento_especifico/"+tipo_id,
+                                    method : "get"
+
+
+                                }).done(function(response){
+
+                                    if(response.status == 1){
+
+                                        alert('instrumentos todo bien');
+
+                                        $('.instrumentos').empty();
+                                        $('.instrumentos').append('<option disabled selected>Selecciona el instrumento</option>');
+
+                                        $.each(response.data,function(index,value){
+
+                                            $('.instrumentos').append('<option value="'+value.id+'">'+value.instrumentos+'</option>');
+
+                                        });
+
+                                        
+
+
+                                    }else if(response.status == 0){
+
+                                        alert('todo mal');
+
+                                    }
+
+                                }).fail(function(response){
+
+                                    alert('todo mal2');
+
+                                });
+
+                            });
+
+
+                            $('.instrumentos').on('change',function(){
+
+                                    var instrumentos_id = $('.instrumentos').val();
+
+                                    console.log(instrumentos_id)
+
+                                    $.ajax({
+
+                                        url : "<?=site_url('inventario_api/Api/traer_items/')?>"+instrumentos_id,
+                                        method : "get",
+                                        async : true
+
+                                    }).done(function(response){
+
+                                        if(response.status == 1){
+
+                                            alert('todo bien');
+                                        
+
+                                            if(response.data.length != 0){
+
+                                                instrumento_id_r = instrumentos_id; //asignamos el nuevo valor a nuestra variable de formulario
+
+
+
+                                                alert('Hay data');
+
+                                                $('.codigos').remove();
+
+                                                $('.columna-codigo').append('<select class="codigos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el codigo de trazabilidad</option><option class="font-weight-bold" disabled>  <b> Código ---------- Fecha --------- Hora  </b> </option> </select>');
+
+                                                
+
+                                                $.each(response.data,function(index,value){
+
+                                                    $('.codigos').append('<option codigo="'+value.codigo+'"  value="'+value.inventarioOriginal+'">'+value.codigo+' --- '+value.fecha+' --- '+value.hora+'</option>');
+
+                                                });
+
+
+                                                    $('.codigos').on('change', function(){
+
+                                                        codigo_r = $('.codigos > option:selected').attr('codigo');
+
+                                                        id_raiz_item = $('.codigos').val();
+
+                                                        console.log('codigo: '+codigo_r);
+                                                        console.log('id_raiz: '+id_raiz_item);
+
+                                                    });
+
+
+
+
+                                                
+
+
+                                            }else{
+
+                                                alert('No hay códigos disponibles');
+
+                                                reiniciarSelects();
+
+                                            }
+
+                                        }else{
+
+                                            alert('todo mal')
+
+                                        }
+
+                                    }).fail(function(response){
+
+                                        alert('todo mal2');
+
+                                    });
+                            });
+
+                            
+
+                        
+
+                    }else{
+
+                        alert('todo mal');
+
+                        if(response.errors['id_raiz_item']){
+
+                            alert(response.errors['id_raiz_item']);
+
+                            reiniciarSelects();
+
+                        }else{
+
+                        }
+
+                    }
+
+                }).fail(function(response){
+
+                    alert('todo mal2');
+
+                    reiniciarSelects();
+
+                });
+
+
+            }else{
+                alert('Rellene todos los campos');
+            }
+
+
+        });
+
+
+        //ejemplos
+
+        //$('.revertir').unbind();
+
+        $('tbody').on('click','.revertir',function(){ //para haer funciones que trabajan con items dinamicos en el dom
+                                                        //se recomienda leer un punto fijo que  no sea dinamico y a través de ese punto fijo filtrar
+                                                        //para obtener los elementos que queremos a través del filtro, así siempre leeremos lo nuevos elementos
+
+            var id_acta_instrumentos = $(this).attr('id_acta_instrumentos');
+            var id_raiz_item = $(this).attr('id_raiz_item');
+
+
+            console.log('id_acta_instrumentos: '+id_acta_instrumentos);
+            console.log('id_raiz_item: '+id_raiz_item);
+
+            var datos = {
+                'id_acta_instrumentos' : id_acta_instrumentos,
+                'id_raiz_item' : id_raiz_item
+            }
+
+
+
+
+            $.ajax({
+
+                url : "<?=site_url('inventario_api/Api/cambio_eliminar') ?>",
+                method : "put",
+                data : datos
+
+            }).done(function(response){
+
+                if(response.status == 1){
+
+                    alert('todo bien');
+
+                    $('.'+id_raiz_item).remove();
+
+                }else{
+
+                    alert('todo mal');
+
+                }
+
+            }).fail(function(response){
+
+                alert('todo mal2');
+
+            });
+
+
+        });
+
+
+        $('.siguiente').on('click',function(){
+
+            event.preventDefault();
+
+            var tipo = $('.tipo').val();
+            var instrumentos = $('.instrumentos').val();
+            var codigos = $('.codigos').val();
+
+            if(tipo && instrumentos && codigos){
+
+                var alerta2 = confirm('¿Desea agregar el último dato seleccionado antes de salir?');
+
+                if(alerta2){
+
+                    alert('sí');
+
+                    var datos2 = {
+
+                    'codigo' : codigo_r,
+                    'instrumento_id' : instrumento_id_r,
+                    'acta_procedimiento_id' : acta_procedimiento_id_r,
+                    'id_raiz_item' : id_raiz_item
+
+                }
+
+
+                console.log(datos2);
+
+                    $.ajax({
+
+                    url : "<?=site_url('enf_api/Api/actaInstrumentos');  ?>",
+                    method : "post",
+                    data : datos2
+
+                }).done(function(response){
+
+                    if(response.status == 1){
+
+                        alert('todo bien');
+
+                        window.location.replace('<?=site_url('enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
+
+
+
+
+                    }else{
+
+                        alert('todo mal');
+
+                        if(response.errors['id_raiz_item']){
+
+                            alert(response.errors['id_raiz_item']);
+
+                            reiniciarSelects();
+
+                        }else{
+
+                        }
+
+                    }
+
+                }).fail(function(response){
+
+                    alert('todo mal2');
+
+                    reiniciarSelects();
+
+                });
+                    
+                }else{
+                    alert('No');
+                    window.location.replace('<?=site_url('enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
+                }
+
+
+
+            }else{
+
+                
+                var alerta1 = confirm('¿Está seguro que desea continuar? \n No podrá eliminar los instrumentos agregados');
+
+                if(alerta1){
+
+                    alert('sí');
+
+                    window.location.replace('<?=site_url('enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
+                    
+                }else{
+                    alert('No');
+                }
+            }
+
+        });
+
+       
+
+        function reiniciarSelects(){
+
+            instrumento_id_r = 0;
+            codigo_r = "";
+             extra_r = "";
+
+            //$('.tipo').val($('.tipo > option:first').val());
+
+            $('.instrumentos').val($('.instrumentos > option:first').val());
+            //$('.instrumentos').prop('disabled',true);
+
+            $('.codigos').remove();
+
+        }
+
+    });
+
+</script>
+
 </html>

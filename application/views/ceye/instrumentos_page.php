@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
-    <title>CEyE</title>
+    <title>CEyE - Instrumentos</title>
 
     <style type="text/css">
 
@@ -89,46 +89,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <table class="table table-bordered">
         <thead>
             <tr>
-                <td class="table-danger">Tipos</td>
-                <td class="table-danger">Instrumentos</td>
-                <td class="table-danger">Códigos de trazabilidad</td>
+                <td class="table-danger">Codigo</td>
+                <td class="table-danger">Instrumento</td>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="tablaBody">
+        <?php foreach ($acta_instrumentos as $acta_instrumento) {  ?>
             <tr class="table-active">
-                <td class="table-danger"> 
-                    <label for="">tipo</label>
-                </td>
-                <td class="table-danger">
-                    <label for="">instr</label>
-                </td>
-                <td class="table-danger">
-                    <label for="">Código</label>
-                </td>
+                <td class="table-danger"><?=$acta_instrumento->codigo;?></td>
+                <td class="table-danger" value="<?=$acta_instrumento->id; ?>"><?= $acta_instrumento->instrumentos ?></td>
             </tr>
-            <tr class="table-active">
-                <td class="table-danger">
-                    <label for="">tipo</label>
-                    </select>
-                </td>
-                <td class="table-danger"> 
-                    <label for="">instr</label>
-                </td>
-                <td class="table-danger">
-                    <label for="">Código</label>
-                </td>
-            </tr>
-            <tr class="table-active">
-                <td class="table-danger"> 
-                    <label for="">tipo</label>
-                </td>
-                <td class="table-danger"> 
-                    <label for="">instr</label>
-                </td>
-                <td class="table-danger"> 
-                    <label for="">Código</label>
-                </td>
-            </tr>
+
+        <?php } ?>
             
         </tbody>
         

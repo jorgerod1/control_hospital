@@ -157,7 +157,7 @@ create table acta_instrumentos_ceye(
         foreign key (instrumento_id) references instrumentos(id),
         foreign key (acta_instrumentos_ceye_id) references acta_instrumentos_ceye(id)
     
-    );
+    ); 
 
 
 

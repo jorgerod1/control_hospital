@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <nav class="navbar" style="background-color: #FFACC6;">
-  <div class="container-fluid">
+  <div class="container-fluid"> 
     <a class="navbar-brand" href="#">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
@@ -116,10 +116,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <?php  foreach ($acta_ceye as $acta_ceye) { ?>
     <div class="card" style="width: 18rem;" id="c1">
       <div class="card-body">
-        <h5 class="card-title"><?=$acta_ceye->no_carga;?></h5>
-        <h5 class="card-title"><?=$acta_ceye->no_paquete;?></h5>
-        <h5 class="card-title"><?=$acta_ceye->fecha;?></h5>
-        <h5 class="card-title"><?=$acta_ceye->hora;?></h5><br>
+        <h5 class="card-title">No. carga: <?=$acta_ceye->no_carga;?></h5>
+        <h5 class="card-title">No. paquete: <?=$acta_ceye->no_paquete;?></h5>
+        <h5 class="card-title">Fecha: <?=$acta_ceye->fecha;?></h5>
+        <h5 class="card-title">Hora: <?=$acta_ceye->hora;?></h5><br>
         <a href="<?=site_url('Administrador/CargasTable');?>" class="btn btn-primary" style="background-color: #00B4CC;">Ver detalles</a><br>
       </div>
     </div>

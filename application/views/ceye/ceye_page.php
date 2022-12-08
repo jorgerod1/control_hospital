@@ -44,14 +44,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			"header main main main logo"
 			"header . sidebar footer logo";
 	}
-    #cartas{
+    #contenedor1{
         display: grid;
         grid-template-columns: 4fr 1fr;
         justify-content:center;
         border-color:black;
         margin-left:40px;
         margin-right:40px;
-        
     }
     #info{
         margin-left:20px;
@@ -76,7 +75,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         margin-top:15px;
         
     }
-	
 	</style>
 </head>
 <body>
@@ -99,68 +97,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <h3 align="center">CEyE</h3><br>
 
-<div id="cartas" >
-    <?php foreach ($acta_procedimientos as $acta_procedimiento) {  //las variables del foreach debe ser diferentes?> 
-    <div style="background-color: #FFACC6;" ><br>
-        <div class="card mb-3" id="info">
-            <div class="card-body" id="contenido">
-            
-                <div>
-                    <p>Procedimiento: <?=$acta_procedimiento->procedimiento_id;?></p>
-                    <p>Fecha: <?=$acta_procedimiento->fecha;?></p>
-                    <p>Cirugía: <?=$acta_procedimiento->fecha;?></p>
-                </div>
-                <div>
-                    <p>Servicio: <?=$acta_procedimiento->servicio;?></p>
-                    <p>Hora: <?=$acta_procedimiento->hora;?></p>
-                </div> 
-            
-                
-                <div id="botones">
-                    <a href="<?=site_url('Ceye/instrumentos');?>" target="_blank" class="mr-2 btn btn-primary" id="b1">Instrumentos</a>
-                    <a href="#" class="btn btn-success" id="b2">Detalles</a>
-                    <a href="#" class="mr-2 btn btn-warning" id="b3">Bultos</a>
-                    <a href="#" class="btn btn-danger" id="b4">Finalizar</a>
-                </div>
-            </div>
-        </div>
-        <?php } ?>
-        <div style="background-color: #FFACC6;" ><br>
-        <div class="card mb-3" id="info">
-            <div class="card-body" id="contenido">
-            
-                <div>
-                    <p>Procedimiento: </p>
-                    <p>Fecha:</p>
-                    <p>Cirugía: </p>
-                </div>
-                <div>
-                    <p>Servicio: </p>
-                    <p>Hora: </p>
-                </div> 
-            
-                
-                <div id="botones">
-                    <a href="<?=site_url('Ceye/instrumentos');?>" target="_blank" class="mr-2 btn btn-primary" id="b1">Instrumentos</a>
-                    <a href="<?=site_url('Ceye/detalles');?>" target="_blank" class="btn btn-success" id="b2">Detalles</a>
-                    <a href="<?=site_url('Ceye/bultos');?>" target="_blank" class="mr-2 btn btn-warning" id="b3">Bultos</a>
-                    <a href="#" class="btn btn-danger" id="b4">Finalizar</a>
-                </div>
+<div id="contenedor1">
+    <div id="contenedorDatos">
+        <div style="background-color: #FFACC6;" id="datos"><br>
+            <div class="card mb-3" id="info">
+                <?php foreach ($acta_procedimientos as $acta_procedimiento) {  //las variables del foreach debe ser diferentes?> 
+                    <div class="card-body" id="contenido">
+                        <div>
+                            <p>Procedimiento: <?=$acta_procedimiento->procedimiento_id;?></p>
+                            <p>Fecha: <?=$acta_procedimiento->fecha;?></p>
+                            <p>Cirugía: <?=$acta_procedimiento->fecha;?></p>
+                        </div>
+                        <div>
+                            <p>Servicio: <?=$acta_procedimiento->servicio;?></p>
+                            <p>Hora: <?=$acta_procedimiento->hora;?></p>
+                        </div>
+                        <div id="botones">
+                            <a href="<?=site_url('Ceye/instrumentos');?>" target="_blank" class="mr-2 btn btn-primary" id="b1">Instrumentos</a>
+                            <!-- <a href="#" class="btn btn-success" id="b2">Detalles</a>-->
+                            <a href="<?=site_url('Ceye/Bultos');?>" target="_blank" class="btn btn-warning" id="b3">Bultos</a>
+                            <a href="#" class="btn btn-danger" id="b4">Finalizar</a>
+
+                            <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" id="b2">
+                                Detalles
+                            </button>
+                            <div style="min-height: 120px;">
+                                <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                                    <div class="card card-body" style="width: 300px;">
+                                        <p>Nombre del paciente: <?=$acta_procedimiento->nombre_paciente;?></p>
+                                        <p>Fecha de nacimiento: <?=$acta_procedimiento->fecha_nacimiento;?></p>
+                                        <p>Edad: <?=$acta_procedimiento->edad;?></p>
+                                        <p>Enfermera quirurgica: <?=$acta_procedimiento->enfermera_quirurjica;?></p>
+                                        <p>Enfermera circulante: <?=$acta_procedimiento->enfermera_circulante;?></p>
+                                        <p>Cirujano: <?=$acta_procedimiento->cirujano;?></p>
+                                        <p>Anestesiologo: <?=$acta_procedimiento->anestesiologo;?></p>
+                                        <p>Sala: <?=$acta_procedimiento->sala;?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>
 
-    <div class="card" style="width: 20rem;" align="center" id="agregar"> <br>
-        <h4 class="card-title" align="center">Agregar nueva carga</h4>
-        
-        <div class="card-body">
-            <img src="<?=base_url();?>imagenes/equipo.png" class="card-img-top" alt="..."><br><br>
-            <a href="<?=site_url('Ceye/carga');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a>
+    <div id="contenedorCartaAgregar">
+        <div class="card" style="width: 20rem;" align="center" id="agregar"> <br>
+            <h4 class="card-title" align="center">Agregar nueva carga</h4>
+
+            <div class="card-body">
+                <img src="<?=base_url();?>imagenes/equipo.png" class="card-img-top" alt="..."><br><br>
+                <a href="<?=site_url('Ceye/carga');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a>
+            </div>
         </div>
     </div>
+
 </div>
-
-
 
 <br><br>
 	

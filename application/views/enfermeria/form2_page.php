@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <tr class="fila table-active">
                 <td class="table-danger">
                     <select class="tipo form-control form-select-lg mb-3" aria-label=".form-select-lg example">
-                        <option disabled selected>Open this select menuu</option>
+                        <option disabled selected>Selecciona el tipo de instrumento</option>
                          <?php foreach ($tipo_instrumentos as $tipo ) { ?>
 
                             <option value="<?=$tipo->id; ?>"><?=$tipo->tipo; ?></option>
@@ -107,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </td>
                 <td class="table-danger">
                     <select disabled class="instrumentos form-control form-select-lg mb-3"  aria-label=".form-select-lg example">
-                        <option disabled selected>Open this select menu</option>
+                        <option disabled selected>Selecciona el instrumento</option>
                      
                     </select>
                 </td>
@@ -119,11 +119,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </td>
             </tr>
 
-            
-
-            
-           
-            
         </tbody>
         
     </table>
@@ -160,8 +155,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     $(function(){
 
-       
-
         $('.tipo').on('change',function(){
 
             $('.codigos').remove();
@@ -186,7 +179,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     alert('instrumentos todo bien');
 
                     $('.instrumentos').empty();
-                    $('.instrumentos').append('<option disabled selected>Open this select menu</option>');
+                    $('.instrumentos').append('<option disabled selected>Selecciona el instrumento</option>');
 
                     $.each(response.data,function(index,value){
 
@@ -239,7 +232,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         $('.codigos').remove();
 
-                        $('.columna-codigo').append('<select class="codigos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Open this select menu</option><option class="font-weight-bold" disabled>  <b> Código ---------- Fecha --------- Hora  </b> </option> </select>');
+                        $('.columna-codigo').append('<select class="codigos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el codigo de trazabilidad</option><option class="font-weight-bold" disabled>  <b> Código ---------- Fecha --------- Hora  </b> </option> </select>');
 
                         
 
@@ -358,7 +351,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         //Ahora eliminamos sus clases
 
 
-                        $('.tablaBody').append(' <tr class="fila table-active"><td class="table-danger"><select  class="tipo form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Open this select menuu</option><?php foreach ($tipo_instrumentos as $tipo ) { ?><option value="<?=$tipo->id; ?>"><?=$tipo->tipo; ?></option><?php } ?> </select></td><td class="table-danger"><select disabled class="instrumentos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Open this select menu</option></select></td><td class="columna-codigo table-danger"></td><td class="columna-extra table-danger"></td></tr>');
+                        $('.tablaBody').append(' <tr class="fila table-active"><td class="table-danger"><select  class="tipo form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el tipo de instrumento</option><?php foreach ($tipo_instrumentos as $tipo ) { ?><option value="<?=$tipo->id; ?>"><?=$tipo->tipo; ?></option><?php } ?> </select></td><td class="table-danger"><select disabled class="instrumentos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el tipo de instrumento</option></select></td><td class="columna-codigo table-danger"></td><td class="columna-extra table-danger"></td></tr>');
 
 
                             $('.tipo').on('change',function(){
@@ -385,7 +378,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         alert('instrumentos todo bien');
 
                                         $('.instrumentos').empty();
-                                        $('.instrumentos').append('<option disabled selected>Open this select menu</option>');
+                                        $('.instrumentos').append('<option disabled selected>Selecciona el instrumento</option>');
 
                                         $.each(response.data,function(index,value){
 
@@ -440,7 +433,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                                 $('.codigos').remove();
 
-                                                $('.columna-codigo').append('<select class="codigos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Open this select menu</option><option class="font-weight-bold" disabled>  <b> Código ---------- Fecha --------- Hora  </b> </option> </select>');
+                                                $('.columna-codigo').append('<select class="codigos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el codigo de trazabilidad</option><option class="font-weight-bold" disabled>  <b> Código ---------- Fecha --------- Hora  </b> </option> </select>');
 
                                                 
 

@@ -88,32 +88,41 @@ Control físico, Químico y Biológico
     <table class="table table-bordered">
         <thead>
             <tr>
-                <td class="table-danger">Tipos</td>
-                <td class="table-danger">Instrumentos</td>
-                <td class="table-danger">Códigos de trazabilidad</td>
-            </tr>
+                <td class="table-danger">Autoclave</td>
+                <td class="table-danger">No. carga</td>
+                <td class="table-danger">No. paquete</td>
+                <td class="table-danger">Autoclave</td>
+                <td class="table-danger">Fecha</td>
+                <td class="table-danger">Hora</td>
+                <td class="table-danger">Turno</td>
+                <td class="table-danger">Responsable</td>
+            </tr> 
         </thead>
-        <tbody>
-            <tr class="table-active">
-                <td class="table-danger">
-                </td>
-                <td class="table-danger">
-                </td>
-                <td class="table-danger"></td>
-            </tr>
-            <tr class="table-active">
-                <td class="table-danger">
-                </td>
-                <td class="table-danger">
-                </td>
-                <td class="table-danger"></td>
-            </tr>
-            <tr class="table-active">
-                <td class="table-danger">
-                </td>
-                <td class="table-danger">
-                </td>
-                <td class="table-danger"></td>
+        <tbody class="tablaBody">
+            <tr class="fila  table-active">
+                <?php  foreach ($acta_ceye as $acta_ceye) { ?>
+                    <td class="table-danger">
+                        <p><?=$acta_ceye->autoclave;?></h5>
+                    </td>
+                    <td class="table-danger">
+                        <p><?=$acta_ceye->no_carga;?></h5>
+                    </td>
+                    <td class="table-danger">
+                        <p><?=$acta_ceye->no_paquete;?></h5>
+                    </td>
+                    <td class="table-danger">
+                        <p><?=$acta_ceye->fecha;?></h5>
+                    </td>
+                    <td class="table-danger">
+                        <p><?=$acta_ceye->hora;?></h5>
+                    </td>
+                    <td class="table-danger">
+                        <p><?=$acta_ceye->turno;?></h5>
+                    </td>
+                    <td class="table-danger">
+                        <p><?=$acta_ceye->responsable;?></h5>
+                    </td>
+                <?php } ?>
             </tr>
             
         </tbody>

@@ -178,6 +178,14 @@ de ubicarlas o hacerlas
 
 //En esta parte estoy un poco confundido con lo de la api, creo que es el controlador, igual no me queda tan claro
 pero cualquier cosa vuelvemelo a explicar o igual se resolvió con alguna cosita que ya hice sino mandame mensaje sin problema 
+
+
+ 08/12/22
+Esq la parte del foreach se como implementarla en el html, pero supongo que para que eso funcione
+debo modificar el codigo de los controllers, eso es lo que no se como hacer
+igual ya estoy dejando listo el codigo del front, marca errores que quiero pensar es por lo de los
+contrllers que te digo
+
 -  -  -   -  -   -  -   -  -   -   -   -   -   -   -   -   -    -   -   -    -    -   -    -     - 
 
 en Ceye
@@ -186,6 +194,14 @@ el boton detalles y el boton bultos, que datos va a mostrar?
 //boton de ceye, despliega en la misma vista una card que funciona como objeto escondido, todo esto
 ya estará cargado en la pagina al iniciar, solo se debe mostrar. Puedes buscar en bootstrap como hacerlo 
 creo que se llama toggle
+
+ 08/12/22
+
+ intente ponerle el despleglable a "Detalles" pero no pude, ya deje el codigo ahi listo no se si tu 
+ puedas encontrar la razon por la que no los pespliega, lo saque de aqui:
+ https://getbootstrap.com/docs/5.2/components/collapse/
+ el que dice Horizontal
+
 
 Bultos e instrumentos se despliegan en una ventana propia con su propia vista (posibilidad de hacerlo todo en la misma vista
 pero con modals) y los datos que mostraran, recibiran el id de su antecesor acta_procedimientos y mostraran
@@ -210,3 +226,12 @@ aquí en el readme y los checho en la tarde-noche sin problema
 -  -  -   -  -   -  -   -  -   -   -   -   -   -   -   -   -    -   -   -    -    -   -    -     - 
   PD: INTENTE TODA LA TARDE HACERLO PERO NO MAS NO PUDE :( 
     NO QUISE MOLESTARTE POR LO DE TUS ESTANCIAS, SORRY :(
+
+
+
+
+
+08/12/22
+
+
+Dale una revisada a todo lo que modifique para que corregir los errores que probablemente hay :)
