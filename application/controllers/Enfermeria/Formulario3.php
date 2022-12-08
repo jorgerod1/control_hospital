@@ -21,7 +21,7 @@ class Formulario3 extends CI_Controller {
 
 				$data['ropa_qui'] = $this->DAOropa_qui->seleccionar_entidad('ropa_qui');
 
-				
+				 
 				$this->load->view('enfermeria/form3_page',$data);
 
 			}else{
@@ -43,6 +43,6 @@ class Formulario3 extends CI_Controller {
 		}
 
 		
-	}
+	} 
 
-}
+} 

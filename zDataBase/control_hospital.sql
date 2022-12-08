@@ -112,7 +112,7 @@ create table acta_instrumentos(
     foreign key (acta_procedimiento_id) references acta_procedimientos(id)
     
 );
-
+ 
 
 create table acta_ceye(
 

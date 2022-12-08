@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class DAOusuarios extends CI_Model {
 
-
+ 
 
     function traerEspecifico($usuario){
         $this->db->where('usuario',$usuario);             //traemos un data en especifico, recibimos usuario como filtro del resto de datos

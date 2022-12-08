@@ -7,5 +7,5 @@ class Usuarios extends CI_Controller {
 	{
 		$this->load->view('admin/adminUs_page');
 	}
-
+ 
 }

@@ -95,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h4 class="card-title" align="center">Usuarios</h4>
         
         <div class="card-body">
-            <img src="<?=base_url();?>imagenes/usuarios.png" class="card-img-top" alt="..." width="200" height="200"><br><br>
+            <img src="<?=base_url();?>imagenes/USUARIO.png" class="card-img-top" alt="..." width="200" height="200"><br><br>
             
             <a href="<?=site_url('Administrador/Usuarios');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a><br> <br>
         </div>
@@ -106,7 +106,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h4 class="card-title" align="center">Inventarios</h4>
         
         <div class="card-body">
-            <img src="<?=base_url();?>imagenes/CEyE.png" class="card-img-top" alt="..."><br><br>
+            <img src="<?=base_url();?>imagenes/CeyeImg.jpeg" class="card-img-top" alt="..."><br><br>
             <a href="<?=site_url('Administrador/CEyE');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a>
             <br> <br>
         </div>

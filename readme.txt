@@ -78,8 +78,8 @@ alter table usuarios drop usuario;
 
   //PENDIENTES PROXIMOS George
 
-    -agregar boton de eliminacion total a través de acta_procedimientos en acta_instrumentos NO NECESARIO
-    -agregar o ver posibilidad de eliminación individual de cada uno de los posibles registros de acta_instrumentos COMPLETADO
+    -agregar boton de eliminacion total a través de acta_procedimientos en acta_instrumentos
+    -agregar o ver posibilidad de eliminación individual de cada uno de los posibles registros de acta_instrumentos
 
 
 Notas Erika //
@@ -94,43 +94,57 @@ Mostrar exactamente de la fisma forma como se muestra actualemente la parte visu
 pero todos los datos y filas deben ser agregadas con un foreach a traves de la variable que ya cargaste previamente
   
 
-//---------------------------//
-
-03/12/22
-
-Favor de actualizar los pendientes para saber qué está completado y qué no,
-Leer comentarios en controladoes y tomar acciones pertinentes antes de seguir con el trabajo
-/* las acciones pertienentes no las he tomado yo para que pudieras visualizar porque tiene que ser cambiado
-o eliminado un controlador*/  Actualizar el recorrido por la pagina con los controladores correctos ya que si seguimos por esta senda se convierte en doble trabajo
-
-//Doctora comentarios y Notas
-
-- En el formulario que pertence a la tabla acta_procedimientos agregar campo de procedimientos con entrada normal de varchar, dejar 
-la anterior foreign key de procedimientos_id en la tabla pero marcarla en default como null y eliminarlo de la parte visual
+02/12/2022
 
 
-//POSIBILIDADES 
-
--Posibilidad de guardar en la tabla acta_instrumentos el id del item del cual se extrajo el codigo de trazabilidad
- /*el id de la tabla "inventario"*/ de esa manera saber a qué item pertence cada acta_instrumentos
-
--En base al cambio anterior, posibilidad de crear botones de regreso avanzados donde se podrán editar los cambios
-y las acciones hechas por las enfermeras en las 3 actas correspondientes a la seccion de enfermeras a través de los ids
-
-04/12/22
-
-Agregar estas líneas a la base de datos:
-
-alter table acta_ceye modify column no_carga varchar(30);
-alter table acta_ceye modify column no_paquete varchar(30);
-
-05/12/22
-
-Generacion de codigo de trazabilidad en automatico TERMINADO
-Funcionamiento de agregar cargas e instrumentales por parte de ceye TERMINADO 
+insert into ropa_qui values (null, 'Bulto Cirugía General');
+insert into ropa_qui values (null, 'Bulto Cirugía Menor');
+insert into ropa_qui values (null, 'Bulto Parto');
+insert into ropa_qui values (null, 'Bulto Pediátrico');
+insert into ropa_qui values (null, 'Bulto 3 batas');
+insert into ropa_qui values (null, 'Bulto 1 bata');
+insert into ropa_qui values (null, 'Bulto de 4 campos');
+insert into ropa_qui values (null, 'Bulto de 2 campos');
+insert into ropa_qui values (null, 'Bulto Hendido');
 
 
 
 
+-------------------------------------------------------
+06/12/22
+-------------------------------------------------------
 
 
+YA hice la vista para equipos, como me habias dicho, use el mismo formulario para toco, pero cuando
+quiero guardar los datos de las tablas marca que yo no tengo acceso a eso o algo asi, lo mismo
+cuando quiero guardar toco-cirugias.
+
+-  -  -   -  -   -  -   -  -   -   -   -   -   -   -   -   -    -   -   -    -    -   -    -     - 
+
+Trate de pintar los datos en la pagina principal de ceye, pero no pude :(
+  ya deje el foreach acomodado como debe de ser, creo que el error viene de:  Enfermeria>Carga.ph
+  no supe bien donde ponerlo la verdad.
+
+-  -  -   -  -   -  -   -  -   -   -   -   -   -   -   -   -    -   -   -    -    -   -    -     - 
+
+No entendi bien como puedo hacer para extraer la base de datos para luego pintarlos (esta si me quedo clara)
+me puedes ayudar dejando eso listo porfa?
+
+es la api para mostrar las tres ventanas de administrador y el de acta_procedimientos, me confundi mucho al momento
+de ubicarlas o hacerlas
+
+-  -  -   -  -   -  -   -  -   -   -   -   -   -   -   -   -    -   -   -    -    -   -    -     - 
+
+en Ceye
+el boton detalles y el boton bultos, que datos va a mostrar?
+
+-  -  -   -  -   -  -   -  -   -   -   -   -   -   -   -   -    -   -   -    -    -   -    -     - 
+
+administrador
+segun yo modifique Cargas_page y inventario_page y sus respectivoss controllers para mostrardatos pero no me salio
+
+para inventario, en la base de datos no viene fecha y hora pero en la tabla que pusimos si, ahi como le hacemos?
+
+-  -  -   -  -   -  -   -  -   -   -   -   -   -   -   -   -    -   -   -    -    -   -    -     - 
+  PD: INTENTE TODA LA TARDE HACERLO PERO NO MAS NO PUDE :( 
+    NO QUISE MOLESTARTE POR LO DE TUS ESTANCIAS, SORRY :(
