@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<?=base_url();?>">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
     </a>
@@ -80,33 +80,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </svg>
     Regresar a menú
 </a><br><br>
-<div id="formulario">
-    <form class="row g-3">
-    <div class="col-md-6">
+<div >
+    <form id="formulario" class="row g-3">
+    <!--<div class="col-md-6">
         <label for="" class="form-label">Servicio</label>
         <input type="text" class="form-control" id="">
-    </div>
+    </div>-->
     <div class="col-md-2">
-        <label for="" class="form-label">Turno</label>
-        <input type="text" class="form-control" id="">
+        <label for="turno" class="form-label">Turno</label>
+        <input type="text" class="form-control" id="turno" name="turno">
+        <small class="s_enfermera_circulante invalid-feedback"></small>
     </div>
 
     <div class="col-md-2">
-        <label for="" class="form-label">Fecha</label>
-        <input type="text" class="form-control" id="">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input disabled type="date" class="form-control" id="">
     </div>
     <div class="col-md-2">
         <label for="" class="form-label">Hora</label>
-        <input type="text" class="form-control" id="">
+        <input type="time" disabled class="form-control" id="">
     </div>
     <div class="col-md-6">
-        <label for="inputCity" class="form-label">Enfermera(o) responsable</label>
-        <input type="text" class="form-control" id="inputCity">
+        <label for="enfermera_circulante" class="form-label">Enfermera(o) responsable</label>
+        <input type="text" class="form-control" id="enfermera_circulante" name="enfermera_circulante">
+        <small class="s_enfermera_circulante invalid-feedback"></small>
     </div>
     
     
     <div class="col-md-6" align="center"><br>
-    <a href="<?=site_url('Enfermeria/TocoForm1');?>" type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Siguiente</a>
+    <button href="<?=site_url('Enfermeria/TocoForm1');?>" type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Siguiente</button>
     </div>
 
 
@@ -117,4 +119,79 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <br><br>
 	
 </body>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script type="text/javascript">  
+
+        $(function(){
+
+            
+
+
+            $('#formulario').on('submit',function(event){
+
+
+                event.preventDefault();
+
+                var datos = $(this).serialize();
+
+                datos = datos+'&usuario_id='+'<?=$this->session->userdata('id');?>';
+
+                console.log(datos);
+
+                $.ajax({
+
+                    url : "<?=base_url('/index.php/enf_api/Api/actaProcedimientos_equipo')?>",
+                    method : "post",
+                    data : datos
+
+                }).done(function(response){
+
+                    if(response.status == 1){
+                      console.log('todo bien');
+
+                      alert('Acta agregada correctamente');
+
+                        
+
+                      $('#formulario input,select').removeClass('is-invalid');
+                      $('#formulario input,select').addClass('is-valid');
+
+
+                      window.location.replace('<?=site_url('Enfermeria/Formulario2/index/');?>'+response.data);
+                        
+                      
+
+                    }else if(response.status == 0){
+                      console.log('todo mal');
+                      alert('Validación de datos incorrecta');
+
+                      $('#formulario input,select').removeClass('is-invalid');
+                      $('#formulario input,select').addClass('is-valid');
+
+                        $.each(response.errors, function(index,value){   
+
+                            $('#'+index).removeClass('is-valid'); 
+                            $('#'+index).addClass('is-invalid'); 
+
+                            $('.s_'+index).text(value);
+
+                        });
+
+                    }
+
+                }).fail(function(response){
+
+                    console.log('todo mal2');
+                    alert('todo mal2');
+
+                });
+
+            });
+
+        });
+
+
+</script>
 </html>

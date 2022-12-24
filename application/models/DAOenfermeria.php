@@ -28,6 +28,11 @@ class DAOenfermeria extends CI_Model {
     return $this->db->insert_id();
   }
 
+  function registrar_bulto($data){
+    $this->db->insert('acta_ropa_qui', $data);
+    return $this->db->insert_id();
+  }
+
   function eliminar_instrumentos($id){
 
 

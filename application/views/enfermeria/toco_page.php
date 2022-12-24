@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<?=base_url();?>">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
     </a>
@@ -87,8 +87,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <select class="form-control form-select-lg mb-12" aria-label=".form-select-lg example" id="servicio" name="servicio">
 
                 <option disabled selected>Selecciona una opción</option>
-                <option value="quirofano1">Quirofano 1</option>
-                <option value="quirofano2">Quirofano 2</option>
+                <!--<option value="quirofano1">Quirofano 1</option>
+                <option value="quirofano2">Quirofano 2</option>-->
                 <option value="toco1">Toco-cirugía 1</option>
                 <option value="toco2">Toco-cirugía 2</option>
 
@@ -119,7 +119,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
     
     <div class="col-md-6" align="center"><br>
-    <a href="<?=site_url('Enfermeria/TocoForm1');?>" type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Siguiente</a>
+    <button href="<?=site_url('Enfermeria/TocoForm1');?>" type="submit" class="siguiente btn btn-primary" style="background-color: #00B4CC;">Siguiente</button>
     </div>
 
 
@@ -153,7 +153,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 $.ajax({
 
-                    url : "<?=base_url('/index.php/enf_api/Api/actaProcedimientos')?>",
+                    url : "<?=base_url('/index.php/enf_api/Api/actaProcedimientos_toco')?>",
                     method : "post",
                     data : datos
 
@@ -170,7 +170,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       $('#formulario input,select').addClass('is-valid');
 
 
-                      window.location.replace('<?=site_url('Enfermeria/TocoForm1/index/');?>'+response.data);
+                      window.location.replace('<?=site_url('Enfermeria/Formulario2/index/');?>'+response.data);
                         
                       
 

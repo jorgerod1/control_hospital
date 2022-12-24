@@ -116,22 +116,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <input type="text" class="form-control" id="enfermera_circulante" name="enfermera_circulante">
             <small id="s_enfermera_circulante" class="invalid-feedback">  </small>
         </div>
-        
         <div class="col-md-6">
+            <label for="procedimientos" class="form-label">Procedimiento</label>
+            <input type="text" class="form-control" id="procedimientos" name="procedimientos">
+            <small id="s_procedimientos" class="invalid-feedback">  </small>
+        </div>
+        
+        <!--<div class="col-md-6">
             <label for="procedimiento_id" class="form-label">Procedimientos</label><br>
             <select class="form-control form-select-lg mb-12" aria-label=".form-select-lg example" id="procedimiento_id" name="procedimiento_id">
 
                 <option disabled selected>Selecciona una opción</option>
 
-            <?php foreach ($procedimientos as $procedimiento) {  ?>
+            <?php// foreach ($procedimientos as $procedimiento) {  ?>
 
                     <option value="<?=$procedimiento->id; ?>"><?= $procedimiento->nombre ?></option>
                 
-                    <?php } ?>
+                    <?php //} ?>
 
             </select>
             <small id="s_procedimiento_id" class="invalid-feedback">  </small>
-        </div>
+        </div> -->
+
         <div class="col-md-6">
             <label for="cirujano" class="form-label">Medico Cirujano</label>
             <input type="text" class="form-control" id="cirujano" name="cirujano">
@@ -145,8 +151,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <option disabled selected>Selecciona una opción</option>
                 <option value="quirofano1">Quirofano 1</option>
                 <option value="quirofano2">Quirofano 2</option>
-                <option value="toco1">Toco-cirugía 1</option>
-                <option value="toco2">Toco-cirugía 2</option>
+                <!--<option value="toco1">Toco-cirugía 1</option>
+                <option value="toco2">Toco-cirugía 2</option>-->
 
             </select>
             <small id="s_servicio" class="invalid-feedback">  </small>

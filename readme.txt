@@ -235,3 +235,10 @@ aquí en el readme y los checho en la tarde-noche sin problema
 
 
 Dale una revisada a todo lo que modifique para que corregir los errores que probablemente hay :)
+
+//NO pintar datos con un foreach con una varible de recorrido que se llame igual que la variable original
+crea muchos problemas
+
+Agregar esta línea a la base de datos:
+
+alter table acta_procedimientos add procedimientos varchar(160);

@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="row">
 
-    <a class="ml-5" href="<?=site_url('enfermeria/Formulario2/index/');?><?=$acta_procedimientos_id;?>"><h5 >Regresar </h5></a><br>
+ 
 
 </div>
 
@@ -112,17 +112,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </tr>
         </thead>
         <tbody >
-        <?php foreach ($ropa_qui as $ropa_qui) {  ?>
+        <?php foreach ($ropa_qui as $ropa_quis) {  ?>
             <tr class="table-active">
                 <td class="table-danger" id="ch1">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1"></label>
+                        <input  class="form-check-input" type="checkbox"  value="<?=$ropa_quis->id;?>">
+                       
                     </div>
                 </td>
-                <td class="table-danger"><?=$ropa_qui->tipo_bulto;?></td>
+                <td class="table-danger"><?=$ropa_quis->tipo_bulto;?></td>
                 <td class="table-danger">
-                     <input class="form-control" type="text"aria-label="default input example">
+                     <input disabled id_qui="<?=$ropa_quis->id;?>" class="form-control" type="number" aria-label="default input example">
+                     <small id_qui="<?=$ropa_quis->id;?>" class="invalid-feedback"></small>
                 </td>
             </tr>
 
@@ -136,10 +137,200 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </div>
 <div id="botones">
-<a href="<?=site_url('Enfermeria/Cirugias');?>" type="submit" class="btn btn-primary" style="background-color: #00B4CC;">Guardar</a>
+<a href="<?=site_url('Enfermeria/Cirugias');?>" type="button" class="guardar btn btn-primary" style="background-color: #00B4CC;">Guardar</a>
 </div>
 
 <br><br>
 	
 </body>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+
+<script>
+
+    $(function(){
+
+        $('.form-check-input').on('click',function(){
+
+            var id_general = $(this).prop('value');
+
+            alert(id_general);
+
+            if($(this).prop('checked')){
+                alert('hola');
+
+
+                
+                $('input[id_qui='+id_general+']').prop('disabled',false);
+                $('input[id_qui='+id_general+']').val(1);
+              
+
+            }else{
+                alert('hola2');
+                $('input[id_qui='+id_general+']').prop('disabled',true);
+                $('input[id_qui='+id_general+']').val('');
+                
+            }
+
+            
+
+        });
+
+        $('.guardar').on('click',function(){
+
+            var bandera = 0;
+            var bandera2 = 0;
+            event.preventDefault();
+
+           <?php foreach ($ropa_qui as $ropa_quiss) {  ?>
+
+               var ids_ropa = $('.form-check-input[value="<?=$ropa_quiss->id; ?>"]').val();
+               var ropa_cantidad = $('input[id_qui="<?=$ropa_quiss->id; ?>"]').val();
+               var ids_cantidades = $('input[id_qui="<?=$ropa_quiss->id; ?>"]').attr('id_qui');
+                      
+                            //la funcion solo se aplica a elementos que no estén disabled, si tenemos elementos disabled y queremos obtener su valor mejor usar attr
+
+                if ($('.form-check-input[value="<?=$ropa_quiss->id; ?>"]').prop('checked') && $('input[id_qui="<?=$ropa_quiss->id; ?>"]').val()) {
+
+                    var datos = {
+                        'ropa_qui_id' : ids_ropa,
+                        'cantidad' : ropa_cantidad,
+                        'acta_procedimiento_id' : '<?=$acta_procedimientos_id; ?>'
+                    };
+
+                    $.ajax({
+
+                        url : "<?=site_url('enf_api/Api/guardar_bultos_validacion'); ?>",
+                        method : "post",
+                        data : datos,
+                        async : false
+
+                    }).done(function(response){
+
+                        if(response.status == 1){
+
+                            alert('todo bien');
+
+                            $('input[id_qui="'+response.data+'"]').removeClass('is-invalid');
+                            $('input[id_qui="'+response.data+'"]').addClass('is-valid');
+
+                        }else if(response.status == 0){
+
+                            alert('todo mal');
+                            bandera = 2;
+
+                            $('input[id_qui="'+response.data+'"]').removeClass('is-valid');
+                            $('input[id_qui="'+response.data+'"]').addClass('is-invalid');
+
+                            $('small[id_qui="'+response.data+'"]').text(response.errors.cantidad);
+
+                        }
+
+                    }).fail(function(response){
+                        alert('todo mal2');
+                        bandera = 1;
+                    });
+
+                    console.log(ids_ropa);
+                    console.log(ropa_cantidad);
+                    console.log(ids_cantidades);
+                    
+                } else {
+
+                    
+                    
+                }
+               
+            
+           <?php } ?>
+
+           
+
+           if (bandera == 0) {
+             bandera2 = 1;
+           } else if (bandera == 2){
+
+            var confirmacion = confirm('¿Está seguro que desea continuar? \n los datos mal validados no se registrarán')
+
+            if (confirmacion) {
+
+                
+                bandera2 = 1;
+                
+            } else {
+                
+            }
+             
+            
+           } else if (bandera == 1){
+            alert('Error en el servidor, vuelve a recargar la página o contacte un administrador');
+           }
+
+           if(bandera2 == 1){
+
+            
+           <?php foreach ($ropa_qui as $ropa_quiss) {  ?>
+
+               var ids_ropa = $('.form-check-input[value="<?=$ropa_quiss->id; ?>"]').val();
+               var ropa_cantidad = $('input[id_qui="<?=$ropa_quiss->id; ?>"]').val();
+               var ids_cantidades = $('input[id_qui="<?=$ropa_quiss->id; ?>"]').attr('id_qui');
+                      
+                            //la funcion solo se aplica a elementos que no estén disabled, si tenemos elementos disabled y queremos obtener su valor mejor usar attr
+
+                if ($('.form-check-input[value="<?=$ropa_quiss->id; ?>"]').prop('checked') && $('input[id_qui="<?=$ropa_quiss->id; ?>"]').val()) {
+
+                    var datos = {
+                        'ropa_qui_id' : ids_ropa,
+                        'cantidad' : ropa_cantidad,
+                        'acta_procedimiento_id' : '<?=$acta_procedimientos_id; ?>'
+                    };
+
+                    $.ajax({
+
+                        url : "<?=site_url('enf_api/Api/guardar_bultos'); ?>",
+                        method : "post",
+                        data : datos,
+                        async : false
+
+                    }).done(function(response){
+
+                        if(response.status == 1){
+
+                            alert('todo bien');
+
+                        }else if(response.status == 0){
+
+                            alert('todo mal');
+                           
+
+                        }
+
+                    }).fail(function(response){
+                        alert('todo mal2');
+                      
+                    });
+                    
+                } else {
+
+                    
+                    
+                }
+               
+            
+            <?php } ?>
+
+
+             window.location.replace('<?=site_url('Login/index/3'); ?>');
+           }
+
+           
+
+        });
+
+    });
+
+</script>
+
+
 </html>

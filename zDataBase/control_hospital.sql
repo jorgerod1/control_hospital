@@ -56,6 +56,7 @@ create table acta_procedimientos(
     sala int default null,
     usuario_id int,
     procedimiento_id int,
+    procedimientos varchar(160),
 
     foreign key (usuario_id) references usuarios(id),
     foreign key (procedimiento_id) references procedimientos(id)

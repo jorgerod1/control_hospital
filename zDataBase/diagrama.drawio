@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="234NKnhTCfFOBeIfzYKT" name="Page-1">
-        <mxGraphModel dx="2089" dy="1544" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1386" dy="1647" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -10,7 +10,7 @@
                 <mxCell id="5" value="&lt;b&gt;Cirugias&lt;/b&gt;&lt;br&gt;&lt;br&gt;id int pk auto_i&lt;br&gt;nombre varchar(140)&lt;br&gt;caracteristicas text default null&amp;nbsp;" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="410" y="-250" width="130" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="&lt;b&gt;Acta_procedimientos&lt;/b&gt;&lt;br&gt;&lt;br&gt;id int pk auto_i&lt;br&gt;nombre varchar(240) df null&lt;br&gt;fecha_nacimiento date df null&lt;br&gt;edad int df null&lt;br&gt;procedimiento_id int fk df 1 //partos&lt;br&gt;cirugia_pediatrica varchar(240) df null&lt;br&gt;servicio enum('quirofano1','quirofano2','toco1','toco2')&lt;br&gt;fecha date default current_timestamp&lt;br&gt;hora time default current_timestamp&lt;br&gt;enfermera_quirurjica varchar(140) df null&lt;br&gt;usuario_id int fk&lt;br&gt;cirujano varchar(140) df null&lt;br&gt;anestesiologo varchar(140) df null&lt;br&gt;enfermera_circulante varchar(140) df null&lt;br&gt;activo boolean&lt;br&gt;turno varchar(140) df null" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+                <mxCell id="6" value="&lt;b&gt;Acta_procedimientos&lt;/b&gt;&lt;br&gt;&lt;br&gt;id int pk auto_i&lt;br&gt;nombre varchar(240) df null&lt;br&gt;fecha_nacimiento date df null&lt;br&gt;edad int df null&lt;br&gt;procedimiento_id int fk df 1 //partos&lt;br&gt;cirugia_pediatrica varchar(240) df null&lt;br&gt;servicio enum('quirofano1','quirofano2','toco1','toco2')&lt;br&gt;fecha date default current_timestamp&lt;br&gt;hora time default current_timestamp&lt;br&gt;enfermera_quirurjica varchar(140) df null&lt;br&gt;usuario_id int fk&lt;br&gt;cirujano varchar(140) df null&lt;br&gt;anestesiologo varchar(140) df null&lt;br&gt;enfermera_circulante varchar(140) df null&lt;br&gt;activo boolean&lt;br&gt;turno varchar(140) df null, procedimientos vchr" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="60" y="-50" width="300" height="300" as="geometry"/>
                 </mxCell>
                 <mxCell id="8" value="&lt;b&gt;Ropa_qui&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;tipo_bulto varchar(140)" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
@@ -51,7 +51,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="18" value="" style="endArrow=classic;html=1;exitX=0.005;exitY=0.277;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.671;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="6" edge="1" source="10">
+                <mxCell id="18" value="" style="endArrow=classic;html=1;exitX=0.005;exitY=0.277;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.671;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="10" target="6" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="410" y="260" as="sourcePoint"/>
                         <mxPoint x="320" y="170" as="targetPoint"/>
@@ -109,7 +109,7 @@
                 <mxCell id="23" value="ropa_qui: ropa quirúrgica" style="text;html=1;strokeColor=#006EAF;fillColor=#1ba1e2;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="-50" y="610" width="160" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="24" value="" style="endArrow=classic;html=1;exitX=-0.004;exitY=0.28;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.001;entryY=0.799;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="10" target="11">
+                <mxCell id="24" value="" style="endArrow=classic;html=1;exitX=-0.004;exitY=0.28;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.001;entryY=0.799;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="10" target="11" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="410" y="250" as="sourcePoint"/>
                         <mxPoint x="300" y="380" as="targetPoint"/>
@@ -121,10 +121,10 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="26" value="&lt;b&gt;Acta_instrumentos_ceye&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;codigo varchar(100)&lt;br&gt;instrumento_id int fk&lt;br&gt;acta_ceye_id int fk&lt;br&gt;extra varchar(140) default null&lt;br&gt;cantidad int" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="26" value="&lt;b&gt;Acta_instrumentos_ceye&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;codigo varchar(100)&lt;br&gt;instrumento_id int fk&lt;br&gt;acta_ceye_id int fk&lt;br&gt;extra varchar(140) default null&lt;br&gt;cantidad int" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="360" y="690" width="170" height="170" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="" style="endArrow=classic;html=1;entryX=0.007;entryY=0.541;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.993;exitY=0.438;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="30" target="26">
+                <mxCell id="28" value="" style="endArrow=classic;html=1;entryX=0.007;entryY=0.541;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.993;exitY=0.438;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="30" target="26" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="-270" y="410" as="sourcePoint"/>
                         <mxPoint x="320" y="770" as="targetPoint"/>
@@ -135,7 +135,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="29" value="" style="endArrow=classic;html=1;exitX=-0.002;exitY=0.311;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.013;entryY=0.629;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="11" target="26">
+                <mxCell id="29" value="" style="endArrow=classic;html=1;exitX=-0.002;exitY=0.311;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.013;entryY=0.629;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="11" target="26" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="120" y="680" as="sourcePoint"/>
                         <mxPoint x="170" y="630" as="targetPoint"/>
@@ -145,10 +145,10 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="30" value="&lt;b&gt;Instrumentos&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;nombre varchar(140)&lt;br&gt;tipo_instrumento_id int fk&lt;br&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="30" value="&lt;b&gt;Instrumentos&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;nombre varchar(140)&lt;br&gt;tipo_instrumento_id int fk&lt;br&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="-290" y="240" width="140" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="32" value="" style="endArrow=classic;html=1;exitX=1.007;exitY=0.553;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.643;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="9" target="30">
+                <mxCell id="32" value="" style="endArrow=classic;html=1;exitX=1.007;exitY=0.553;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.643;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="9" target="30" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="-120" y="240" as="sourcePoint"/>
                         <mxPoint x="-70" y="190" as="targetPoint"/>
@@ -158,10 +158,10 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="33" value="&lt;b&gt;Inventario&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;codigo varchar(100)&lt;br&gt;instrumento_id int fk&lt;br&gt;activo boolean&lt;br&gt;acta_instrumentos_ceye_id int fk&lt;br&gt;extra varchar(140) default null" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                <mxCell id="33" value="&lt;b&gt;Inventario&lt;br&gt;&lt;br&gt;&lt;/b&gt;id int pk auto_i&lt;br&gt;codigo varchar(100)&lt;br&gt;instrumento_id int fk&lt;br&gt;activo boolean&lt;br&gt;acta_instrumentos_ceye_id int fk&lt;br&gt;extra varchar(140) default null" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="20" y="830" width="180" height="180" as="geometry"/>
                 </mxCell>
-                <mxCell id="34" value="" style="endArrow=classic;html=1;entryX=1.002;entryY=0.706;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="33">
+                <mxCell id="34" value="" style="endArrow=classic;html=1;entryX=1.002;entryY=0.706;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="33" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="360" y="760" as="sourcePoint"/>
                         <mxPoint x="300" y="900" as="targetPoint"/>
@@ -171,7 +171,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="35" value="" style="endArrow=classic;html=1;exitX=-0.005;exitY=0.443;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.001;entryY=0.54;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="30" target="33">
+                <mxCell id="35" value="" style="endArrow=classic;html=1;exitX=-0.005;exitY=0.443;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.001;entryY=0.54;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="30" target="33" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="-280" y="410" as="sourcePoint"/>
                         <mxPoint x="-150" y="790" as="targetPoint"/>
@@ -182,13 +182,13 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="37" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;exitX=1.007;exitY=0.113;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.009;entryY=0.945;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="33" target="26">
+                <mxCell id="37" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;exitX=1.007;exitY=0.113;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.009;entryY=0.945;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="33" target="26" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="250" y="930" as="sourcePoint"/>
                         <mxPoint x="300" y="880" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="38" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;" edge="1" parent="1">
+                <mxCell id="38" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="400" y="950" as="sourcePoint"/>
                         <mxPoint x="310" y="850" as="targetPoint"/>
@@ -197,7 +197,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="39" value="Al guardar en esta tabla un&lt;br&gt;trigger encargado de registrar en inventario con&lt;br&gt;el mismo codigo, mismo instrumento_id, marcando true en activo&lt;br&gt;y con el id de la tabla, sin embargo, repetir este mismo&lt;br&gt;registro las veces que lo indique cantidad" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                <mxCell id="39" value="Al guardar en esta tabla un&lt;br&gt;trigger encargado de registrar en inventario con&lt;br&gt;el mismo codigo, mismo instrumento_id, marcando true en activo&lt;br&gt;y con el id de la tabla, sin embargo, repetir este mismo&lt;br&gt;registro las veces que lo indique cantidad" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
                     <mxGeometry x="225" y="950" width="360" height="80" as="geometry"/>
                 </mxCell>
             </root>

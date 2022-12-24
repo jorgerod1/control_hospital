@@ -32,7 +32,7 @@ class Formulario3 extends CI_Controller {
 				
 			}
 
-			;
+			
 
 		}else{
 
