@@ -30,7 +30,22 @@ class DAOceye extends CI_Model {
     }else{
       return $query->result();
     }
-}
+  }
+
+  function finalizar_acta($id)
+  {
+
+    $filtro = array(
+
+    "activo" => 0
+
+    );
+
+
+    $this->db->where('id',$id);
+    $this->db->update('acta_procedimientos',$filtro);
+
+  }
 
 
 }

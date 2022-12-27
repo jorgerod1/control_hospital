@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php foreach ($acta_instrumentos as $acta_instrumento) {  ?>
             <tr class="table-active">
                 <td class="table-danger"><?=$acta_instrumento->codigo;?></td>
-                <td class="table-danger" value="<?=$acta_instrumento->id; ?>"><?= $acta_instrumento->instrumentos ?></td>
+                <td class="table-danger" value="<?=$acta_instrumento->id; ?>"><?= $acta_instrumento->instrumentos; ?></td>
             </tr>
 
         <?php } ?>

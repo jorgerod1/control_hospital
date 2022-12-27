@@ -164,4 +164,38 @@ class Api extends RestController {
         $this->response($response,200);
     }
 
+    function finalizar_acta_put(){
+
+        $id = $this->put('id');
+
+        if ($id) {
+
+            $id2 = $this->DAOceye->finalizar_acta($id);
+
+            $response = array(
+
+                "status" => 1,
+                "message" => "Datos guardados correctamente",
+                "data" => $id,
+                "errors" => array()
+
+            );
+
+        } else {
+
+            $response = array(
+
+                "status" => 0,
+                "message" => "Datos NO guardados",
+                "data" => $id,
+                "errors" => $this->form_validation->error_array()
+
+            );
+
+        }
+
+        $this->response($response,200);
+        
+    }
+
 }

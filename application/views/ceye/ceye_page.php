@@ -101,10 +101,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="contenedorDatos">
         <div style="background-color: #FFACC6;" id="datos"><br>
             <div class="card mb-3" id="info">
-                <?php foreach ($acta_procedimientos as $acta_procedimiento) {  //las variables del foreach debe ser diferentes?> 
+                <?php $contador=0; foreach ($acta_procedimientos as $acta_procedimiento) {  //las variables del foreach debe ser diferentes?> 
                     <div class="card-body" id="contenido">
                         <div>
-                            <p>Procedimiento: <?=$acta_procedimiento->procedimiento_id;?></p>
+                            <p>Procedimiento: <?=$acta_procedimiento->procedimientos;?></p>
                             <p>Fecha: <?=$acta_procedimiento->fecha;?></p>
                             <p>Cirugía: <?=$acta_procedimiento->fecha;?></p>
                         </div>
@@ -113,16 +113,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <p>Hora: <?=$acta_procedimiento->hora;?></p>
                         </div>
                         <div id="botones">
-                            <a href="<?=site_url('Ceye/instrumentos');?>" target="_blank" class="mr-2 btn btn-primary" id="b1">Instrumentos</a>
+                            <a href="<?=site_url('Ceye/instrumentos/index/'.$acta_procedimiento->id);?>" target="_blank" class="mr-2 btn btn-primary" id="<?=$acta_procedimiento->id;?>">Instrumentos</a>
                             <!-- <a href="#" class="btn btn-success" id="b2">Detalles</a>-->
-                            <a href="<?=site_url('Ceye/Bultos');?>" target="_blank" class="btn btn-warning" id="b3">Bultos</a>
-                            <a href="#" class="btn btn-danger" id="b4">Finalizar</a>
+                            <a href="<?=site_url('Ceye/Bultos/index/'.$acta_procedimiento->id);?>" target="_blank" class="btn btn-warning" id=id="<?=$acta_procedimiento->id;?>">Bultos</a>
+                            <a id="<?=$acta_procedimiento->id;?>" href="#" class="finalizar btn btn-danger">Finalizar</a>
 
-                            <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" id="b2">
+                            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseWidthExample<?=$contador?>" aria-expanded="false" aria-controls="collapseWidthExample<?=$contador?>">
                                 Detalles
                             </button>
-                            <div style="min-height: 120px;">
-                                <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                            <div style="">
+                                <div class="collapse collapse-horizontal" id="collapseWidthExample<?=$contador?>">
                                     <div class="card card-body" style="width: 300px;">
                                         <p>Nombre del paciente: <?=$acta_procedimiento->nombre_paciente;?></p>
                                         <p>Fecha de nacimiento: <?=$acta_procedimiento->fecha_nacimiento;?></p>
@@ -131,7 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <p>Enfermera circulante: <?=$acta_procedimiento->enfermera_circulante;?></p>
                                         <p>Cirujano: <?=$acta_procedimiento->cirujano;?></p>
                                         <p>Anestesiologo: <?=$acta_procedimiento->anestesiologo;?></p>
-                                        <p>Sala: <?=$acta_procedimiento->sala;?></p>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <hr>
                    
-                <?php } ?>
+                <?php $contador++; } ?>
             </div>
         </div>
     </div>
@@ -161,6 +161,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
 </body>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
 
 <script type="text/javascript"> 
 
@@ -174,6 +176,57 @@ $(function(){
 				alert(mensaje);
 
 			}
+
+
+    
+    $('.finalizar').on('click',function(){
+
+        event.preventDefault();
+
+        let confirma = confirm('¿Seguro que desea finalizar el acta?');
+
+        if (confirma) {
+
+            let id = $(this).prop('id');
+
+            let ids = {
+                "id" : id
+            }
+
+            //console.log({id});
+
+            $.ajax({
+
+                url : "<?=site_url('ceye_api/Api/finalizar_acta') ?>",
+                method : "put",
+                data : ids
+
+            }).done(function(response){
+
+                if (response.status == 1) {
+
+                    alert('todo bien');
+
+                    window.location.replace('<?=site_url(); ?>');
+                    
+                } else {
+
+                    alert('todo mal');
+                    
+                }
+
+            }).fail(function(response){
+
+                alert('todo mal2');
+
+            });
+            
+        } else {
+            
+        }
+    });
+
+
 
 });
 

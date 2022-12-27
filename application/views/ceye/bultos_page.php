@@ -96,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <tbody class="tablaBody">
         <?php foreach ($acta_ropa_qui as $acta_ropa) {  ?>
             <tr class="table-active">
-                <td class="table-danger" value="<?=$acta_ropa->id; ?>"><?= $acta_ropa->tipo_bulto ?></td>
+                <td class="table-danger" ><?= $acta_ropa->tipo_bulto ?></td>
                 <td class="table-danger"><?=$acta_ropa->cantidad;?></td>
             </tr>
 
