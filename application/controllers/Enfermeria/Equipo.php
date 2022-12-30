@@ -12,7 +12,20 @@ class Equipo extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('enfermeria/equipo_page');
+		
+		if ($this->session->userdata('rol') == "Enfermera") { 
+
+
+			$this->load->view('enfermeria/equipo_page');
+
+		}else{
+
+			
+
+			redirect('Login/index/1');
+
+		}
+		
 	}
 
 }

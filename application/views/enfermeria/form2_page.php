@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h3 id="H">HOSPITAL MATERNO CELAYA</h3> <br>
 </div>
 <h3 align="center">Control de instrumental y ropa quirúrgica</h3><br><br>
-<a href="<?=site_url('enfermeria/Quirofano');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
+<a href="<?=site_url('Login');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
         <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -204,7 +204,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         });
 
-        $('.instrumentos').on('change',function(){
+        $('tbody').on('change','.instrumentos',function(){
 
             var instrumentos_id = $('.instrumentos').val();
 
@@ -235,12 +235,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $('.columna-codigo').append('<select class="codigos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el codigo de trazabilidad</option><option class="font-weight-bold" disabled>  <b> Código ---------- Fecha --------- Hora  </b> </option> </select>');
 
                         
+                        let fechaJ;
+
+                        let fechaHoy =  new Date();
+
+                        fechaformato = formatoFecha(fechaHoy,"yy-mm-dd");
+
+                        let codigoCorrecto;
+
+                        fechaformato2 = fechaformato;
+                        let horaformato = '23:59:59'
 
                         $.each(response.data,function(index,value){
 
                             $('.codigos').append('<option codigo="'+value.codigo+'"  value="'+value.inventarioOriginal+'">'+value.codigo+' --- '+value.fecha+' --- '+value.hora+'</option>');
 
+                             fechaJ = value.fecha;
+
+                             horaJ = value.hora;
+
+                             if(fechaJ <= fechaformato2 && horaJ <= horaformato ){
+
+                                codigoCorrecto = value.inventarioOriginal;
+                                codigo_r = value.codigo;
+                                id_raiz_item = codigoCorrecto;
+
+
+                                fechaformato2 = fechaJ;
+                                horaformato = horaJ;
+
+                                
+
+                             }
+
                         });
+
+                        $('[value="'+codigoCorrecto+'"]').prop('selected',true);
+
+                        $('.codigos').prop('disabled',true);
+
+                        console.log({fechaformato2});
+                        console.log({codigoCorrecto});
 
 
                         $('.codigos').on('change', function(){
@@ -404,83 +439,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             });
 
 
-                            $('.instrumentos').on('change',function(){
-
-                                    var instrumentos_id = $('.instrumentos').val();
-
-                                    console.log(instrumentos_id)
-
-                                    $.ajax({
-
-                                        url : "<?=site_url('inventario_api/Api/traer_items/')?>"+instrumentos_id,
-                                        method : "get",
-                                        async : true
-
-                                    }).done(function(response){
-
-                                        if(response.status == 1){
-
-                                            alert('todo bien');
-                                        
-
-                                            if(response.data.length != 0){
-
-                                                instrumento_id_r = instrumentos_id; //asignamos el nuevo valor a nuestra variable de formulario
-
-
-
-                                                alert('Hay data');
-
-                                                $('.codigos').remove();
-
-                                                $('.columna-codigo').append('<select class="codigos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el codigo de trazabilidad</option><option class="font-weight-bold" disabled>  <b> Código ---------- Fecha --------- Hora  </b> </option> </select>');
-
-                                                
-
-                                                $.each(response.data,function(index,value){
-
-                                                    $('.codigos').append('<option codigo="'+value.codigo+'"  value="'+value.inventarioOriginal+'">'+value.codigo+' --- '+value.fecha+' --- '+value.hora+'</option>');
-
-                                                });
-
-
-                                                    $('.codigos').on('change', function(){
-
-                                                        codigo_r = $('.codigos > option:selected').attr('codigo');
-
-                                                        id_raiz_item = $('.codigos').val();
-
-                                                        console.log('codigo: '+codigo_r);
-                                                        console.log('id_raiz: '+id_raiz_item);
-
-                                                    });
-
-
-
-
-                                                
-
-
-                                            }else{
-
-                                                alert('No hay códigos disponibles');
-
-                                                reiniciarSelects();
-
-                                            }
-
-                                        }else{
-
-                                            alert('todo mal')
-
-                                        }
-
-                                    }).fail(function(response){
-
-                                        alert('todo mal2');
-
-                                    });
-                            });
+                         
 
                             
 
@@ -681,6 +640,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             $('.codigos').remove();
 
+        }
+
+        function formatoFecha(fecha, formato) {
+
+            const map = {
+                dd: fecha.getDate(),
+                mm: fecha.getMonth() + 1,
+                yy: fecha.getFullYear(),//.toString().slice(-2),
+                yyyc: fecha.getFullYear()
+            }
+
+            return formato.replace(/dd|mm|yy|yyy/gi, matched => map[matched])
         }
 
     });
