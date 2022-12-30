@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<?=base_url();?>">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
     </a>
@@ -74,24 +74,17 @@ Control físico, Químico y Biológico
 <h3 align="center">CEyE</h3>
 <br><br>
 
-<a href="<?=site_url('Administrador/CEyE');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <line x1="5" y1="12" x2="11" y2="18"></line>
-            <line x1="5" y1="12" x2="11" y2="6"></line>
-        </svg>
-        Regresar
-        </a><br><br>
+
 
 <div id="table">
+    <h4>Detalles:</h4>
     <table class="table table-bordered">
         <thead>
+            
             <tr>
                 <td class="table-danger">Autoclave</td>
                 <td class="table-danger">No. carga</td>
                 <td class="table-danger">No. paquete</td>
-                <td class="table-danger">Autoclave</td>
                 <td class="table-danger">Fecha</td>
                 <td class="table-danger">Hora</td>
                 <td class="table-danger">Turno</td>
@@ -100,27 +93,27 @@ Control físico, Químico y Biológico
         </thead>
         <tbody class="tablaBody">
             <tr class="fila  table-active">
-                <?php  foreach ($acta_ceye as $acta_ceye) { ?>
+                <?php  foreach ($acta_ceye as $acta_ceye_in) { ?>
                     <td class="table-danger">
-                        <p><?=$acta_ceye->autoclave;?></h5>
+                        <p><?=$acta_ceye_in->autoclave;?></h5>
                     </td>
                     <td class="table-danger">
-                        <p><?=$acta_ceye->no_carga;?></h5>
+                        <p><?=$acta_ceye_in->no_carga;?></h5>
                     </td>
                     <td class="table-danger">
-                        <p><?=$acta_ceye->no_paquete;?></h5>
+                        <p><?=$acta_ceye_in->no_paquete;?></h5>
                     </td>
                     <td class="table-danger">
-                        <p><?=$acta_ceye->fecha;?></h5>
+                        <p><?=$acta_ceye_in->fecha;?></h5>
                     </td>
                     <td class="table-danger">
-                        <p><?=$acta_ceye->hora;?></h5>
+                        <p><?=$acta_ceye_in->hora;?></h5>
                     </td>
                     <td class="table-danger">
-                        <p><?=$acta_ceye->turno;?></h5>
+                        <p><?=$acta_ceye_in->turno;?></h5>
                     </td>
                     <td class="table-danger">
-                        <p><?=$acta_ceye->responsable;?></h5>
+                        <p><?=$acta_ceye_in->responsable;?></h5>
                     </td>
                 <?php } ?>
             </tr>
@@ -132,6 +125,49 @@ Control físico, Químico y Biológico
 </div>
 
 <br><br>
+
+
+
+<div id="table">
+
+    <h4>Instrumentos:</h4>
+    <table class="table table-bordered">
+
+        <thead>
+            
+            <tr>
+                <td class="table-danger">Código de trazabilidad</td>
+                <td class="table-danger">Cantidad</td>
+                <td class="table-danger">Instrumento</td>
+                
+            </tr> 
+        </thead>
+        <tbody class="tablaBody">
+            
+                <?php  foreach ($acta_instrumentos_ceye as $acta_instrumentos_ceye_in) { ?>
+
+                <tr class="fila  table-active">
+
+                    <td class="table-danger">
+                        <p><?=$acta_instrumentos_ceye_in->codigo;?></h5>
+                    </td>
+                    <td class="table-danger">
+                        <p><?=$acta_instrumentos_ceye_in->cantidad;?></h5>
+                    </td>
+                    <td class="table-danger">
+                        <p><?=$acta_instrumentos_ceye_in->instrumentos;?></h5>
+                    </td>
+                </tr>
+                <?php } ?>
+           
+            
+        </tbody>
+        
+    </table>
+
+</div>
+
+
 	
 
 

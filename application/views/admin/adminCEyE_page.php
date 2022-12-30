@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<?=base_url();?>">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
     </a>
@@ -110,16 +110,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h1 class="card-title" align="center">Cargas realizadas</h1>
         
         <div class="card-body">
-            <a href="<?=site_url('Administrador/Cargas');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a><br> <br>
+            <a href="<?=site_url('Administrador/Cargas');?>" class="btn btn-primary" style="background-color: #00B4CC;">Ingresar</a><br> <br>
         </div>
     </div>
 
 
     <div class="card" style="width: 20rem;" align="center" style="background-color: #FFACC6;" id="c2"><br>
-        <h1 class="card-title" align="center">Inventarios</h1>
+        <h1 class="card-title" align="center">Inventario</h1>
         
         <div class="card-body">
-            <a href="<?=site_url('Administrador/Inventarios');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a><br> <br>
+            <a href="<?=site_url('Administrador/Inventarios');?>" class="btn btn-primary" style="background-color: #00B4CC;">Ingresar</a><br> <br>
         </div>
     </div>
 

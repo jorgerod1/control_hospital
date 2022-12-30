@@ -48,6 +48,18 @@ class DAOceye extends CI_Model {
   }
 
 
+  function consulta_instrumentos($id){
+
+    $sql = "select acta_instrumentos_ceye.id, codigo, cantidad, instrumento_id, acta_ceye_id, instrumentos.id, instrumentos
+    from acta_instrumentos_ceye, instrumentos
+    where instrumento_id = instrumentos.id and acta_ceye_id = ?";
+
+    $query = $this->db->query($sql,array($id))->result();
+
+    return $query;
+  }
+
+
 }
 
 

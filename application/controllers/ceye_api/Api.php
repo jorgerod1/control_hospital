@@ -198,4 +198,42 @@ class Api extends RestController {
         
     }
 
+    function datos_cargas_put(){
+
+        $fecha = $this->put('fecha');
+
+        if ($fecha) {
+
+            $filtro = array(
+                "fecha" => $fecha
+            );
+
+            $data = $this->DAOceye->seleccionar_entidad('acta_ceye',$filtro);
+
+            $response = array(
+
+                "status" => 1,
+                "message" => "Datos guardados correctamente",
+                "data" => $data,
+                "errors" => array()
+
+            );
+
+        } else {
+
+            $response = array(
+
+                "status" => 0,
+                "message" => "Datos NO guardados",
+                "data" => $fecha,
+                "errors" => $this->form_validation->error_array()
+
+            );
+
+        }
+
+        $this->response($response,200);
+        
+    }
+
 }

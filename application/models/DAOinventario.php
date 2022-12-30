@@ -76,5 +76,35 @@ class DAOinventario extends CI_Model {
 
   }
 
+  function consulta_inventario(){
+
+    $sql = "select inventario.id as inventarioOriginal, inventario.codigo, inventario.instrumento_id,
+    inventario.activo, inventario.extra, instrumentos.instrumentos, acta_ceye.fecha, acta_ceye.hora, instrumentos.instrumentos
+    from inventario, instrumentos, acta_ceye, acta_instrumentos_ceye
+    where inventario.instrumento_id = instrumentos.id and 
+    inventario.acta_instrumentos_ceye_id  = acta_instrumentos_ceye.id and
+    acta_instrumentos_ceye.acta_ceye_id = acta_ceye.id";
+
+    $query = $this->db->query($sql)->result();
+
+    return $query;
+
+  }
+
+  function consulta_inventario_activos($activo){
+
+    $sql = "select inventario.id as inventarioOriginal, inventario.codigo, inventario.instrumento_id,
+    inventario.activo, inventario.extra, instrumentos.instrumentos, acta_ceye.fecha, acta_ceye.hora, instrumentos.instrumentos
+    from inventario, instrumentos, acta_ceye, acta_instrumentos_ceye
+    where inventario.instrumento_id = instrumentos.id and 
+    inventario.acta_instrumentos_ceye_id  = acta_instrumentos_ceye.id and
+    acta_instrumentos_ceye.acta_ceye_id = acta_ceye.id and inventario.activo = ?";
+
+    $query = $this->db->query($sql,array($activo))->result();
+
+    return $query;
+
+  }
+
   
 }

@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="<?=base_url(); ?>">
         <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
         Hospital Materno Celaya
         </a>
@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="card-body">
             <img src="<?=base_url();?>imagenes/cirugia.png" class="card-img-top" alt="..."><br><br>
             
-            <a href="<?=site_url('Administrador/Cirugia');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a><br> <br>
+            <button disabled href="<?=site_url('Administrador/Cirugia');?>" class="btn btn-primary" style="background-color: #00B4CC;">Acceder</button><br> <br>
         </div>
     </div>
 
@@ -97,17 +97,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="card-body">
             <img src="<?=base_url();?>imagenes/USUARIO.png" class="card-img-top" alt="..." width="200" height="200"><br><br>
             
-            <a href="<?=site_url('Administrador/Usuarios');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a><br> <br>
+            <a  href="<?=site_url('Administrador/Usuarios');?>" class="btn btn-primary" style="background-color: #00B4CC;">Acceder</a><br> <br>
         </div>
     </div>
 
 
     <div class="card" style="width: 20rem;" align="center" style="background-color: #FFACC6;" id="c3"> <br>
-        <h4 class="card-title" align="center">Inventarios</h4>
+        <h4 class="card-title" align="center">Inventario</h4>
         
         <div class="card-body">
             <img src="<?=base_url();?>imagenes/CeyeImg.jpeg" class="card-img-top" alt="..."><br><br>
-            <a href="<?=site_url('Administrador/CEyE');?>" class="btn btn-primary" style="background-color: #00B4CC;">Agregar</a>
+            <a href="<?=site_url('Administrador/CEyE');?>" class="btn btn-primary" style="background-color: #00B4CC;">Acceder</a>
             <br> <br>
         </div>
     </div>

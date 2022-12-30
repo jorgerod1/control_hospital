@@ -20,7 +20,7 @@ class Carga extends CI_Controller {
 
 			$datos['mensaje'] = "Debes iniciar sesión o tener el usuario correcto para esta sección";
 
-			$this->load->view('login_page',$datos);
+			redirect('Login/index/1');
 
 		}
 	

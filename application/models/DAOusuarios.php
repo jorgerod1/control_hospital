@@ -11,6 +11,12 @@ class DAOusuarios extends CI_Model {
        return $result;
     }
 
+    function traerEspecifico_id($usuario){
+      $this->db->where('id',$usuario);             //traemos un data en especifico, recibimos usuario como filtro del resto de datos
+     $result = $this->db->get('usuarios')->row();
+     return $result;
+  }
+
 
     function seleccionar_entidad($entidad,      
         $filtro =  array(),    //aquí estamos pidiendo 3 parametros para hacer funcionar la funcion, en caso de los...
@@ -25,6 +31,26 @@ class DAOusuarios extends CI_Model {
       }else{
         return $query->result();
       }
+  }
+
+
+  function actualizar_usuarios($datos,$id){
+    $this->db->where('id',$id);
+    $this->db->update('usuarios',$datos);
+    return true;
+  }
+
+  function agregar_usuario($datos){
+    $this->db->insert('usuarios',$datos);
+    return $this->db->insert_id();
+  }
+
+  function eliminar_usuario($id){
+
+    $this->db->where('id',$id);
+    $this->db->delete('usuarios');
+
+    return true;
   }
 
 

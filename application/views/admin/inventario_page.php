@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<?=base_url();?>">
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
     </a>
@@ -82,6 +82,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         Regresar
     </a><br><br>
 
+    <div id="activosCon" class="mb-3 mr-5 row justify-content-end">
+
+        <select class="col-2 form-control" name="activos" id="activos">
+            <option selected value="2">Todos</option>
+            <option  value="1">Activos</option>
+            <option  value="0">No activos</option>
+        </select>
+
+    </div>
+
+    
+
 <div id="table">
     <table class="table table-bordered">
         <thead> 
@@ -94,45 +106,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($inventario as $inventario) {  ?>
+        <?php foreach ($inventario as $inventario_in) {  ?>
             <tr class="table-active">
-                <td class="table-danger"><?=$inventario->instrumento_id;?></td>
-                <td class="table-danger"><<?=$inventario->codigo;?>/td>
-                <td class="table-danger"><?=$inventario->instrumento_id;?></td> 
-                <td class="table-danger"><?=$inventario->instrumento_id;?></td>
-                <td class="table-danger">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                </div><br>
-                </td>
+                <td class="table-danger"><?=$inventario_in->instrumentos;?></td>
+                <td class="table-danger"><?=$inventario_in->codigo;?></td>
+                <td class="table-danger"><?=$inventario_in->fecha;?></td> 
+                <td class="table-danger"><?=$inventario_in->hora;?></td>
+                <td class="table-danger"><?=$inventario_in->activo;?> </td>
             </tr>
 
         <?php } ?>
-            <tr class="table-active">
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                </div><br>
-                </td>
-            </tr>
-            <tr class="table-active">
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-            </tr>
-            <tr class="table-active">
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-                <td class="table-danger"></td>
-            </tr>
+          
             
         </tbody>
         
@@ -143,4 +127,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <br><br>
 	
 </body>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script type="text/javascript"> 
+
+
+$(function(){
+
+
+            $('#activos').on('change',function(){
+
+                let valor = $(this).val();
+                console.log({valor});
+
+                if (valor == 2) {
+
+                    window.location.replace('<?=site_url('Administrador/inventarios'); ?>')
+                    
+                } else {
+
+                    $('tbody').empty();
+
+                    $.ajax({
+
+                        url : "<?=site_url('inventario_api/Api/consulta_inventario/'); ?>"+valor,
+                        method : "get"
+
+                    }).done(function(response){
+
+                        if (response.status == 1) {
+
+                            alert('todo bien');
+
+                            $.each(response.data,function(index,value){
+
+                                $('tbody').append('<tr class="table-active"><td class="table-danger">'+value.instrumentos+'</td><td class="table-danger">'+value.codigo+'</td><td class="table-danger">'+value.fecha+'</td> <td class="table-danger">'+value.hora+'</td><td class="table-danger">'+value.activo+' </td></tr>');
+
+                            });
+                            
+                        } else {
+
+                            alert('todo mal');
+                            
+                        }
+
+                    }).fail(function(response){
+                        alert('todo mal2');
+                    });
+                    
+                }
+
+            });
+
+});
+
+</script>
 </html>

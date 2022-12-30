@@ -118,4 +118,207 @@ class Api extends RestController{
         }
 
     }
+
+    function usuario_especifico_get($id){
+
+        if($id){
+
+            $datos = $this->DAOusuarios->traerEspecifico_id($id);
+
+            $response = array(
+                "status" => 1,
+                "status_text" => "success!",
+                "message" => "created!",
+                "results" => $datos,
+                "errors" => array()
+            );
+
+        }else{
+
+            $response = array(
+                "status" => 0,
+                "status_text" => "error!",
+                "message" => "error!",
+                "results" => $id,
+                "errors" => array()
+            );
+
+        }
+
+        $this->response($response,200);
+    }
+
+    function actualizar_usuarios_put(){
+
+        $this->form_validation->set_data($this->put());
+
+        $this->form_validation->set_rules('nombre','Nombre','required');
+        $this->form_validation->set_rules('apellidos','Apellidos','required');
+        $this->form_validation->set_rules('rol','Rol','required');
+        $this->form_validation->set_rules('contacto','Contacto','required');
+        $this->form_validation->set_rules('contra','Contraseña','required');
+        $this->form_validation->set_rules('usuario','Usuario','required');
+
+        $validacion = $this->validar_usuario($this->put('usuario'), $this->put('id'));
+
+
+        if ($this->form_validation->run() && $validacion) {
+
+            $datos = array(
+
+                "nombre" => $this->put('nombre'),
+                "apellidos" => $this->put('apellidos'),
+                "rol" => $this->put('rol'),
+                "contacto" => $this->put('contacto'),
+                "contra" => $this->put('contra'),
+                "usuario" => $this->put('usuario')
+
+            );
+
+            $id_usuario = $this->put('id');
+
+            $act_usuarios = $this->DAOusuarios->actualizar_usuarios($datos,$id_usuario);
+
+            $response = array(
+                "status" => 1,
+                "status_text" => "success!",
+                "message" => "created!",
+                "results" => array(),
+                "errors" => array(),
+                "validacion" => $validacion
+            );
+
+        } else {
+
+            $response = array(
+                "status" => 0,
+                "status_text" => "error!",
+                "message" => "error!",
+                "results" => array(),
+                "errors" => $this->form_validation->error_array(),
+                "validacion" => $validacion
+            );
+
+        }
+
+        $this->response($response,200);
+        
+
+    }
+
+    function validar_usuario($usuario,$id){
+
+        $bandera = 1;
+
+        $usuario_original = $this->DAOusuarios->traerEspecifico_id($id);
+
+        $usuarios = $this->DAOusuarios->seleccionar_entidad('usuarios');
+
+        foreach ($usuarios as $usuarios_individual) {
+
+            if($usuarios_individual->usuario != $usuario || $usuarios_individual->usuario == $usuario_original->usuario){
+
+            }else{
+                $bandera=0;
+            }
+            
+        }
+
+        if ($bandera == 1) {
+            return true;
+        } else if($bandera==0){
+            return false;
+        }
+        
+
+
+       
+
+    }
+
+    function agregar_usuario_post(){
+
+        $this->form_validation->set_data($this->post());
+
+        $this->form_validation->set_rules('nombre','Nombre','required');
+        $this->form_validation->set_rules('apellidos','Apellidos','required');
+        $this->form_validation->set_rules('rol','Rol','required');
+        $this->form_validation->set_rules('contacto','Contacto','required');
+        $this->form_validation->set_rules('contra','Contraseña','required');
+        $this->form_validation->set_rules('usuario','Usuario','required|is_unique[usuarios.usuario]',
+            array("is_unique" => "El campo {field} no está disponible"));
+
+ 
+        if ($this->form_validation->run()) {
+
+            $datos = array(
+
+                "nombre" => $this->post('nombre'),
+                "apellidos" => $this->post('apellidos'),
+                "rol" => $this->post('rol'),
+                "contacto" => $this->post('contacto'),
+                "contra" => $this->post('contra'),
+                "usuario" => $this->post('usuario')
+
+            );
+
+            $nuevo_usuario_id = $this->DAOusuarios->agregar_usuario($datos);
+
+            $response = array(
+                "status" => 1,
+                "status_text" => "created!",
+                "message" => "success!",
+                "results" => $datos,
+                "errors" => $this->form_validation->error_array()
+            );
+
+
+        } else {
+
+            $response = array(
+                "status" => 0,
+                "status_text" => "error!",
+                "message" => "error!",
+                "results" => array(),
+                "errors" => $this->form_validation->error_array()
+            );
+
+        }
+        
+        $this->response($response,200);
+
+
+
+    }
+
+    function eliminar_usuario_delete($id){
+
+        if($id){
+
+            $datos = $this->DAOusuarios->eliminar_usuario($id);
+
+            $response = array(
+                "status" => 1,
+                "status_text" => "success!",
+                "message" => "created!",
+                "results" => $datos,
+                "errors" => array()
+            );
+
+        }else{
+
+            $response = array(
+                "status" => 0,
+                "status_text" => "error!",
+                "message" => "error!",
+                "results" => $id,
+                "errors" => array()
+            );
+
+        }
+
+        $this->response($response,200);
+
+
+    }
 }

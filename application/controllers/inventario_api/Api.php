@@ -106,6 +106,33 @@ class Api extends RestController {
 
     }
 
+    function consulta_inventario_get($activo){
+
+        if ($activo >= 0) {
+
+            $respuesta = $this->DAOinventario->consulta_inventario_activos($activo);
+
+            $response = array(
+                "status" => 1,
+                "message" => "Datos traidos correctamente de inventario",
+                "data" => $respuesta,
+                "errors" => array()
+            );
+
+        } else {
+
+            $response = array(
+                "status" => 0,
+                "message" => "Error 1 inventario",
+                "data" => array(),
+                "errors" => $this->form_validation->error_array()
+            );
+
+        }
+
+        $this->response($response,200);
+        
+    }
 
 
 }
