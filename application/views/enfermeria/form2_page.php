@@ -264,6 +264,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 fechaformato2 = fechaJ;
                                 horaformato = horaJ;
 
+                                //Estas lineas de codigo representan un algoritmo de seleccion para encontrar
+                                //la fecha y hora más viejas de un listado de ellas, teniendo como pivote
+                                // fechaformato2 y horaformato, siendo actualizads si se cumple condicion para obtener lo requerido
+
                                 
 
                              }
