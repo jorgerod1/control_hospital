@@ -14,6 +14,7 @@ class Api extends RestController {
         parent:: __construct();
 
         $this->load->model('DAOceye');
+        $this->load->model('DAOenfermeria');
        
     }
 
@@ -234,6 +235,45 @@ class Api extends RestController {
 
         $this->response($response,200);
         
+    }
+
+    function cantidad_actas_get(){
+
+        $cantidad=0;
+
+        $filtro = array(
+            "activo" => 1
+         );
+
+        $cantidad = count($this->DAOenfermeria->seleccionar_entidad('acta_procedimientos',$filtro));
+
+
+        if($cantidad || $cantidad == 0){
+
+            $response = array(
+
+                "status" => 1,
+                "message" => "Datos guardados correctamente",
+                "data" => $cantidad,
+                "errors" => array()
+
+            );
+
+        }else{
+
+            $response = array(
+
+                "status" => 0,
+                "message" => "Datos NO guardados",
+                "data" => $cantidad,
+                "errors" => $this->form_validation->error_array()
+
+            );
+
+        }
+
+        $this->response($response,200);
+
     }
 
 }

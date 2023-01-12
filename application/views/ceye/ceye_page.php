@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
-<html lang="en">
+<html allow="autoplay" lang="en">
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -75,6 +75,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         margin-top:15px;
         
     }
+
+    .noti:hover{
+
+        cursor:pointer;
+        color:grey!important;
+        
+        
+    }
+
+    .noti{
+        position:relative;
+        left:420px;
+    }
+
 	</style>
 </head>
 <body>
@@ -85,6 +99,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
       Hospital Materno Celaya
     </a>
+
+    <a class="noti self-align-end">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="self-align-end bi bi-bell" viewBox="0 0 16 16">
+        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+        </svg>
+
+    </a>
+
     <a class="self-align-end" href="<?=base_url()?>index.php/Login/logout"> Cerrar sesion</a>
   </div>
 </nav><br>
@@ -158,77 +181,244 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <br><br>
+
+<!-- Modals  --> 
+
+<div class="modal fade" id="alerta" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">¡Nueva acta agregada!</h5>
+        <button type="button" class="reset close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                Recuerda que los instrumentos y los bultos pueden tardar algo más en actualizar debido a que la enfermera sigue llenando los detalles.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="reset btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="reset btn btn-primary">Entendido</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="bienvenida" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">¡Bienvenido!</h5>
+        <button type="button" class=" close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+               <strong class="ml-3">Cierre este mensaje para iniciar el funcionamiento normal</strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class=" btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" data-dismiss="modal" class=" btn btn-primary">Entendido</button>
+      </div>
+    </div>
+  </div>
+</div>
 	
 </body>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 
-<script type="text/javascript"> 
+<script src="http://code.jquery.com/jquery-1.9.1.js" allow="autoplay"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" allow="autoplay" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+<audio id="soundtrack" src="<?=base_url(); ?><?="Sonidos/SD_ALERT_29.mp3"?>" type="audio/ogg" allow="autoplay"></audio>
+
+<script type="text/javascript" allow="autoplay"> 
 
 
-$(function(){
-
-    var mensaje = "<?= $mensaje ?>";
-
-			if(mensaje){
-
-				alert(mensaje);
-
-			}
 
 
-    
-    $('.finalizar').on('click',function(){
+    $(function(){
 
-        event.preventDefault();
+        
 
-        let confirma = confirm('¿Seguro que desea finalizar el acta?');
+        var mensaje = "<?= $mensaje ?>";
 
-        if (confirma) {
+        var cantidadActas = 0;
 
-            let id = $(this).prop('id');
+        var cantidadActasActual = 0;
 
-            let ids = {
-                "id" : id
-            }
+       
 
-            //console.log({id});
+        $(document).ready(function(){
 
-            $.ajax({
+            $('#bienvenida').modal('show');
 
-                url : "<?=site_url('ceye_api/Api/finalizar_acta') ?>",
-                method : "put",
-                data : ids
+                if(mensaje){
 
-            }).done(function(response){
+                    alert(mensaje);
 
-                if (response.status == 1) {
-
-                    alert('todo bien');
-
-                    window.location.replace('<?=site_url(); ?>');
-                    
-                } else {
-
-                    alert('todo mal');
-                    
                 }
 
-            }).fail(function(response){
+                $.ajax({
+                    
+                    url: "<?=site_url('ceye_api/Api/cantidad_actas'); ?>",
+                    method: "get",
+                    async:false
 
-                alert('todo mal2');
+                }).done(function(response){
 
-            });
+                    if (response.status == 1) {
+
+                        cantidadActas = response.data;
+
+                        console.log({cantidadActas});
+                        
+                    } else {
+
+                        alert('todo mal');
+
+                        
+                    }
+
+                }).fail(function(response){
+
+                    alert('todo mal2');
+
+
+                });
+
+                //las siguientes lineas primero esperan 5 segundos y luego inicia un loop en el cual cada 9 segundos
+                //consultará la base datos para verificar que la cantidad de actas es igual a la que se cargo inicialente
+                //en la variable cantidadActas, si esto difiere en algún momento entones enviaremos una notificación.
+
+                //NOTA: Podemos ver las diferentes maneras de llamar una función en javascript, en el primer intervalo unico
+                //tenemos una función de manera tradicional, y en el intervalo continuo tenemos otra forma de escribir una función
+
+                setTimeout(function(){
+
+                    setInterval(() => {
+
+                        $.ajax({
+
+                            url: "<?=site_url('ceye_api/Api/cantidad_actas'); ?>",
+                            method: "get"
+
+                        }).done((response) => {
+
+                            if (response.status == 1) {
+
+                            
+
+                                cantidadActasActual = response.data;
+
+                                console.log({cantidadActasActual});
+
+                                if (cantidadActasActual != cantidadActas) {
+
+                                    $('#alerta').modal('show');
+
+                                    var audplay = new Audio()
+                                    audplay.src = "<?=base_url(); ?><?="Sonidos/SD_ALERT_29.mp3"?>";
+
+                                    //$('#soundtrack').get(0).play();
+
+                                    //audplay.load();
+                                    //audplay.play();
+
+                                    audplay.addEventListener("canplaythrough", () => {
+
+                                        audplay.play().catch(e => {
+                                            window.addEventListener('click', () => {
+                                                audplay.play()
+                                            }, { once: true })
+                                        });
+
+                                    });
+                                    
+                                }
+                                
+                            } else {
+
+                                alert('todo mal');
+                                
+                            }
+
+                        }).fail((response) => {
+
+                            alert('todo mal2');
+
+
+                        });
+
+                        
+                    }, 9000);
+
+                    
+
+                }, 5000);
+
+                
+
+        });
+
+        
+        $('.finalizar').on('click',function(){
+
+            event.preventDefault();
+
+            let confirma = confirm('¿Seguro que desea finalizar el acta?');
+
+            if (confirma) {
+
+                let id = $(this).prop('id');
+
+                let ids = {
+                    "id" : id
+                }
+
+                //console.log({id});
+
+                $.ajax({
+
+                    url : "<?=site_url('ceye_api/Api/finalizar_acta') ?>",
+                    method : "put",
+                    data : ids
+
+                }).done(function(response){
+
+                    if (response.status == 1) {
+
+                       // alert('todo bien');
+
+                        window.location.replace('<?=site_url(); ?>');
+                        
+                    } else {
+
+                        alert('todo mal');
+                        
+                    }
+
+                }).fail(function(response){
+
+                    alert('todo mal2');
+
+                });
+                
+            } else {
+                
+            }
+        });
+
+        $('.reset').on('click',() => {
             
-        } else {
-            
-        }
+            window.location.replace('<?=site_url('Login'); ?>');
+        });
+
+
+
     });
 
 
-
-});
 
 </script>
 </html>
