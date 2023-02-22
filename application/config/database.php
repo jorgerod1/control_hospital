@@ -74,12 +74,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-/*$db['default'] = array(
+$db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'hostname' => 'localhost',
+	'username' => 'hospit61_admi',
+	'password' => 'flowsatanico666',
+	'database' => 'hospit61_control_hospital',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -94,7 +94,7 @@ $query_builder = TRUE;
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-); */ 
+); /*
 
 $db['default'] = array(
 	'dsn'	=> '',
@@ -116,4 +116,4 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);
+);*/ 

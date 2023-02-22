@@ -1,8 +1,8 @@
 
 
-drop database if exists control_hospital;
-create database control_hospital;
-use control_hospital;
+/*drop database if exists control_hospital;
+create database control_hospital;*/
+use hospit61_control_hospital;
 
 
 create table cirugias(
@@ -39,14 +39,14 @@ contra varchar(160) not null
 
 create table acta_procedimientos(
 
-    id int primary key auto_increment default null,
+    id int primary key auto_increment,
     nombre_paciente varchar(240) default null,
-    fecha_nacimiento date default null,
+    fecha_nacimiento date,
     edad int default null,
     cirugia_pediatrica varchar(240) default null,
     servicio enum('quirofano1','quirofano2','toco1','toco2') default null,
-    fecha date default current_timestamp,
-    hora time default current_timestamp,
+    fecha TIMESTAMP default current_timestamp,
+    hora TIMESTAMP  default current_timestamp,
     enfermera_quirurjica varchar(140) default null,
     enfermera_circulante varchar(140) default null,
     cirujano varchar(140) default null,
@@ -119,10 +119,10 @@ create table acta_ceye(
 
     id int primary key auto_increment,
     autoclave varchar(100),
-    no_carga int,
-    no_paquete int,
-    fecha date default current_timestamp,
-    hora time default current_timestamp,
+    no_carga varchar(30),
+    no_paquete varchar(30),
+    fecha timestamp default current_timestamp,
+    hora timestamp default current_timestamp,
     turno varchar(140),
     responsable varchar(160),
     usuario_id int,
