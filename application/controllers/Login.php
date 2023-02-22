@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+ob_start();
 
 class Login extends CI_Controller {
 
@@ -76,7 +77,7 @@ class Login extends CI_Controller {
 		}else{
 
 			
-			$this->load->view('Login_page',$datos);
+			$this->load->view('login_page',$datos);
 
 			
 		}
