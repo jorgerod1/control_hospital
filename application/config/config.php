@@ -410,7 +410,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 */
 
 $localCookie = '';
-$serverCookie = 'hospitalmaternocelaya.com/';
+$serverCookie = '.hospitalmaternocelaya.com';
 
 $config['cookie_prefix']	= '';
 $config['cookie_domain']	= $serverCookie;
