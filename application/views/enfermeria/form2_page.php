@@ -575,7 +575,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         alert('todo bien');
 
-                        window.location.replace('<?=site_url('enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
+                        window.location.replace('<?=site_url('Enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
 
 
 
@@ -606,7 +606,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     
                 }else{
                     alert('No');
-                    window.location.replace('<?=site_url('enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
+                    window.location.replace('<?=site_url('Enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
                 }
 
 
@@ -620,7 +620,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     alert('sí');
 
-                    window.location.replace('<?=site_url('enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
+                    window.location.replace('<?=site_url('Enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
                     
                 }else{
                     alert('No');
