@@ -2,5 +2,6 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home4/hospit61/public_html/
+    
+    - /bin/cp -R * $DEPLOYPATH
     - /bin/cp * $DEPLOYPATH
-    - /bin/cp -R application $DEPLOYPATH
