@@ -122,21 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <small id="s_procedimientos" class="invalid-feedback">  </small>
         </div>
         
-        <!--<div class="col-md-6">
-            <label for="procedimiento_id" class="form-label">Procedimientos</label><br>
-            <select class="form-control form-select-lg mb-12" aria-label=".form-select-lg example" id="procedimiento_id" name="procedimiento_id">
-
-                <option disabled selected>Selecciona una opción</option>
-
-            <?php// foreach ($procedimientos as $procedimiento) {  ?>
-
-                    <option value="<?=$procedimiento->id; ?>"><?= $procedimiento->nombre ?></option>
-                
-                    <?php //} ?>
-
-            </select>
-            <small id="s_procedimiento_id" class="invalid-feedback">  </small>
-        </div> -->
+    
 
         <div class="col-md-6">
             <label for="cirujano" class="form-label">Medico Cirujano</label>
