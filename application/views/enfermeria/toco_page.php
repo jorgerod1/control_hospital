@@ -131,7 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
 </body>
 
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 
 <script type="text/javascript">  
 

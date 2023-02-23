@@ -227,7 +227,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </body>
 
 
-<script src="http://code.jquery.com/jquery-1.9.1.js" allow="autoplay"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.js" allow="autoplay"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" allow="autoplay" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
 <audio id="soundtrack" src="<?=base_url(); ?><?="Sonidos/SD_ALERT_29.mp3"?>" type="audio/ogg" allow="autoplay"></audio>
