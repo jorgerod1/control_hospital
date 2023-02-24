@@ -67,4 +67,16 @@ class DAOenfermeria extends CI_Model {
     return $query;
 
   }
+
+  function actualizar_procedimientos($data){
+
+    $data2 = array(
+      "activo" => 1
+    );
+
+    $this->db->where($data);
+    $this->db->update('acta_procedimientos',$data2);
+
+    return $data;
+  }
 }

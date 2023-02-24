@@ -73,6 +73,7 @@ create table instrumentos(
 
     id int primary key auto_increment,
     instrumentos varchar(140),
+    caracteristicas text,
     tipo_instrumento_id int,
 
     foreign key (tipo_instrumento_id) references tipo_instrumentos(id)

@@ -202,6 +202,7 @@ class Api extends RestController {
     function datos_cargas_put(){
 
         $fecha = $this->put('fecha');
+        
 
         if ($fecha) {
 
@@ -209,7 +210,7 @@ class Api extends RestController {
                 "fecha" => $fecha
             );
 
-            $data = $this->DAOceye->seleccionar_entidad('acta_ceye',$filtro);
+            $data = $this->DAOceye->seleccionar_entidad('acta_ceye');
 
             $response = array(
 

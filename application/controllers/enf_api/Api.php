@@ -42,7 +42,8 @@ class Api extends RestController {
                 "cirujano" => $this->post('cirujano'),
                 "anestesiologo" => $this->post('anestesiologo'),
                 "procedimientos" => $this->post('procedimientos'),
-                "usuario_id" => $this->post('usuario_id')
+                "usuario_id" => $this->post('usuario_id'),
+                "activo" => 0
             );
 
 
@@ -87,7 +88,8 @@ class Api extends RestController {
                 "servicio" => $this->post('servicio'),
                 "enfermera_circulante" => $this->post('enfermera_circulante'),
                 "turno" => $this->post('turno'),
-                "usuario_id" => $this->post('usuario_id')
+                "usuario_id" => $this->post('usuario_id'),
+                "activo" => 0
                
             );
 
@@ -131,7 +133,8 @@ class Api extends RestController {
             $data = array(
                 "enfermera_circulante" => $this->post('enfermera_circulante'),
                 "turno" => $this->post('turno'),
-                "usuario_id" => $this->post('usuario_id')
+                "usuario_id" => $this->post('usuario_id'),
+                "activo" => 0
                
             );
 
@@ -313,6 +316,36 @@ class Api extends RestController {
 
         }
 
+        $this->response($response,200);
+
+    }
+
+    function activar_acta_put(){
+
+        if ($this->put('acta')) {
+
+            $data = array(
+                "id" => $this->put('acta')
+            );
+
+            $respuesta = $this->DAOenfermeria->actualizar_procedimientos($data);
+
+            $response = array(
+                "status" => 1,
+                "message" => "Datos guardados correctamente",
+                "data" => $respuesta,
+                "errors" => array()
+            );
+            
+
+      }else{
+        $response = array(
+            "status" => 0,
+            "message" => "error al guardar",
+            "data" => array(),
+            "errors" => $this->form_validation->error_array()
+            );
+        }
         $this->response($response,200);
 
     }

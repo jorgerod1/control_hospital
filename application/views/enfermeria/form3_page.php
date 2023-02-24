@@ -158,7 +158,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             alert(id_general);
 
             if($(this).prop('checked')){
-                alert('hola');
+                
 
 
                 
@@ -319,6 +319,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                
             
             <?php } ?>
+
+
+            let actas = {
+
+                "acta" : "<?=$acta_procedimientos_id ?>"
+
+            };
+
+
+            $.ajax({
+
+                url : "<?=site_url('enf_api/Api/activar_acta'); ?>",
+                method : "put",
+                data : actas,
+                async : false
+
+            }).done(function(response){
+
+                        if(response.status == 1){
+
+                            alert('todo bien');
+
+                        }else if(response.status == 0){
+
+                            alert('todo mal');
+                           
+
+                        }
+
+            }).fail((response)=>{
+
+                alert('todo mal2');
+
+            });
 
 
              window.location.replace('<?=site_url('Login/index/3'); ?>');

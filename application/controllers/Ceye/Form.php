@@ -65,7 +65,9 @@ class Form extends CI_Controller {
 
 		$codigo = $acta_ceye->autoclave;
 
-		$fechas = explode('-',$acta_ceye->fecha);
+		$fechaCruda = explode(' ',$acta_ceye->fecha);
+
+		$fechas = explode('-',$fechaCruda[0]);
 
 		$año = $fechas[0];
 

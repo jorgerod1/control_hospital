@@ -339,13 +339,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               if (response.data.length >= 1) {
 
+                let contador = 0;
+
                 $.each(response.data,function(index,value){
 
-                  console.log({value});
+                  let fechaCorregida = value.fecha.split(' ');
 
-                  $('#fondo').append('<div class="mb-3 card" style="width: 18rem;" id="c1"><div class="card-body"><h5 class="card-title">No. carga:'+value.no_carga+'</h5><h5 class="card-title">No. paquete: '+value.no_paquete+'</h5><h5 class="card-title">Fecha:'+value.fecha+'</h5><h5 class="card-title">Hora:'+value.hora+'</h5><br><a target="_blank" href="<?=site_url('Administrador/CargasTable/index/');?>'+value.id+'" class="btn btn-primary" style="background-color: #00B4CC;">Ver detalles</a><br></div></div>');
+                  if(fechaCorregida[0] == fecha){
 
+                      console.log({fechaCorregida});
+
+                    $('#fondo').append('<div class="mb-3 card" style="width: 18rem;" id="c1"><div class="card-body"><h5 class="card-title">No. carga:'+value.no_carga+'</h5><h5 class="card-title">No. paquete: '+value.no_paquete+'</h5><h5 class="card-title">Fecha:'+value.fecha+'</h5><h5 class="card-title">Hora:'+value.hora+'</h5><br><a target="_blank" href="<?=site_url('Administrador/CargasTable/index/');?>'+value.id+'" class="btn btn-primary" style="background-color: #00B4CC;">Ver detalles</a><br></div></div>');
+                    contador = 1;
+
+                  }
+
+                  
                 });
+
+                if (contador == 0) {
+
+                  $('#fondo').append('<h3>No hay cargas esta fecha</h3>');
+                  
+                }
 
 
 

@@ -129,7 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div>
                             <p>Procedimiento: <?=$acta_procedimiento->procedimientos;?></p>
                             <p>Fecha: <?=$acta_procedimiento->fecha;?></p>
-                            <p>Cirugía: <?=$acta_procedimiento->fecha;?></p>
+                            
                         </div>
                         <div>
                             <p>Servicio: <?=$acta_procedimiento->servicio;?></p>
