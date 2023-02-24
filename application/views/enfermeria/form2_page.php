@@ -274,7 +274,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         });
 
-                        $('[value="'+codigoCorrecto+'"]').prop('selected',true);
+                        $('.codigos [value="'+codigoCorrecto+'"]').prop('selected',true);
 
                         $('.codigos').prop('disabled',true);
 
