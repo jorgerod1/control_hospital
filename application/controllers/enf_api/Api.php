@@ -168,9 +168,16 @@ class Api extends RestController {
 
     function actaInstrumentos_post(){
 
+        $id_raiz_item = $this->post('id_raiz_item');
+
         $this->form_validation->set_data($this->post());
 
-        $this->form_validation->set_rules('id_raiz_item', 'Item','required|callback_checar_activo');
+        if ($id_raiz_item) {
+            
+            $this->form_validation->set_rules('id_raiz_item', 'Item','required|callback_checar_activo');
+        }
+
+       
 
         $this->form_validation->set_rules('instrumento_id','Instrumento','required|is_natural_no_zero');
         $this->form_validation->set_rules('codigo','Código','required');
@@ -180,10 +187,11 @@ class Api extends RestController {
         $data = array(
             "codigo" => $this->post('codigo'),
             "instrumento_id" => $this->post('instrumento_id'),
-            "acta_procedimiento_id" => $this->post('acta_procedimiento_id')
+            "acta_procedimiento_id" => $this->post('acta_procedimiento_id'),
+            "extra" => $this->post('extra')
         );
 
-        $id_raiz_item = $this->post('id_raiz_item');
+       
 
 
         if($this->form_validation->run()){
@@ -192,8 +200,13 @@ class Api extends RestController {
 
             //cambiamos a inactivo el item con el que se estaba interactuando "id_raiz_item"
 
-            $this->DAOinventario->cambiar_activo($id_raiz_item); //linea que cambia estado activo del item del cual seleccionó el codigo
+            if($id_raiz_item){
 
+                $this->DAOinventario->cambiar_activo($id_raiz_item); //linea que cambia estado activo del item del cual seleccionó el codigo
+
+            }
+
+           
             $response = array(
                 "status" => 1,
                 "message" => "Datos guardados correctamente",

@@ -89,8 +89,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <table class="table table-bordered">
         <thead>
             <tr>
-                <td class="table-danger">Codigo</td>
-                <td class="table-danger">Instrumento</td>
+                <td class="table-danger">Códigos</td>
+                <td class="table-danger">Instrumentos</td>
+                <td class="table-danger">Extras</td>
             </tr>
         </thead>
         <tbody class="tablaBody">
@@ -98,6 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <tr class="table-active">
                 <td class="table-danger"><?=$acta_instrumento->codigo;?></td>
                 <td class="table-danger" value="<?=$acta_instrumento->id; ?>"><?= $acta_instrumento->instrumentos; ?></td>
+                <td class="table-danger"><?=$acta_instrumento->extra;?></td>
             </tr>
 
         <?php } ?>

@@ -45,7 +45,7 @@ class DAOenfermeria extends CI_Model {
 
   function consulta_acta_instrumentos($filtro){
 
-    $sql = "select acta_instrumentos.id, codigo, instrumento_id, acta_procedimiento_id , instrumentos.instrumentos
+    $sql = "select acta_instrumentos.extra, acta_instrumentos.id, codigo, instrumento_id, acta_procedimiento_id , instrumentos.instrumentos
     from acta_instrumentos, instrumentos
     where instrumento_id = instrumentos.id and acta_procedimiento_id = ?";
 

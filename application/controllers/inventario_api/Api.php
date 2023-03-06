@@ -65,20 +65,24 @@ class Api extends RestController {
 
         //primera parte cambiamos el estado a activo a 1
 
-        $activo = $this->DAOinventario->cambiar_activo1($id_raiz_item);
+        if ($id_raiz_item) {
+            $activo = $this->DAOinventario->cambiar_activo1($id_raiz_item);
+        }
+
+        
 
 
         //después eliminamos el acta_instrumentos que por ende ya no existe;
 
-        $this->DAOenfermeria->eliminar_instrumentos($id_acta_instrumentos);
+        $instrumento = $this->DAOenfermeria->eliminar_instrumentos($id_acta_instrumentos);
 
 
-        if($activo){
+        if($instrumento){
 
             $response = array(
                 "status" => 1,
                 "message" => "Datos traidos correctamente ",
-                "data" => $activo,
+                "data" => $instrumento,
                 "errors" => array()
             );
 

@@ -93,6 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td class="table-danger">(:</td>
             </tr>
         </thead>
+        
         <tbody class="tablaBody">
             <tr class="fila table-active">
                 <td class="table-danger">
@@ -105,7 +106,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <?php } ?>
                     </select>
                 </td>
-                <td class="table-danger">
+                <td class="table-danger instrumentos2">
                     <select disabled class="instrumentos form-control form-select-lg mb-3"  aria-label=".form-select-lg example">
                         <option disabled selected>Selecciona el instrumento</option>
                      
@@ -151,56 +152,99 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var extra_r = "";
     var instrumento_id_r = 0;
     var acta_procedimiento_id_r = "<?=$acta_procedimientos_id;?>";
+    var tipo_id;
 
 
     $(function(){
 
-        $('.tipo').on('change',function(){
+        $('tbody').on('change','.tipo',function(){
+
+            $('.instrumentos').show();
 
             $('.codigos').remove();
 
+            $('.input').remove();
+            $('.input2').remove();
+
             $('.instrumentos').removeAttr('disabled');
 
-            var tipo_id = $(this).val();
-            
-            
+             tipo_id = $(this).val();
 
 
-            $.ajax({
+            if (tipo_id == 11 || tipo_id == 12 || tipo_id == 14) {
 
-                url : "<?=base_url()?>index.php/instrumentos_api/Api/traer_instrumento_especifico/"+tipo_id,
-                method : "get"
+                console.log("especial");
 
+                $('.instrumentos').hide();
+              
 
-            }).done(function(response){
+                $.ajax({
 
-                if(response.status == 1){
-
-                    alert('instrumentos todo bien');
-
-                    $('.instrumentos').empty();
-                    $('.instrumentos').append('<option disabled selected>Selecciona el instrumento</option>');
-
-                    $.each(response.data,function(index,value){
-
-                        $('.instrumentos').append('<option value="'+value.id+'">'+value.instrumentos+'</option>');
-
-                    });
-
+                    url : "<?=base_url()?>index.php/instrumentos_api/Api/traer_instrumento_especifico/"+tipo_id,
+                    method : "get"
                     
+                }).done(function(response){
+
+                    if(response.status == 1){
+
+                        alert('instrumentos todo bien');
+
+                        $('.instrumentos2').append('<input id_instrumento='+response.data[0].id+' class="input form-control" type="text">');
+                        $('.columna-codigo').append('<input class="input2 form-control" type="text">');
 
 
-                }else if(response.status == 0){
+                    }else if(response.status == 0){
 
-                    alert('todo mal');
+                        alert('todo mal');
 
-                }
+                        }
 
-            }).fail(function(response){
+                }).fail(function(response){
 
-                alert('todo mal2');
+                    alert('todo mal2');
 
-            });
+                });
+
+                return;
+            }
+            
+                $.ajax({
+
+                    url : "<?=base_url()?>index.php/instrumentos_api/Api/traer_instrumento_especifico/"+tipo_id,
+                    method : "get"
+
+
+                }).done(function(response){
+
+                    if(response.status == 1){
+
+                        alert('instrumentos todo bien');
+
+                        $('.instrumentos').empty();
+                        $('.instrumentos').append('<option disabled selected>Selecciona el instrumento</option>');
+
+                        $.each(response.data,function(index,value){
+
+                            $('.instrumentos').append('<option value="'+value.id+'">'+value.instrumentos+'</option>');
+
+                        });
+
+                        
+
+
+                        }else if(response.status == 0){
+
+                            alert('todo mal');
+
+                    }
+
+                }).fail(function(response){
+
+                    alert('todo mal2');
+
+                });
+
+            
 
         });
 
@@ -323,11 +367,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             var instrumentos = $('.instrumentos').val();
             var codigos = $('.codigos').val();
 
-            
+            var instrumento_manual = $('.input').val();
+            var codigo_manual = $('.input2').val();
 
+            
             if(tipo && instrumentos && codigos){
 
-                alert('el boton puede usarse');
+                
 
                 var datos = {
 
@@ -358,6 +404,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $('.tipo').prop('disabled',true);
                         $('.codigos').prop('disabled',true);
                         $('.instrumentos').prop('disabled',true);
+                        $('.input').prop('disabled',true);
+                        $('.input2').prop('disabled',true);
 
                         //volvemos la fila deshabilitada
 
@@ -365,9 +413,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $('.codigos').removeClass('codigos');
                         $('.instrumentos').removeClass('instrumentos');
                         $('.columna-codigo').removeClass('columna-codigo');
+                        $('.instrumentos2').removeClass('instrumentos2');
+                        $('.input').removeClass('input');
+                        $('.input2').removeClass('input2');
+                        
 
-
-                        $('.fila').addClass(''+id_raiz_item+'');
+                        $('.fila').addClass(''+response.data['id_acta_instrumentos']+'');
 
 
                         $('.fila').removeClass('fila');
@@ -390,64 +441,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         //Ahora eliminamos sus clases
 
 
-                        $('.tablaBody').append(' <tr class="fila table-active"><td class="table-danger"><select  class="tipo form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el tipo de instrumento</option><?php foreach ($tipo_instrumentos as $tipo ) { ?><option value="<?=$tipo->id; ?>"><?=$tipo->tipo; ?></option><?php } ?> </select></td><td class="table-danger"><select disabled class="instrumentos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el tipo de instrumento</option></select></td><td class="columna-codigo table-danger"></td><td class="columna-extra table-danger"></td></tr>');
-
-
-                            $('.tipo').on('change',function(){
-
-                                $('.codigos').remove();
-
-                                $('.instrumentos').removeAttr('disabled');
-
-                                var tipo_id = $(this).val();
-
-
-
-
-                                $.ajax({
-
-                                    url : "<?=base_url()?>index.php/instrumentos_api/Api/traer_instrumento_especifico/"+tipo_id,
-                                    method : "get"
-
-
-                                }).done(function(response){
-
-                                    if(response.status == 1){
-
-                                        alert('instrumentos todo bien');
-
-                                        $('.instrumentos').empty();
-                                        $('.instrumentos').append('<option disabled selected>Selecciona el instrumento</option>');
-
-                                        $.each(response.data,function(index,value){
-
-                                            $('.instrumentos').append('<option value="'+value.id+'">'+value.instrumentos+'</option>');
-
-                                        });
-
-                                        
-
-
-                                    }else if(response.status == 0){
-
-                                        alert('todo mal');
-
-                                    }
-
-                                }).fail(function(response){
-
-                                    alert('todo mal2');
-
-                                });
-
-                            });
-
-
-                         
-
-                            
-
+                        $('.tablaBody').append(' <tr class="fila table-active"><td class="table-danger"><select  class="tipo form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el tipo de instrumento</option><?php foreach ($tipo_instrumentos as $tipo ) { ?><option value="<?=$tipo->id; ?>"><?=$tipo->tipo; ?></option><?php } ?> </select></td><td class="table-danger instrumentos2"><select disabled class="instrumentos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el tipo de instrumento</option></select></td><td class="columna-codigo table-danger"></td><td class="columna-extra table-danger"></td></tr>');
                         
+                        id_raiz_item = 0;
 
                     }else{
 
@@ -475,8 +471,115 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
             }else{
-                alert('Rellene todos los campos');
+
+                if (tipo && instrumento_manual && codigo_manual) {
+
+                    var intrumento_id_2 = $('.input').attr('id_instrumento');
+
+                    alert('el boton puede usarse2');
+
+                      var datos2 = {
+
+                        'codigo' : codigo_manual,
+                        'instrumento_id' : intrumento_id_2,
+                        'acta_procedimiento_id' : acta_procedimiento_id_r,
+                        'extra' : instrumento_manual
+
+                        }
+
+                    console.log(datos2);
+
+                      $.ajax({
+
+                    url : "<?=site_url('enf_api/Api/actaInstrumentos');  ?>",
+                    method : "post",
+                    data : datos2
+
+                }).done(function(response){
+
+                    if(response.status == 1){
+
+                        alert('todo bien');
+
+                        $('.tipo').prop('disabled',true);
+                        $('.codigos').prop('disabled',true);
+                        $('.instrumentos').prop('disabled',true);
+                        $('.input').prop('disabled',true);
+                        $('.input2').prop('disabled',true);
+
+                        //volvemos la fila deshabilitada
+
+                        $('.tipo').removeClass('tipo');
+                        $('.codigos').removeClass('codigos');
+                        $('.instrumentos').removeClass('instrumentos');
+                        $('.columna-codigo').removeClass('columna-codigo');
+                        $('.instrumentos2').removeClass('instrumentos2');
+                        $('.input').removeClass('input');
+                        $('.input2').removeClass('input2');
+                        
+
+                        $('.fila').addClass(''+response.data['id_acta_instrumentos']+'');
+
+
+                        $('.fila').removeClass('fila');
+
+
+                        //-------------------
+
+                        var id_acta_instrumentos = response.data['id_acta_instrumentos'];
+
+
+                        $('.columna-extra').append('<button id_acta_instrumentos="'+id_acta_instrumentos+'" id_raiz_item="'+id_raiz_item+'" class="btn btn-warning revertir">Revertir</button>');
+
+
+
+                        //antes de eliminar la clase
+
+                        $('.columna-extra').removeClass('columna-extra');
+
+
+                        //Ahora eliminamos sus clases
+
+
+                        $('.tablaBody').append(' <tr class="fila table-active"><td class="table-danger"><select  class="tipo form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el tipo de instrumento</option><?php foreach ($tipo_instrumentos as $tipo ) { ?><option value="<?=$tipo->id; ?>"><?=$tipo->tipo; ?></option><?php } ?> </select></td><td class="table-danger instrumentos2"><select disabled class="instrumentos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el tipo de instrumento</option></select></td><td class="columna-codigo table-danger"></td><td class="columna-extra table-danger"></td></tr>');
+                        
+                        id_raiz_item = 0;
+
+                    }else{
+
+                        alert('todo mal');
+
+                        if(response.errors['id_raiz_item']){
+
+                            alert(response.errors['id_raiz_item']);
+
+                            reiniciarSelects();
+
+                        }else{
+
+                        }
+
+                    }
+
+                }).fail(function(response){
+
+                    alert('todo mal2');
+
+                    reiniciarSelects();
+
+                });
+                
+                } else {
+
+                    alert('Rellene todos los campos');
+                    
+                }
+
+
+               // alert('Rellene todos los campos');
             }
+
+          
 
 
         });
@@ -517,7 +620,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     alert('todo bien');
 
-                    $('.'+id_raiz_item).remove();
+                    $('.'+id_acta_instrumentos).remove();
 
                 }else{
 
