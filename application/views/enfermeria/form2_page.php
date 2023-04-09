@@ -154,6 +154,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     var acta_procedimiento_id_r = "<?=$acta_procedimientos_id;?>";
     var tipo_id;
 
+    var extra2 = null;
+
 
     $(function(){
 
@@ -171,7 +173,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
              tipo_id = $(this).val();
 
 
-            if (tipo_id == 11 || tipo_id == 12 || tipo_id == 14) {
+            if (tipo_id == 12) {
 
                 console.log("especial");
 
@@ -186,6 +188,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }).done(function(response){
 
                     if(response.status == 1){
+                        
 
                         alert('instrumentos todo bien');
 
@@ -272,11 +275,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         instrumento_id_r = instrumentos_id; //asignamos el nuevo valor a nuestra variable de formulario
 
 
-                        alert('Hay data');
+                        alert('Hay datos disponibles');
 
                         $('.codigos').remove();
 
-                        $('.columna-codigo').append('<select class="codigos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el codigo de trazabilidad</option><option class="font-weight-bold" disabled>  <b> Código ---------- Fecha --------- Hora  </b> </option> </select>');
+                        $('.columna-codigo').append('<select class="codigos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el codigo de trazabilidad</option><option class="font-weight-bold" disabled>  <b> Código ---------- Fecha - Hora ----------- Extra  </b> </option> </select>');
 
                         
                         let fechaJ;
@@ -292,7 +295,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         $.each(response.data,function(index,value){
 
-                            $('.codigos').append('<option codigo="'+value.codigo+'"  value="'+value.inventarioOriginal+'">'+value.codigo+' --- '+value.fecha+' --- '+value.hora+'</option>');
+                            $('.codigos').append('<option codigo="'+value.codigo+'" extra="'+value.extra+'" value="'+value.inventarioOriginal+'">'+value.codigo+' --- '+value.fecha+(value.extra ? ' --- '+value.extra : '')+'</option>');
 
                              fechaJ = value.fecha;
 
@@ -318,22 +321,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         });
 
-                        $('.codigos [value="'+codigoCorrecto+'"]').prop('selected',true);
-
-                        $('.codigos').prop('disabled',true);
-
+                      
                         console.log({fechaformato2});
                         console.log({codigoCorrecto});
+
+                        if (tipo_id == 11 || tipo_id == 14 || tipo_id == 15 ) {
+
+                            $('.codigos').prop('disabled',false);
+
+                        }else{
+
+                              $('.codigos [value="'+codigoCorrecto+'"]').prop('selected',true);
+
+                            $('.codigos').prop('disabled',true);
+
+
+                        }
 
 
                         $('.codigos').on('change', function(){
 
                             codigo_r = $('.codigos > option:selected').attr('codigo');
+                            extra2 = $('.codigos > option:selected').attr('extra');
 
                              id_raiz_item = $('.codigos').val();
 
                             console.log('codigo: '+codigo_r);
-                            console.log('id_raiz: '+id_raiz_item);
+                            console.log({extra2});
 
                         });
                         
@@ -380,7 +394,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     'codigo' : codigo_r,
                     'instrumento_id' : instrumento_id_r,
                     'acta_procedimiento_id' : acta_procedimiento_id_r,
-                    'id_raiz_item' : id_raiz_item
+                    'id_raiz_item' : id_raiz_item,
+                    'extra' : extra2,
 
                 }
 
@@ -444,6 +459,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $('.tablaBody').append(' <tr class="fila table-active"><td class="table-danger"><select  class="tipo form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el tipo de instrumento</option><?php foreach ($tipo_instrumentos as $tipo ) { ?><option value="<?=$tipo->id; ?>"><?=$tipo->tipo; ?></option><?php } ?> </select></td><td class="table-danger instrumentos2"><select disabled class="instrumentos form-control form-select-lg mb-3" aria-label=".form-select-lg example"><option disabled selected>Selecciona el tipo de instrumento</option></select></td><td class="columna-codigo table-danger"></td><td class="columna-extra table-danger"></td></tr>');
                         
                         id_raiz_item = 0;
+                        extra2 = null;
 
                     }else{
 

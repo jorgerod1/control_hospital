@@ -132,7 +132,8 @@ class Api extends RestController {
             "codigo" => $this->post('codigo'),
             "cantidad" => $this->post('cantidad'),
             "instrumento_id" => $this->post('instrumento_id'),
-            "acta_ceye_id" => $this->post('acta_ceye_id')
+            "acta_ceye_id" => $this->post('acta_ceye_id'),
+            "extra" => $this->post('extra')
 
         );
 

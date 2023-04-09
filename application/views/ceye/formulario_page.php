@@ -120,13 +120,19 @@ Control físico, Químico y Biológico</h3>
 
                         <option disabled selected>Selecciona una opción</option>
 
-                        <?php foreach ($tipo_instrumentos as $tipo) {  ?>
+                        <?php foreach ($tipo_instrumentos as $tipo) {
+                            
+                            if($tipo->id != 12){ ?>
 
-                            <option value="<?=$tipo->id; ?>"><?= $tipo->tipo ?></option>
+                             <option value="<?=$tipo->id; ?>"><?= $tipo->tipo ?></option>
                         
-                            <?php } ?>
+                            <?php }
+                         } ?>
 
                     </select>
+
+                    
+
                     <small class="invalid-feedback"></small>
                 </td>
                 <td class="table-danger">
@@ -134,6 +140,8 @@ Control físico, Químico y Biológico</h3>
                         <option selected>Open this select menu</option>
                         
                     </select>
+                    <input style="display: none;" class="extra form-control" type="text">
+
                     <small class="invalid-feedback"></small>
                 </td>
                 <td class="table-danger">
@@ -187,11 +195,18 @@ $(function(){
 
 
     var contador = 1;
+    var tipo_id;
+    var id_instrumento2;
+    var extra = null;
 
     var instrumento_ids = [];
     var cantidades = [];
     var instrumento_ids2 = [];
     var cantidades2 = [];
+
+    var extras = [];
+    
+
 
     var codigo_trazabilidad = '<?=  $codigo_trazabilidad; ?>';
     var acta_ceye_id = '<?=$acta_ceye->id; ?>'; 
@@ -202,12 +217,14 @@ $(function(){
     $('.tablaCuerpo').on('change','.tipo',function(){
 
 
-            
+        $('.instrumentos').show();
+         $('.extra').hide();
         $('.cantidad').prop('disabled',true);
+        $('.cantidad').val('');
 
             $('.instrumentos').removeAttr('disabled');
 
-            var tipo_id = $(this).val();
+             tipo_id = $(this).val();
             
             
 
@@ -222,10 +239,31 @@ $(function(){
 
                 if(response.status == 1){
 
+                    if (tipo_id == 11 || tipo_id == 14 || tipo_id == 15) {
+
+
+                        console.log("especiales");
+
+                        id_instrumento2 = response.data[0].id;
+
+                        console.log({id_instrumento2});
+
+                        $('.instrumentos').hide();
+                        $('.extra').show();
+                        $('.cantidad').prop('disabled',false);
+                        
+
+
+                        return;
+                        
+                    }
+
+
+
                     alert('instrumentos todo bien');
 
                     $('.instrumentos').empty();
-                    $('.instrumentos').append('<option disabled selected>Open this select menu</option>');
+                    $('.instrumentos').append('<option disabled selected>Selecciona</option>');
 
                     $.each(response.data,function(index,value){
 
@@ -252,6 +290,8 @@ $(function(){
 
     $('.tablaCuerpo').on('change','.instrumentos',function(){
 
+        $('.cantidad').val('');
+
         var instrumentos_id = $('.instrumentos').val();
 
         instrumento_ids[contador] = instrumentos_id;
@@ -266,7 +306,7 @@ $(function(){
 
     $('.agregar').on('click',function(){
 
-        if($('.cantidad').val()){
+        if(($('.cantidad').val() && tipo_id != 11 && tipo_id != 14 && tipo_id != 15 ) || (tipo_id == 11 && $('.cantidad').val() && $('.extra').val()) || (tipo_id == 14 && $('.cantidad').val() && $('.extra').val()) || (tipo_id == 15 && $('.cantidad').val() && $('.extra').val())){
 
             alert('Se puede usar el botón');
 
@@ -276,14 +316,37 @@ $(function(){
 
             //el siguiente ajax solamente es para validar los datos de forma correcta;
 
-            var datos = {
-                "codigo" : codigo_trazabilidad,
-                "cantidad" : cantidades[contador],
-                "instrumento_id" : instrumento_ids[contador],
-                "acta_ceye_id" : acta_ceye_id
+            if (tipo_id == 11 || tipo_id == 14 || tipo_id == 15) {
 
+                var datos = {
+                    "codigo" : codigo_trazabilidad,
+                    "cantidad" : cantidades[contador],
+                    "instrumento_id" : id_instrumento2,
+                    "acta_ceye_id" : acta_ceye_id
+
+
+                    }
+
+                    instrumento_ids[contador] = id_instrumento2;
+
+                    extra = $('.extra').val();
+                
+            } else {
+                 
+                   var datos = {
+                    "codigo" : codigo_trazabilidad,
+                    "cantidad" : cantidades[contador],
+                    "instrumento_id" : instrumento_ids[contador],
+                    "acta_ceye_id" : acta_ceye_id
+
+
+                    }
+
+                    extra = null;
 
             }
+
+            
 
             $.ajax({
 
@@ -299,6 +362,7 @@ $(function(){
 
                     cantidades2[contador] = cantidades[contador];
                     instrumento_ids2[contador] = instrumento_ids[contador];
+                    extras[contador] = extra;
 
                     $('.tablaCuerpo input,select').removeClass('is-invalid');
                     $('.tablaCuerpo input,select').addClass('is-valid');
@@ -322,14 +386,19 @@ $(function(){
 
                     $('.boton').removeClass('boton');
 
+                    $('.extra').prop('disabled',true);
+                    $('.extra').removeClass('extra');
 
 
-                    $('.tablaCuerpo').append('<tr class="fila table-active"><td><select class="tipo form-control form-select-lg mb-12" aria-label=".form-select-lg example" id="procedimiento_id" name="procedimiento_id"><option disabled selected>Selecciona una opción</option><?php foreach ($tipo_instrumentos as $tipo) {  ?><option value="<?=$tipo->id; ?>"><?= $tipo->tipo ?></option><?php } ?></select><small class="invalid-feedback"></small></td><td class="table-danger"><select disabled class="instrumentos form-control form-select-lg " aria-label=".form-select-lg example"><option selected>Open this select menu</option></select><small class="invalid-feedback"></small></td><td class="table-danger"><input disabled type="number" class="cantidad form-control" id="cantidad"><small class="cantidad invalid-feedback"></small></td><td class="table-danger"><input disabled value="<?=  $codigo_trazabilidad; ?>" type="text" class="form-control" id="enfermera_quirurjica"><small class="invalid-feedback"></small></td><td class="table-danger boton"></td></tr>');
+
+                    $('.tablaCuerpo').append('<tr class="fila table-active"><td><select class="tipo form-control form-select-lg mb-12" aria-label=".form-select-lg example" id="procedimiento_id" name="procedimiento_id"><option disabled selected>Selecciona una opción</option><?php foreach ($tipo_instrumentos as $tipo) { if($tipo->id != 12) {   ?><option value="<?=$tipo->id; ?>"><?= $tipo->tipo ?></option><?php } } ?></select><small class="invalid-feedback"></small></td><td class="table-danger"><select disabled class="instrumentos form-control form-select-lg " aria-label=".form-select-lg example"><option selected>Open this select menu</option></select><input style="display: none;" class="extra form-control" type="text"><small class="invalid-feedback"></small></td><td class="table-danger"><input disabled type="number" class="cantidad form-control" id="cantidad"><small class="cantidad invalid-feedback"></small></td><td class="table-danger"><input disabled value="<?=  $codigo_trazabilidad; ?>" type="text" class="form-control" id="enfermera_quirurjica"><small class="invalid-feedback"></small></td><td class="table-danger boton"></td></tr>');
 
 
                     
 
                     contador++;
+                    extra = null;
+                    id_instrumento2 = null;
                     //iteramos nuestros arrays para ver como van:
 
                     console.log(instrumento_ids2);
@@ -405,6 +474,7 @@ $(function(){
                 "codigo" : codigo_trazabilidad,
                 "cantidad" : cantidades2[index],
                 "instrumento_id" : instrumento_ids2[index],
+                "extra" : extras[index] ? extras[index] : "" ,
                 "acta_ceye_id" : acta_ceye_id
 
 
@@ -452,6 +522,7 @@ $(function(){
 
         instrumento_ids2[id] = null;
         cantidades2[id] = null;
+        extras[id] = null;
 
         $('.'+id).remove();
 
