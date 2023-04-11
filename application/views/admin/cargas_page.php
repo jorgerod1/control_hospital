@@ -133,8 +133,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="card-body">
         <h5 class="card-title">No. carga: <?=$acta_ceye_in->no_carga;?></h5>
         <h5 class="card-title">No. paquete: <?=$acta_ceye_in->no_paquete;?></h5>
-        <h5 class="card-title">Fecha: <?=$acta_ceye_in->fecha;?></h5>
-        <h5 class="card-title">Hora: <?=$acta_ceye_in->hora;?></h5><br>
+        <h5 class="card-title">Fecha y hora: <?=$acta_ceye_in->fecha;?></h5>
         <a target="_blank" href="<?=site_url('Administrador/CargasTable/index/');?><?=$acta_ceye_in->id; ?>" class="btn btn-primary" style="background-color: #00B4CC;">Ver detalles</a><br>
       </div>
     </div>

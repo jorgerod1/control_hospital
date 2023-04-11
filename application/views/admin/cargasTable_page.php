@@ -68,8 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="122" height="133" id="L">
     <h3 id="H">HOSPITAL MATERNO CELAYA</h3> <br>
 </div>
-<h3 align="center">Validación y trazabilidad del proceso de esterilización 
-Control físico, Químico y Biológico  
+<h3 align="center">Bitácora de registro de trazabilidad del proceso de esterilización CEYE
 </h3>
 <h3 align="center">CEyE</h3>
 <br><br>
@@ -85,8 +84,8 @@ Control físico, Químico y Biológico
                 <td class="table-danger">Autoclave</td>
                 <td class="table-danger">No. carga</td>
                 <td class="table-danger">No. paquete</td>
-                <td class="table-danger">Fecha</td>
-                <td class="table-danger">Hora</td>
+                <td class="table-danger">Fecha y hora</td>
+               
                 <td class="table-danger">Turno</td>
                 <td class="table-danger">Responsable</td>
             </tr> 
@@ -106,9 +105,7 @@ Control físico, Químico y Biológico
                     <td class="table-danger">
                         <p><?=$acta_ceye_in->fecha;?></h5>
                     </td>
-                    <td class="table-danger">
-                        <p><?=$acta_ceye_in->hora;?></h5>
-                    </td>
+                   
                     <td class="table-danger">
                         <p><?=$acta_ceye_in->turno;?></h5>
                     </td>
@@ -139,6 +136,7 @@ Control físico, Químico y Biológico
                 <td class="table-danger">Código de trazabilidad</td>
                 <td class="table-danger">Cantidad</td>
                 <td class="table-danger">Instrumento</td>
+                <td class="table-danger">Extra</td>
                 
             </tr> 
         </thead>
@@ -156,6 +154,9 @@ Control físico, Químico y Biológico
                     </td>
                     <td class="table-danger">
                         <p><?=$acta_instrumentos_ceye_in->instrumentos;?></h5>
+                    </td>
+                    <td class="table-danger">
+                        <p><?=$acta_instrumentos_ceye_in->extra;?></h5>
                     </td>
                 </tr>
                 <?php } ?>

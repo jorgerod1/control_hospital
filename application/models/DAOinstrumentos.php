@@ -8,7 +8,7 @@ class DAOinstrumentos extends CI_Model {
         return $this->db->insert_id();
     }*/
 
-    function seleccionar_entidad($entidad,      
+  function seleccionar_entidad($entidad,      
         $filtro =  array(),    //aquí estamos pidiendo 3 parametros para hacer funcionar la funcion, en caso de los...
         $unico = FALSE){        // últimos dos, los tenemos ya inicializados en caso de que el usuario no mande esos parametros
       if($filtro){
@@ -22,4 +22,28 @@ class DAOinstrumentos extends CI_Model {
         return $query->result();
       }
   }
+
+  function agregar_instrumento($datos){
+
+
+    $this->db->insert('instrumentos',$datos);
+    $result = $this->db->insert_id();
+    return $result;
+  }
+
+  function eliminar_instrumento($id){
+    $this->db->where('id',$id);
+    $query = $this->db->delete('instrumentos');
+    return $query;
+  }
+
+    function editar_instrumento($datos,$filtro){
+
+      $this->db->where($filtro);
+    
+    $result = $this->db->update('instrumentos',$datos);
+    return $result;
+  }
+
+
 }

@@ -70,8 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="122" height="133" id="L">
     <h3 id="H">HOSPITAL MATERNO CELAYA</h3> <br>
 </div>
-<h3 align="center">Validación y trazabilidad del proceso de esterilización 
-Control físico, Químico y Biológico</h3>
+<h3 align="center">Registro de trazabilidad del proceso de esterilización CEYE</h3>
 <h3 align="center">CEyE</h3><br><br>
 <a href="<?=site_url('Login');?>"  type="submit" class="btn btn-primary" style="margin-left:75px;">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

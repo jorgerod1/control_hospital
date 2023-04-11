@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
-    <title>Administrador</title>
+    <title>Tipo instrumental</title>
 
     <style type="text/css">
 
@@ -56,10 +56,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     #c1, #c2, #c3{
         background-color:#FFACC6;
     }
+
+    .alert-danger:hover{
+        -webkit-transform:scale(1.03)!important;transform:scale(1.03);;
+        box-shadow: 0 10px 30px -20px #000;
+        transition: -webkit-transform 0.3s;
+    }
 	
 	</style>
 </head>
 <body>
+
+<?php //echo"<pre>"; print_r($tipo_instrumentos);?>
 
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid">
@@ -78,50 +86,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <img src="<?=base_url();?>imagenes/Logo.png" alt="" width="122" height="133" id="L">
     <h3 id="H">HOSPITAL MATERNO CELAYA</h3> <br>
 </div>
-<h3 align="center">Administrador</h3><br>
+<h3 align="center">Tipo Instrumental</h3><br>
 
-<div id="cartas" >
+<a href="<?=site_url('Administrador/Admin');?>" type="submit" class="btn btn-primary" style="margin-left:75px;">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <line x1="5" y1="12" x2="11" y2="18"></line>
+            <line x1="5" y1="12" x2="11" y2="6"></line>
+        </svg>
+        Regresar a menú
+    </a>
+    <br> <br>
 
-    <div class="card" style="width: 20rem;" align="center" id="c1"><br>
-        <h4 class="card-title" align="center">Actas</h4>
-        
-        <div class="card-body">
-            <img src="<?=base_url();?>imagenes/cirugia.png" class="card-img-top" alt="..."><br><br>
+<div class="container-fluid">
+
+    <div class="row mx-2">
+
+        <?php foreach ($tipo_instrumentos as $tipo) { ?>
+
+            <div class="col-lg-6">
+
+                <div class="d-flex justify-content-between alert alert-danger" role="alert">
+                    <?=$tipo->tipo; ?>
+                    <button <?php
+
+                    if ($tipo->id != 11 && $tipo->id != 12 && $tipo->id != 14 && $tipo->id != 15) {
+                        
+                        echo ' id="'.$tipo->id.'" ';
+                    }else{
+                        
+                        echo "disabled";
+                    }
+
+                     ?> class="tipos align-self-end ml-5 btn btn-primary">Seleccionar</button>
+                </div>
             
-            <button disabled href="<?=site_url('Administrador/Cirugia');?>" class="btn btn-primary" style="background-color: #00B4CC;">Acceder</button><br> <br>
-        </div>
-    </div>
-
-
-    <div class="card" style="width: 20rem;" align="center" style="background-color: #FFACC6;" id="c2"><br>
-        <h4 class="card-title" align="center">Usuarios</h4>
-        
-        <div class="card-body">
-            <img src="<?=base_url();?>imagenes/USUARIO.png" class="card-img-top" alt="..." width="200" height="200"><br><br>
+            </div>
             
-            <a  href="<?=site_url('Administrador/Usuarios');?>" class="btn btn-primary" style="background-color: #00B4CC;">Acceder</a><br> <br>
-        </div>
-    </div>
 
 
-    <div class="card" style="width: 20rem;" align="center" style="background-color: #FFACC6;" id="c3"> <br>
-        <h4 class="card-title" align="center">Inventario</h4>
+            <?php } ?>
+
         
-        <div class="card-body">
-            <img src="<?=base_url();?>imagenes/CeyeImg.jpeg" class="card-img-top" alt="..."><br><br>
-            <a href="<?=site_url('Administrador/CEyE');?>" class="btn btn-primary" style="background-color: #00B4CC;">Acceder</a>
-            <br> <br>
-        </div>
-    </div>
-
-    <div class=" mt-4 card" style="width: 20rem;" align="center" id="c1"><br>
-        <h4 class="card-title" align="center">Instrumentales</h4>
-        
-        <div class="card-body">
-            <img style="height: 14rem; object-fit: cover;" src="https://cdn.pixabay.com/photo/2015/02/26/15/42/doctor-650548_1280.jpg" class="card-img-top" alt="..."><br><br>
-            
-            <a  href="<?=site_url('Administrador/Instrumentales');?>" class="btn btn-primary" style="background-color: #00B4CC;">Acceder</a><br> <br>
-        </div>
     </div>
     
 </div>
@@ -145,6 +152,19 @@ $(function(){
 				alert(mensaje);
 
 			}
+
+    $('.tipos').on('click',function(){
+
+        let id = $(this).attr('id');
+
+        window.location.replace('<?=site_url('Administrador/instrumentales/index/') ?>'+id);
+
+
+
+
+    });
+
+   
 
 });
 
