@@ -28,7 +28,7 @@ $localMode = 'http://localhost/sw18/control_hospital/';
 $serverMode = 'https://hospitalmaternocelaya.com/';
 
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on"){$ssl_set = "s";} else{$ssl_set = "";}
-$config['base_url'] = 'http'.$ssl_set.'://'.$_SERVER['HTTP_HOST']/*modo local*/.'/sw18/control_hospital';  //línea de codigo encargada de verificar si el dominio contiene un subdominio o no, dependiendo utilizará como base url lo que el usuario haya ingresado, todo hecho para el certificado https
+$config['base_url'] = 'http'.$ssl_set.'://'.$_SERVER['HTTP_HOST']/*modo local.'/sw18/control_hospital'*/;  //línea de codigo encargada de verificar si el dominio contiene un subdominio o no, dependiendo utilizará como base url lo que el usuario haya ingresado, todo hecho para el certificado https
 
 
 //$config['base_url'] = $serverMode;
@@ -413,7 +413,7 @@ $localCookie = '';
 $serverCookie = '.hospitalmaternocelaya.com';
 
 $config['cookie_prefix']	= '';
-$config['cookie_domain']	= $localCookie;
+$config['cookie_domain']	= $serverCookie;
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;
