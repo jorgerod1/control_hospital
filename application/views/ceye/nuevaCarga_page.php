@@ -154,7 +154,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             }).done(function(response){
 
-                if(response.status == 1){
+                if(response.status == 200){
 
                     alert('todo bien');
 
@@ -166,7 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-                }else{
+                }else if(response.status == 400){
 
                     alert('Error al validar los datos');
 
@@ -182,11 +182,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         });
 
+                }else if(response.status == 401){
+
+                    alert('No tiene permiso para acceder a este recurso');
+                    window.location.reload();
+
                 }
 
             }).fail(function(response){
 
-                alert('todo mal2');
+                alert('Error de servidor');
 
             });
 

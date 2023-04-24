@@ -27,8 +27,11 @@ class Login extends CI_Controller {
 
 		if($data==2){
 
-			$datos['mensaje'] = "Has cerrado sesión correctamente";
+			if($this->session->userdata('is_logeado') == false){
 
+				$datos['mensaje'] = "Has cerrado sesión correctamente";
+				
+			}
 		}
 
 		if($data==3){

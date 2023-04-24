@@ -100,19 +100,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <tr>
                 <td class="table-danger">Instrumentos</td>
                 <td class="table-danger">Códigos de trazabilidad</td>
-                <td class="table-danger">Fecha</td>
-                <td class="table-danger">Hora</td>
+                <td class="table-danger">Fecha y hora</td>
+               
                 <td class="table-danger">Activo</td>
+                <td class="table-danger">Extra</td>
             </tr>
         </thead>
         <tbody>
         <?php foreach ($inventario as $inventario_in) {  ?>
-            <tr class="table-active">
-                <td class="table-danger"><?=$inventario_in->instrumentos;?></td>
-                <td class="table-danger"><?=$inventario_in->codigo;?></td>
-                <td class="table-danger"><?=$inventario_in->fecha;?></td> 
-                <td class="table-danger"><?=$inventario_in->hora;?></td>
-                <td class="table-danger"><?=$inventario_in->activo;?> </td>
+            <tr class="">
+                <td class="table-active"><?=$inventario_in->instrumentos;?></td>
+                <td class="table-active"><?=$inventario_in->codigo;?></td>
+                <td class="table-active"><?=$inventario_in->fecha;?></td> 
+              
+                <td class="d-flex justify-content-between <?= $inventario_in->activo == 1 ? "table-success" : "table-danger" ?>"><?=$inventario_in->activo == 1 ? "Sí" : "No";?> <?=$inventario_in->activo ? "<button id='$inventario_in->inventarioOriginal' class='caducar btn btn-danger'>Caducar</button>" : "" ?> </td>
+                <td class="<?= $inventario_in->extra ? "table-active" : "table-secondary"; ?>"><?= $inventario_in->extra ? $inventario_in->extra : "No hay dato";?> </td>
             </tr>
 
         <?php } ?>
@@ -158,26 +160,82 @@ $(function(){
 
                         if (response.status == 1) {
 
-                            alert('todo bien');
+                            alert('Datos traídos correctamente');
 
                             $.each(response.data,function(index,value){
 
-                                $('tbody').append('<tr class="table-active"><td class="table-danger">'+value.instrumentos+'</td><td class="table-danger">'+value.codigo+'</td><td class="table-danger">'+value.fecha+'</td> <td class="table-danger">'+value.hora+'</td><td class="table-danger">'+value.activo+' </td></tr>');
+                                $('tbody').append('<tr class=""><td class="table-active">'+value.instrumentos+'</td><td class="table-active">'+value.codigo+'</td><td class="table-active">'+value.fecha+'</td><td class="d-flex justify-content-between '+(value.activo == 1 ? "table-success" : "table-danger")+'"> '+(value.activo == 1 ? 'Sí' : 'No')+''+(value.activo == 1 ? '<button id="'+value.inventarioOriginal+'" class="caducar btn btn-danger">Caducar</button>' : '')+'</td><td class="'+(value.extra ? "table-active" : "table-secondary")+'">'+(value.extra ? value.extra : "No hay dato")+'</td></tr>');
 
                             });
                             
                         } else {
 
-                            alert('todo mal');
+                            alert('Datos validados incorrectamente');
                             
                         }
 
                     }).fail(function(response){
-                        alert('todo mal2');
+                        alert('Error de servidor');
                     });
                     
                 }
 
+            });
+
+            $('table').on('click','.caducar',function () {
+                //console.log($(this).attr('id'));
+
+                let confirmar = confirm('¿Estás seguro que desea caducar este instrumento? \n No podrá deshacer los cambios.');
+
+                if (confirmar) {
+
+                    let datos = {
+                        id : $(this).attr('id')
+                    };
+
+                    $.ajax({
+
+                        url : "<?=site_url('instrumentos_api/Api/caducar_instrumento') ?>",
+                        method : "put",
+                        data : datos,
+                        success : function(response){
+                            if(response.status == 200){
+
+                                alert("Instrumento caducado correctamente");
+
+                                window.location.reload();
+
+                            }else{
+
+                                alert("Validación incorrecta")
+
+                            }
+                               
+
+                        },
+                        error : function(response){
+
+                            if(response.status == 400){
+                                alert("Error de cliente")
+                            }else if(response.status == 401){
+                                alert("Falta de permisos para acceder a esta función");
+
+                               
+                                    window.location.reload(); 
+                                
+                                
+                            }else{
+                                alert("Error de servidor")
+                            }
+                                
+
+                        }
+
+                    });
+                    
+                } else {
+                    
+                }
             });
 
 });

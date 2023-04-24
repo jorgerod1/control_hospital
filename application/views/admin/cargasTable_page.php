@@ -144,19 +144,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
                 <?php  foreach ($acta_instrumentos_ceye as $acta_instrumentos_ceye_in) { ?>
 
-                <tr class="fila  table-active">
+                <tr class="fila ">
 
-                    <td class="table-danger">
+                    <td class=" table-active">
                         <p><?=$acta_instrumentos_ceye_in->codigo;?></h5>
                     </td>
-                    <td class="table-danger">
+                    <td class=" table-active">
                         <p><?=$acta_instrumentos_ceye_in->cantidad;?></h5>
                     </td>
-                    <td class="table-danger">
+                    <td class=" table-active">
                         <p><?=$acta_instrumentos_ceye_in->instrumentos;?></h5>
                     </td>
-                    <td class="table-danger">
-                        <p><?=$acta_instrumentos_ceye_in->extra;?></h5>
+                    <td class="<?= $acta_instrumentos_ceye_in->extra ? "table-active" : "table-secondary" ?>">
+                        <p><?=  $acta_instrumentos_ceye_in->extra ? $acta_instrumentos_ceye_in->extra : "No hay dato";?></h5>
                     </td>
                 </tr>
                 <?php } ?>

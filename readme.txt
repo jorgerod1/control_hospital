@@ -247,3 +247,7 @@ alter table acta_procedimientos add procedimientos varchar(160);
 
 //NO usar estilos embebidos en el codigo, manejalos en hoja aparte o al menos 
   metelos juntos en las etiquetas style en el mismo documento
+
+  --------------------- 23-04-2023
+
+  

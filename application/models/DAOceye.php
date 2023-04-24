@@ -59,6 +59,16 @@ class DAOceye extends CI_Model {
     return $query;
   }
 
+  function consulta_inventario_fecha ($fecha){
+    $sql = "select inventario.*, fecha
+    from inventario, acta_instrumentos_ceye, acta_ceye
+    where inventario.acta_instrumentos_ceye_id = acta_instrumentos_ceye.id and acta_ceye_id = acta_ceye.id and DATE(fecha) = ?";
+
+    $query = $this->db->query($sql,array($fecha))->result();
+
+    return $query;
+  }
+
 
 }
 

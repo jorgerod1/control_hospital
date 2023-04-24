@@ -37,12 +37,23 @@ class DAOinstrumentos extends CI_Model {
     return $query;
   }
 
-    function editar_instrumento($datos,$filtro){
+  function editar_instrumento($datos,$filtro){
 
       $this->db->where($filtro);
     
-    $result = $this->db->update('instrumentos',$datos);
-    return $result;
+      $result = $this->db->update('instrumentos',$datos);
+      return $result;
+  }
+
+  function caducar_instrumento_inventario($id){
+
+    $filtro = [
+      "Activo" => 0
+    ];
+
+    $this->db->where('id',$id);
+    $resultado = $this->db->update('inventario',$filtro);
+    return $resultado;
   }
 
 

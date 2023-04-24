@@ -13,6 +13,7 @@ class Api extends RestController{
         parent:: __construct();
 
         $this->load->model('DAOinstrumentos');
+        $this->load->library('session');
 
     }
 
@@ -224,6 +225,64 @@ class Api extends RestController{
         $this->response($response,200);
         
 
+
+    }
+
+    function caducar_instrumento_put(){
+
+        
+
+        if ($this->session->userdata('rol') == "Administrador") {
+            
+        } else {
+            $response = array(
+
+                "status" => 401,
+                "message" => "No tienes los permisos suficientes para acceder",
+                "data" => "",
+                "errors" => $this->form_validation->error_array()
+            );
+
+            $this->response($response,401);
+
+            return;
+        }
+        
+
+        $id = $this->put('id');
+
+        $correcto = $this->DAOinstrumentos->caducar_instrumento_inventario($id);
+
+        if ($correcto) {
+
+
+
+            $response = array(
+
+                "status" => 200,
+                "message" => "Datos editados correctamente",
+                "data" => $id,
+                "errors" => array()
+            );
+
+           
+
+        } else {
+
+             $response = array(
+
+                "status" => 400,
+                "message" => "Validación de datos incorrecta",
+                "data" => "",
+                "errors" => $this->form_validation->error_array()
+            );
+
+            
+
+        }
+
+        $this->response($response,200);
+        
 
     }
 

@@ -21,6 +21,13 @@ class Cargas extends CI_Controller {
 
 				$data['acta_ceye'] = $this->DAOceye->seleccionar_entidad('acta_ceye');
 
+				$data['ejemplo'] = array(
+
+					"ejemplo1" => "pedro1",
+					"ejemplo2" => "pedro2"
+					
+				);
+
 				 
 				$this->load->view('admin/cargas_page',$data);
 

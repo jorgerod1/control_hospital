@@ -66,6 +66,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
+
+
 <nav class="navbar" style="background-color: #FFACC6;">
   <div class="container-fluid"> 
     <a class="navbar-brand" href="<?=base_url();?>">
@@ -166,6 +168,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             dia='0'+dia; //agrega cero si el menor de 10
           if(mes<10)
             mes='0'+mes //agrega cero si el menor de 10
+
+            
           document.getElementById('fechaActual').value=ano+"-"+mes+"-"+dia;
 
       });
@@ -307,83 +311,83 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       });
 
-        function sumarDias(fecha, dias){
-          fecha.setDate(fecha.getDate() + dias);
-          return fecha;
+      function sumarDias(fecha, dias){
+        fecha.setDate(fecha.getDate() + dias);
+        return fecha;
+      }
+
+      function filtrarFecha(fecha){
+
+        console.log(fecha);
+
+        $('#fondo').empty();
+
+        datos = {
+          "fecha" : fecha
         }
 
-        function filtrarFecha(fecha){
-
-          console.log(fecha);
-
-          $('#fondo').empty();
-
-          datos = {
-            "fecha" : fecha
-          }
 
 
+        $.ajax({
 
-          $.ajax({
+          url : "<?=site_url('ceye_api/Api/datos_cargas') ?>",
+          method : "put",
+          data : datos
 
-            url : "<?=site_url('ceye_api/Api/datos_cargas') ?>",
-            method : "put",
-            data : datos
+        }).done(function(response){
 
-          }).done(function(response){
+          if(response.status ==1){
 
-            if(response.status ==1){
+            alert('todo bien');
 
-              alert('todo bien');
+            if (response.data.length >= 1) {
 
-              if (response.data.length >= 1) {
+              let contador = 0;
 
-                let contador = 0;
+              $.each(response.data,function(index,value){
 
-                $.each(response.data,function(index,value){
+                let fechaCorregida = value.fecha.split(' ');
 
-                  let fechaCorregida = value.fecha.split(' ');
+                if(fechaCorregida[0] == fecha){
 
-                  if(fechaCorregida[0] == fecha){
+                    console.log({fechaCorregida});
 
-                      console.log({fechaCorregida});
+                  $('#fondo').append('<div class="mb-3 card" style="width: 18rem;" id="c1"><div class="card-body"><h5 class="card-title">No. carga: '+value.no_carga+'</h5><h5 class="card-title">No. paquete: '+value.no_paquete+'</h5><h5 class="card-title">Fecha y hora: '+value.fecha+'</h5><br><a target="_blank" href="<?=site_url('Administrador/CargasTable/index/');?>'+value.id+'" class="btn btn-primary" style="background-color: #00B4CC;">Ver detalles</a><br></div></div>');
+                  contador = 1;
 
-                    $('#fondo').append('<div class="mb-3 card" style="width: 18rem;" id="c1"><div class="card-body"><h5 class="card-title">No. carga:'+value.no_carga+'</h5><h5 class="card-title">No. paquete: '+value.no_paquete+'</h5><h5 class="card-title">Fecha:'+value.fecha+'</h5><h5 class="card-title">Hora:'+value.hora+'</h5><br><a target="_blank" href="<?=site_url('Administrador/CargasTable/index/');?>'+value.id+'" class="btn btn-primary" style="background-color: #00B4CC;">Ver detalles</a><br></div></div>');
-                    contador = 1;
-
-                  }
-
-                  
-                });
-
-                if (contador == 0) {
-
-                  $('#fondo').append('<h3>No hay cargas esta fecha</h3>');
-                  
                 }
 
-
-
                 
-              } else {
+              });
 
-               
+              if (contador == 0) {
 
                 $('#fondo').append('<h3>No hay cargas esta fecha</h3>');
                 
               }
 
-            }else{
-              alert('todo mal');
+
+
+              
+            } else {
+
+              
+
+              $('#fondo').append('<h3>No hay cargas esta fecha</h3>');
+              
             }
 
-          }).fail(function(response){
+          }else{
+            alert('todo mal');
+          }
 
-            alert('todo mal2');
+        }).fail(function(response){
 
-          });
+          alert('todo mal2');
 
-        }
+        });
+
+      }
 
     });
 
