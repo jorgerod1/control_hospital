@@ -79,4 +79,30 @@ class DAOenfermeria extends CI_Model {
 
     return $data;
   }
+
+  function traer_acta_instrumentos($id_acta){
+
+
+
+    $sql = "select acta_instrumentos.*, instrumentos.instrumentos
+    from acta_instrumentos, instrumentos
+    where instrumento_id = instrumentos.id and acta_procedimiento_id = ?";
+
+    $query = $this->db->query($sql,array($id_acta))->result();
+
+    return $query;
+
+
+  }
+
+  function traer_acta_ropa_qui($id_acta){
+
+    $this->db->select('acta_ropa_qui.*,tipo_bulto');
+    $this->db->from('acta_ropa_qui');
+    $this->db->join('ropa_qui','ropa_qui_id = ropa_qui.id');
+    $this->db->where('acta_procedimiento_id',$id_acta);
+
+    return $this->db->get()->result();
+
+  }
 }

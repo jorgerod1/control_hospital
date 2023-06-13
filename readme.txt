@@ -249,5 +249,11 @@ alter table acta_procedimientos add procedimientos varchar(160);
   metelos juntos en las etiquetas style en el mismo documento
 
   --------------------- 23-04-2023
+Se terminaron las estadisticas de la seccion de inventario y cargas
+
+--------------------  24-04-23
+
+Inicia sección de actas de enfermería
+
 
   

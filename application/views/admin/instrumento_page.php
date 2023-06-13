@@ -133,7 +133,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <tr>
                         <td><?=$contador; ?></td>
                         <td><?=$instrumento->instrumentos; ?></td>
-                        <td><?= ($instrumento->caracteristicas ? $instrumento->caracteristicas : "No hay datos"); ?></td>
+                        <td class="<?= $instrumento->caracteristicas ? '' : "table-active" ?>"><?= ($instrumento->caracteristicas ? $instrumento->caracteristicas : "No hay datos"); ?></td>
                         <td class="d-flex justify-content-center "> <button data-toggle="modal" data-target="#modal_editar" id="<?=$instrumento->id; ?>" class="editar mr-2 btn btn-primary">Editar</button> <button id="<?=$instrumento->id; ?>" class="eliminar ml-2 btn btn-danger">Eliminar</button></td>
                
                 
@@ -378,7 +378,9 @@ $(function(){
 
                 $.each(response.data,function(index,value){
 
+                    $('#'+index+'_e').addClass('text-secondary');
                     $('#'+index+'_e').val(value);
+                   
 
                 });
 

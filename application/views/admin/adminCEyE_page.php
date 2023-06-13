@@ -672,7 +672,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         
         fecha2 = restarDias(fecha2, 6);
-        string_dias = obtenerDiaSemana(fecha2)+' - ';
+        string_dias = '  '+obtenerDiaSemana(fecha2)+' - ';
        
         
         fecha2 = restarDias(fecha2, -1);
@@ -709,7 +709,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         const numDiaSemana = fecha.getDay();
         
         // Devolvemos el nombre del día de la semana correspondiente
-        return diasSemana[numDiaSemana]+' '+fecha.getDate();
+
+        let dia = fecha.getDate(); //obteniendo dia
+        if(dia<10)
+            dia='0'+dia; //agrega cero si el menor de 10
+
+        return diasSemana[numDiaSemana]+' '+dia;
       }
 
       

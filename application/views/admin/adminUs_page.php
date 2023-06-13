@@ -116,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
                         <path d="M16 5l3 3"></path>
                     </svg> 
-                    Editar</button>
+                    <strong>Editar</strong></button>
                     <button id="<?=$usuario->id; ?>" type="button" class="eliminar btn btn-light" style="background-color: #FB1C0A;">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -126,7 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
                         <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
                     </svg>
-                    Eliminar</button>
+                    <strong> Eliminar</strong></button>
       </div>
     </div> 
           
@@ -218,7 +218,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <small id="s_contacto" class="invalid-feedback"> </small>
 						</div>
 
-                         <div class="form-group">
+                         <div class="form-group col-6">
                             <label for="inputPassword4">Contraseña</label>
                             <input type="text" class="form-control" id="contra" name="contra">
                             <small id="s_contra" class="invalid-feedback"> </small>
@@ -291,9 +291,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <small id="s_contacto" class="invalid-feedback"> </small>
 						</div>
 
-                         <div class="form-group">
+                         <div class="form-group col-md-6 col-6">
                             <label for="contra">Contraseña</label>
-                            <input type="text" class="form-control" id="contra" name="contra">
+                            <input type="password" class="form-control" id="contra" name="contra">
                             <small id="s_contra" class="invalid-feedback"> </small>
 						</div>
 
@@ -345,7 +345,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     $('#editar_usuario small').text('');
 
-                    alert('todo bien');
+                    alert('Datos a editar traídos correctamente');
 
                     $('#editar_usuario').removeAttr('id_usuario');
                     $('#editar_usuario').attr('id_usuario',id);
@@ -354,18 +354,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     $.each(response.results,function(index,value){
 
+                        $('#editar #'+index).addClass('text-secondary');
                         $('#editar #'+index).val(value);
 
                     });
                     
                 } else {
 
-                    alert('todo mal');
+                    alert('Error en recepción de datos');
                     
                 }
 
             }).fail(function(response){
-                alert('todo mal2');
+                alert('Error de servidor');
             });
 
         });
@@ -388,18 +389,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }).done(function(response){
 
                     if (response.status==1) {
-                        alert('todo bien');
+                        alert('Usuario eliminado correctamente');
 
                         window.location.replace('<?=site_url('Administrador/Usuarios'); ?>');
                     } else {
 
-                        alert('todo mal');
+                        alert('Registro no eliminado');
                         
                     }
 
                 }).fail(function(response){
 
-                    alert('todo mal2');
+                    alert('Error de servidor');
 
                 });
                 
@@ -431,7 +432,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 if (response.status == 1) {
 
-                    alert('todo bien');
+                    alert('Usuario editado correctamente');
 
                     $('#editar_usuario input,select').removeClass('is-invalid');
                     $('#editar_usuario input,select').addClass('is-valid');
@@ -439,7 +440,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     window.location.replace('<?=site_url('Administrador/Usuarios'); ?>');
                     
                 } else {
-                    alert('todo mal');
+                    alert('Usuario NO editado');
 
                     $('#editar_usuario input,select').removeClass('is-invalid');
                     $('#editar_usuario input,select').addClass('is-valid');
@@ -464,7 +465,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }
 
             }).fail(function(response){
-                alert('todo mal2');
+                alert('Error de servidor');
             });
 
 
@@ -486,7 +487,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }).done(function(response){
                 if (response.status == 1) {
 
-                    alert('todo bien');
+                    alert('Nuevo usuario agregado correctamente');
 
                     $('#agregar_usuario input,select').removeClass('is-invalid');
                     $('#agregar_usuario input,select').addClass('is-valid');
@@ -495,7 +496,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     
                 } else {
 
-                    alert('todo mal');
+                    alert('Usuario NO agregado');
 
                     $('#agregar_usuario input,select').removeClass('is-invalid');
                     $('#agregar_usuario input,select').addClass('is-valid');
@@ -512,7 +513,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }
 
             }).fail(function(response){
-                alert('todo mal2');
+                alert('Error de servidor');
             });
 
             console.log(datos);

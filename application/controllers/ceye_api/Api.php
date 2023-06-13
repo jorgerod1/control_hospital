@@ -342,6 +342,54 @@ class Api extends RestController {
 
     }
 
+    function datos_actas_put(){
+
+        $fecha = $this->put('fecha');
+        
+
+        if ($fecha) {
+
+            $filtro = array(
+                "fecha" => $fecha
+            );
+
+            $data = $this->DAOceye->seleccionar_entidad('acta_procedimientos');
+
+            $data2[0] = $this->DAOceye->consulta_actas_fecha($fecha);
+            $data2[1] = $this->DAOceye->consulta_actas_fecha(date('Y-m-d', strtotime("-1 days", strtotime($fecha))));
+            $data2[2] = $this->DAOceye->consulta_actas_fecha(date('Y-m-d', strtotime("-2 days", strtotime($fecha))));
+            $data2[3] = $this->DAOceye->consulta_actas_fecha(date('Y-m-d', strtotime("-3 days", strtotime($fecha))));
+            $data2[4] = $this->DAOceye->consulta_actas_fecha(date('Y-m-d', strtotime("-4 days", strtotime($fecha))));
+            $data2[5] = $this->DAOceye->consulta_actas_fecha(date('Y-m-d', strtotime("-5 days", strtotime($fecha))));
+            $data2[6] = $this->DAOceye->consulta_actas_fecha(date('Y-m-d', strtotime("-6 days", strtotime($fecha))));
+
+            $response = array(
+
+                "status" => 200,
+                "message" => "Datos guardados correctamente",
+                "data" => $data,
+                "data2" => $data2,
+                "errors" => array()
+
+            );
+
+        } else {
+
+            $response = array(
+
+                "status" => 400,
+                "message" => "Datos NO guardados",
+                "data" => $fecha,
+                "errors" => $this->form_validation->error_array()
+
+            );
+
+        }
+
+        $this->response($response,200);
+        
+    }
+
 }
 
 

@@ -88,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="card-body">
             <img src="<?=base_url();?>imagenes/cirugia.png" class="card-img-top" alt="..."><br><br>
             
-            <button disabled href="<?=site_url('Administrador/Cirugia');?>" class="btn btn-primary" style="background-color: #00B4CC;">Acceder</button><br> <br>
+            <a href="<?=site_url('Administrador/Actas_enfermeria');?>" class="btn btn-primary" style="background-color: #00B4CC;">Acceder</a><br> <br>
         </div>
     </div>
 

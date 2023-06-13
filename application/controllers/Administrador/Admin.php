@@ -17,7 +17,9 @@ class Admin extends CI_Controller {
 
 		if($this->session->userdata('rol') == 'Administrador'){
 
-			$this->load->view('admin/admin_page');
+			$datos['mensaje'] = "";
+
+			$this->load->view('admin/admin_page',$datos);
 
 		}else{
 

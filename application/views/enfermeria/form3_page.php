@@ -155,7 +155,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             var id_general = $(this).prop('value');
 
-            alert(id_general);
+           // alert(id_general);
 
             if($(this).prop('checked')){
                 
@@ -210,14 +210,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         if(response.status == 1){
 
-                            alert('todo bien');
+                            //alert('Validación correcta');
 
                             $('input[id_qui="'+response.data+'"]').removeClass('is-invalid');
                             $('input[id_qui="'+response.data+'"]').addClass('is-valid');
 
                         }else if(response.status == 0){
 
-                            alert('todo mal');
+                            alert('Error al validar datos');
                             bandera = 2;
 
                             $('input[id_qui="'+response.data+'"]').removeClass('is-valid');
@@ -228,7 +228,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         }
 
                     }).fail(function(response){
-                        alert('todo mal2');
+                        alert('Error de servidor');
                         bandera = 1;
                     });
 
@@ -297,17 +297,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         if(response.status == 1){
 
-                            alert('todo bien');
+                           // alert('Registro agregado correctamente');
 
                         }else if(response.status == 0){
 
-                            alert('todo mal');
+                            alert('Registro NO agregado');
                            
 
                         }
 
                     }).fail(function(response){
-                        alert('todo mal2');
+                        alert('Error de servidor');
                       
                     });
                     
@@ -339,18 +339,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         if(response.status == 1){
 
-                            alert('todo bien');
+                            alert('Acta activada correctamente');
 
                         }else if(response.status == 0){
 
-                            alert('todo mal');
+                            alert('El acta no fue activada');
                            
 
                         }
 
             }).fail((response)=>{
 
-                alert('todo mal2');
+                alert('Error de servidor');
 
             });
 

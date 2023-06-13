@@ -190,7 +190,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     if(response.status == 1){
                         
 
-                        alert('instrumentos todo bien');
+                        alert('Instrumentos traídos correctamente');
 
                         $('.instrumentos2').append('<input id_instrumento='+response.data[0].id+' class="input form-control" type="text">');
                         $('.columna-codigo').append('<input class="input2 form-control" type="text">');
@@ -198,13 +198,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     }else if(response.status == 0){
 
-                        alert('todo mal');
+                        alert('Error al traer los datos');
+
 
                         }
 
                 }).fail(function(response){
 
-                    alert('todo mal2');
+                    alert('Error de servidor');
 
                 });
 
@@ -221,7 +222,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     if(response.status == 1){
 
-                        alert('instrumentos todo bien');
+                        alert('Instrumentos traídos correctamente');
 
                         $('.instrumentos').empty();
                         $('.instrumentos').append('<option disabled selected>Selecciona el instrumento</option>');
@@ -237,13 +238,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         }else if(response.status == 0){
 
-                            alert('todo mal');
+                            alert('Error al traer los datos');
 
                     }
 
                 }).fail(function(response){
 
-                    alert('todo mal2');
+                    alert('Error de servidor');
 
                 });
 
@@ -267,7 +268,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 if(response.status == 1){
 
-                    alert('todo bien');
+                   // alert('');
                 
 
                     if(response.data.length != 0){
@@ -275,7 +276,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         instrumento_id_r = instrumentos_id; //asignamos el nuevo valor a nuestra variable de formulario
 
 
-                        alert('Hay datos disponibles');
+                        alert('Hay códigos de trazabilidad disponibles');
 
                         $('.codigos').remove();
 
@@ -363,13 +364,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 }else{
 
-                    alert('todo mal')
+                    alert('Error al validar los datos');
 
                 }
 
             }).fail(function(response){
 
-                alert('todo mal2');
+                alert('Error de servidor');
 
             });
 
@@ -414,7 +415,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     if(response.status == 1){
 
-                        alert('todo bien');
+                        alert('Instrumento agregado correctamente');
 
                         $('.tipo').prop('disabled',true);
                         $('.codigos').prop('disabled',true);
@@ -463,7 +464,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     }else{
 
-                        alert('todo mal');
+                        alert('Instrumento NO agregado');
 
                         if(response.errors['id_raiz_item']){
 
@@ -479,7 +480,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 }).fail(function(response){
 
-                    alert('todo mal2');
+                    alert('Error de servidor');
 
                     reiniciarSelects();
 
@@ -579,7 +580,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 }).fail(function(response){
 
-                    alert('todo mal2');
+                    alert('Error de servidor');
 
                     reiniciarSelects();
 
@@ -634,19 +635,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 if(response.status == 1){
 
-                    alert('todo bien');
+                    alert('Instrumento removido correctamente');
 
                     $('.'+id_acta_instrumentos).remove();
 
                 }else{
 
-                    alert('todo mal');
+                    alert('Error al validar los datos');
 
                 }
 
             }).fail(function(response){
 
-                alert('todo mal2');
+                alert('Servidor');
 
             });
 
@@ -668,7 +669,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 if(alerta2){
 
-                    alert('sí');
+                    //alert('sí');
 
                     var datos2 = {
 
@@ -692,7 +693,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     if(response.status == 1){
 
-                        alert('todo bien');
+                        alert('Agregado correctamente');
 
                         window.location.replace('<?=site_url('Enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
 
@@ -701,7 +702,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     }else{
 
-                        alert('todo mal');
+                        alert('Error al validar los datos');
 
                         if(response.errors['id_raiz_item']){
 
@@ -717,14 +718,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 }).fail(function(response){
 
-                    alert('todo mal2');
+                    alert('Error de servidor');
 
                     reiniciarSelects();
 
                 });
                     
                 }else{
-                    alert('No');
+                    //alert('No');
                     window.location.replace('<?=site_url('Enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
                 }
 
@@ -737,12 +738,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 if(alerta1){
 
-                    alert('sí');
+                    //alert('sí');
 
                     window.location.replace('<?=site_url('Enfermeria/Formulario3/index/');?>'+'<?=$acta_procedimientos_id; ?>');
                     
                 }else{
-                    alert('No');
+                    //alert('No');
                 }
             }
 
