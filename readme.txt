@@ -255,5 +255,7 @@ Se terminaron las estadisticas de la seccion de inventario y cargas
 
 Inicia sección de actas de enfermería
 
+Termino de sección de actas de enfermería
+
 
   
